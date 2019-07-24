@@ -20,15 +20,24 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.events.pipe(filter((event) => event instanceof NavigationEnd))
-                     .pipe(map(() => this.activateRoute))
-                     .pipe(map((route) => {
-                       while (route.firstChild) { route = route.firstChild; }
-                       return route;
-                     }))
-                     .pipe(filter((route) => route.outlet === 'primary'))
-                     .pipe(mergeMap((route) => route.data))
-                     .subscribe((event) => this.titleService.setTitle(event.title));
+     this.route.events.pipe(filter((event) => event instanceof NavigationEnd))
+                      .pipe(map(() => this.activateRoute))
+                      .pipe(map((route) => {
+                        while (route.firstChild) { route = route.firstChild; }
+                        return route;
+                      }))
+                      // .pipe(filter((route) => route.outlet === 'primary'))
+                      .pipe(mergeMap((route) => route.data))
+                      .subscribe((event) => this.titleService.setTitle(event.title));
   }
 
+  onActive(event: any) {
+    console.log('active');
+    console.log(event);
+  }
+
+  onDeActive(event: any) {
+    console.log('Deactive');
+    console.log(event);
+  }
 }
