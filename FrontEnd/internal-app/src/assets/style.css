@@ -1,0 +1,18 @@
+@import "partials/_navbar.css";
+.full-container {
+    /* background-color: #17a2b8 !important; */
+    height: 100vh;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn:hover {
+    cursor: hand;
+}
+
+.header {
+    padding: 7px;
+    background-color: #17a2b8 !important;
+}

@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 
 export class HomeComponent {
 
+  openNav = false;
+
+  constructor() { }
+
+  onOpenNav() {
+    this.openNav = !this.openNav;
+  }
 }
