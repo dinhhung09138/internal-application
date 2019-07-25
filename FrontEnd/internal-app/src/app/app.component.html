@@ -1,11 +1,8 @@
 <div class="full-container">
     <ul>
         <li><a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a></li>
-      <!-- <li><a [routerLink]="[{ outlets: { mainOutlet: ['/home'] } }]" [routerLinkActive]="active">Home</a></li> -->
-      <!-- <li><a [routerLink]="[{ outlets: { mainOutlet: ['/candidate'] } }]">candidate</a></li> -->
-      <li><a [routerLink]="['/candidate']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">candidate</a></li>
-      <!-- <li><a [routerLink]="[{ outlets: { mainOutlet: ['/login'] } }]">Login</a></li> -->
-      <li><a [routerLink]="['/login']" [routerLinkActive]="['active']">Login</a></li>
+        <li><a [routerLink]="['/candidate']" [routerLinkActive]="['active']">candidate</a></li>
+        <li><a [routerLink]="['/login']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Login</a></li>
     </ul>
-    <router-outlet (activate)="onActive($event)" (deactivate)="onDeActive($event)"></router-outlet>
+    <router-outlet></router-outlet>
 </div>

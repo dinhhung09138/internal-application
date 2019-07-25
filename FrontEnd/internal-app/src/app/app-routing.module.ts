@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 //
 import { LoginModule } from './modules/login/login.module';
-import { TestComponent } from './modules/test/test.component';
 
 const routes: Routes = [
   {
@@ -22,13 +21,9 @@ const routes: Routes = [
     data: { title: 'Home' }
   },
   {
-    path: 'test',
-    component: TestComponent
-  },
-  {
-    path: 'candidate',
-    loadChildren: () => import('./modules/candidate/candidate.module').then(m => m.CadidateModule),
-    data: { title: 'Candidate' }
+    path: 'recruitment',
+    loadChildren: () => import('./modules/recruitment/recruitment.module').then(m => m.RecruitmentModule),
+    data: { title: 'Recruitment' }
   },
   // Fallback when no prior routes is matched
   {
@@ -40,7 +35,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    TestComponent
+    // TestComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
