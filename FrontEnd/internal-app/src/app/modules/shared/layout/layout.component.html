@@ -1,8 +1,8 @@
 <div class="container-fluid p-0">
     <div class="wrapper">
-        <app-left-sidebar></app-left-sidebar>
+        <app-left-sidebar [openSidebarState]="openSidebarState"></app-left-sidebar>
         <div id="content">
-            <app-navigation-bar></app-navigation-bar>
+            <app-navigation-bar (openSidebarClick)="openSidebarClick($event)" [openSidebarState]="openSidebarState"></app-navigation-bar>
             <router-outlet></router-outlet>
         </div>
     </div>

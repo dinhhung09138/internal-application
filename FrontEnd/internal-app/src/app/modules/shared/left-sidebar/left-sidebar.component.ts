@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class LeftSidebarComponent implements OnInit {
 
-  openNav = false;
+  @Input() openSidebarState: boolean;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 }

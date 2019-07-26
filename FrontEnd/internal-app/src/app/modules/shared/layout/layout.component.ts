@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class LayoutComponent implements OnInit {
 
+  openSidebarState = true;
+
   constructor() { }
 
   ngOnInit() { }
+
+  openSidebarClick(event: boolean) {
+    this.openSidebarState = event;
+  }
 
 }
