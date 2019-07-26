@@ -1,4 +1,17 @@
+@charset "utf-8";
 @import "partials/_navbar.css";
+@import "partials/_footer.css";
+@import "partials/_header.css";
+body {
+    min-width: 100vw;
+    max-width: 100vh;
+    overflow: hidden;
+}
+
+#content {
+    width: 100%;
+}
+
 .full-container {
     /* background-color: #17a2b8 !important; */
     height: 100vh;
@@ -10,9 +23,4 @@
 
 .btn:hover {
     cursor: hand;
-}
-
-.header {
-    padding: 7px;
-    background-color: #17a2b8 !important;
 }
