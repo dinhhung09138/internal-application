@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/core/services/message.service';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +10,13 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private messageService: MessageService) { }
 
   ngOnInit() { }
 
   doLogin() {
-    this.route.navigate(['home', {}]);
+    this.messageService.success('Hello message');
+   //  this.route.navigate(['home', {}]);
   }
 
 }

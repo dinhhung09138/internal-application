@@ -10,6 +10,7 @@ import { LayoutComponent } from './modules/shared/layout/layout.component';
 import { LeftSidebarComponent } from './modules/shared/left-sidebar/left-sidebar.component';
 import { NavigationBarComponent } from './modules/shared/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './modules/shared/footer/footer.commponent';
+import { MessageComponent } from './modules/shared/message/message.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './modules/shared/footer/footer.commponent';
     LeftSidebarComponent,
     NavigationBarComponent,
     FooterComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
