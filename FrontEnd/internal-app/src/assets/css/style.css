@@ -1,0 +1,57 @@
+@charset "utf-8";
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700";
+@import "partials/_sidebar.css";
+@import "partials/_footer.css";
+@import "partials/_header.css";
+@import "partials/_table.css";
+@import "partials/_control.css";
+@import "partials/_pagination.css";
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+body {
+    min-width: 100vw;
+    max-width: 100vh;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#content {
+    width: 100%;
+}
+
+.full-container {
+    /* background-color: #17a2b8 !important; */
+    height: 100vh;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn:hover {
+    cursor: hand;
+}
