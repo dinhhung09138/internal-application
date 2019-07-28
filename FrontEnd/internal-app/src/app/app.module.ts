@@ -11,6 +11,7 @@ import { LeftSidebarComponent } from './modules/shared/left-sidebar/left-sidebar
 import { NavigationBarComponent } from './modules/shared/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './modules/shared/footer/footer.commponent';
 import { MessageComponent } from './modules/shared/message/message.component';
+import { RecruitmentModule } from './modules/recruitment/recruitment.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MessageComponent } from './modules/shared/message/message.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    RecruitmentModule,
     NgbModule,
     AppRoutingModule
   ],

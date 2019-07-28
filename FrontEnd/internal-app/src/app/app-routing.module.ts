@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginModule } from './modules/login/login.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
+import { RecruitmentComponent } from './modules/recruitment/recruitment.component';
 
 const routes: Routes = [
   {
@@ -18,12 +19,12 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: LayoutComponent,
+    component: AppComponent,
     loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'recruitment',
-    component: LayoutComponent,
+    component: RecruitmentComponent,
     loadChildren: () => import('./modules/recruitment/recruitment.module').then(m => m.RecruitmentModule)
   }
 
