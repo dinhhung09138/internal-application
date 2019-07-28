@@ -15,4 +15,4 @@ import { MailComponent } from './mail.component';
     ],
 })
 
-export class CalendarModule {}
+export class MailModule {}

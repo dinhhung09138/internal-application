@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
     this.messageService.success('Hello message');
-   //  this.route.navigate(['home', {}]);
+    this.route.navigate(['home', {}]);
   }
 
 }
