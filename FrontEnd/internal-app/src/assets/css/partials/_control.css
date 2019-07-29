@@ -85,7 +85,6 @@ input[type="text"]:focus {
 }
 
 .form-control {
-    border-radius: 0px;
     height: calc(1em + .75rem + 2px);
 }
 
@@ -96,4 +95,15 @@ select {
 
 select:focus {
     background: #17a2b8;
+}
+
+.btn-outline-primary {
+  color: #138496;
+  border-color: #17a2b8;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
 }

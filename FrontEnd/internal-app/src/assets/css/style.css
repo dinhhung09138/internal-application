@@ -6,6 +6,7 @@
 @import "partials/_table.css";
 @import "partials/_control.css";
 @import "partials/_pagination.css";
+@import "partials/_modal.css";
 body {
     font-family: 'Roboto', sans-serif;
     background: #fafafa;
@@ -46,10 +47,6 @@ body {
 .full-container {
     /* background-color: #17a2b8 !important; */
     height: 100vh;
-}
-
-.btn {
-    border-radius: 0px;
 }
 
 .btn:hover {
