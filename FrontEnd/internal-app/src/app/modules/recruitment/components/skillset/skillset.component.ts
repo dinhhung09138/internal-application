@@ -44,10 +44,6 @@ export class SkillSetComponent implements OnInit {
     });
   }
 
-  closeModal() {
-    this.modalService.dismissAll();
-  }
-
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

@@ -97,13 +97,17 @@ select:focus {
     background: #17a2b8;
 }
 
+.btn {
+    padding: .1rem .4rem;
+}
+
 .btn-outline-primary {
-  color: #138496;
-  border-color: #17a2b8;
+    color: #138496;
+    border-color: #17a2b8;
 }
 
 .btn-outline-primary:hover {
-  color: white;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+    color: white;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 }
