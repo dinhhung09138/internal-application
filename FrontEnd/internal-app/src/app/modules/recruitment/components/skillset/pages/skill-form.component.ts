@@ -17,7 +17,7 @@ export class SkillFormComponent implements OnInit {
 
 
 
-  constructor(private modal: NgbModal) { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
     this.setFormTitle();
@@ -31,8 +31,12 @@ export class SkillFormComponent implements OnInit {
     }
   }
 
+  onSave() {
+    console.log('save');
+  }
+
   closeModal() {
-    this.modal.dismissAll();
+    this.modalService.dismissAll();
   }
 
 }
