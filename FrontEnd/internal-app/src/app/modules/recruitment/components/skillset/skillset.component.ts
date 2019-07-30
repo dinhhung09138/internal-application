@@ -18,6 +18,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class SkillSetComponent implements OnInit {
 
+
   closeResult: string;
 
   constructor(private modalService: NgbModal,
@@ -27,21 +28,16 @@ export class SkillSetComponent implements OnInit {
   }
 
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
   openModal(content) {
 
-    const modalOptions: any = {
-      ariaLabelledBy: 'modal-basic-title',
-      centered: true,
-      scrollable: false
-    };
-
-    this.modalService.open(content, modalOptions).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    // this.modalService.open(content, this.modalOptions).result.then((result) => {
+    //   this.closeResult = `Closed with: ${result}`;
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
   }
 
   private getDismissReason(reason: any): string {

@@ -4,11 +4,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SkillGroupModel } from 'src/app/core/models/recruitment/skill-group.model';
 
 @Component({
-  selector: 'app-group-skill-form',
-  templateUrl: './group-skill-form.component.html'
+  selector: 'app-recruitment-group-skill-form',
+  templateUrl: './form.component.html'
 })
 
-export class GroupSkillFormComponent implements OnInit {
+export class SkillGroupFormComponent implements OnInit {
 
   @Input() isEdit = false;
   @Input() model: SkillGroupModel;

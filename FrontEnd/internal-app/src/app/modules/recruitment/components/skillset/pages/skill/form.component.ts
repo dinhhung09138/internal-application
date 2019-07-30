@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Input, Output } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SkillModel } from '../../../../../core/models/recruitment/skill.model';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { SkillModel } from '../../../../../../core/models/recruitment/skill.model';
 
 @Component({
-  selector: 'app-skill-form',
-  templateUrl: './skill-form.component.html'
+  selector: 'app-recruitment-skill-form',
+  templateUrl: './form.component.html'
 })
 
 export class SkillFormComponent implements OnInit {
@@ -17,7 +17,7 @@ export class SkillFormComponent implements OnInit {
 
 
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     this.setFormTitle();
@@ -31,11 +31,11 @@ export class SkillFormComponent implements OnInit {
     }
   }
 
-  onSave() {
+  onClickSave() {
     console.log('save');
   }
 
-  closeModal() {
+  onClickClose() {
     this.modalService.dismissAll();
   }
 

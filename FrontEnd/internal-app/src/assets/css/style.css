@@ -52,3 +52,17 @@ body {
 .btn:hover {
     cursor: hand;
 }
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .fa {
+  position: absolute;
+  padding: 8px;
+  pointer-events: none;
+}
+
+.right-addon .fa {
+  right: 0px;
+}
