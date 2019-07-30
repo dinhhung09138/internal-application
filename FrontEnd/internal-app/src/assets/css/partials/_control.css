@@ -111,3 +111,17 @@ select:focus {
     background-color: #17a2b8;
     border-color: #17a2b8;
 }
+
+.border-top-panel {
+    border: 1px solid #17a2b8;
+}
+
+.nav-tabs .nav-link.active {
+    color: #138496;
+    border: 1px solid #17a2b8;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 1em;
+}

@@ -16,7 +16,7 @@
 
 .table thead tr th.action,
 .table tbody tr td.action {
-    width: 120px;
+    width: 80px;
     text-align: center;
 }
 

@@ -5,6 +5,7 @@ import { SkillSetComponent } from './skillset.component';
 import { TableFooterComponent } from 'src/app/modules/shared/table-footer/table-footer.component';
 import { SkillFormComponent } from './pages/skill-form.component';
 import { GroupSkillFormComponent } from './pages/group-skill-form.component';
+import { TableHeaderComponent } from 'src/app/modules/shared/table-header/table-header.component';
 
 @NgModule({
     declarations: [
@@ -12,6 +13,7 @@ import { GroupSkillFormComponent } from './pages/group-skill-form.component';
       SkillFormComponent,
       GroupSkillFormComponent,
       TableFooterComponent,
+      TableHeaderComponent,
     ],
     imports: [
       CommonModule,
