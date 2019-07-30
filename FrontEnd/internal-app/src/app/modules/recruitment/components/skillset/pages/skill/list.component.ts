@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SkillModel } from 'src/app/core/models/recruitment/skill.model';
 import { SkillService } from 'src/app/core/services/recruitment/skill.service';
@@ -12,6 +13,9 @@ import { AppSetting } from 'src/app/core/config/app-setting.config';
 })
 
 export class SkillListComponent implements OnInit {
+
+  @ViewChild(SkillFormComponent, {static: false})
+  private formComponent: SkillFormComponent;
 
   selectAll = false;
   listData: SkillModel[] = [];
@@ -42,7 +46,8 @@ export class SkillListComponent implements OnInit {
    onClickAdd(modal: any) {
      this.isEdit = false;
      this.item = new SkillModel();
-     this.modalService.open(modal, AppSetting.modalOptions);
+     // this.modalService.open(modal, AppSetting.modalOptions);
+     this.modalService.open(this.formComponent, AppSetting.modalOptions);
     // const ref = this.modalService.open(SkillFormComponent);
     // ref.componentInstance.title = 'title';
    }

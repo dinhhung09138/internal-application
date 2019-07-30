@@ -1,39 +1,46 @@
-<form>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">{{ formTitle }}</h4>
-        <button type="button" class="close" aria-label="Close" (click)="onClickClose()" tabindex="10">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">{{ formTitle }}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="onClickClose()" tabindex="10">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Group name:</span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <select class="form-control" tabindex="1" focus>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                      </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Skill name:</span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" value="{{model.name}}" tabindex="2" />
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" (click)="onClickSave()">Save</button>
+            <button type="button" class="btn btn-outline-dark" (click)="onClickClose()">Cancel</button>
+            <button type="button" class="btn btn-danger" (click)="activeModal.dismiss()">Ok</button>
+        </div>
+    </form>
     </div>
-    <div class="modal-body">
-        <div class="row">
-            <div class="col-md-12">
-                <span>Group name:</span>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-12">
-                <select class="form-control" tabindex="1" focus>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                  </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <span>Skill name:</span>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-12">
-                <input type="text" class="form-control" value="{{model.name}}" tabindex="2" />
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" (click)="onClickSave()">Save</button>
-        <button type="button" class="btn btn-outline-dark" (click)="onClickClose()">Cancel</button>
-        <button type="button" class="btn btn-danger" (click)="activeModal.dismiss()">Ok</button>
-    </div>
-</form>
+  </div>
+</div>
+
