@@ -4,6 +4,7 @@ import { SkillModel } from 'src/app/core/models/module/recruitment/skill.model';
 import { SkillService } from 'src/app/core/services/recruitment/skill.service';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
 import { TableResponseModel } from 'src/app/core/models/table/table-response.model';
+import { TableFilterModel } from 'src/app/core/models/table/table-filter.model';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class SkillListComponent implements OnInit {
 
   // Set true when user click onto checkbox 'select all'
   selectAll = false;
-  // List of skill model
+  // Datatable filter
+  filter: TableFilterModel;
+  // Data response after call to get list
   tableData: TableResponseModel;
 
   // Set 'true' if edit item, 'false' if add new item
@@ -31,6 +34,7 @@ export class SkillListComponent implements OnInit {
   constructor(private skillService: SkillService, private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.filter = new TableFilterModel();
     this.getList();
   }
 
@@ -127,7 +131,13 @@ export class SkillListComponent implements OnInit {
    * @param page Page number
    */
   onChangePage(page: number) {
-    console.log(page);
+    this.filter.pagination.pageIndex = page;
+    this.getList();
+  }
+
+  onSearchChange(text?: string) {
+    this.filter.searchKey = text || '';
+    this.getList();
   }
 
   //#endregion
@@ -139,7 +149,6 @@ export class SkillListComponent implements OnInit {
     */
   private getList() {
     this.skillService.list().subscribe((res: TableResponseModel) => {
-      console.log(res);
       this.tableData = res;
     });
   }
