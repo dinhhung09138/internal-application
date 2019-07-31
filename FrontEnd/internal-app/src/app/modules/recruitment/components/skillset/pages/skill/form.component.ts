@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input, Output } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SkillModel } from '../../../../../../core/models/recruitment/skill.model';
+import { SkillModel } from '../../../../../../core/models/module/recruitment/skill.model';
 
 @Component({
   selector: 'app-recruitment-skill-form',

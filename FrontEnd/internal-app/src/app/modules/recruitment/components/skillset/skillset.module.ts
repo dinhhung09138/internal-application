@@ -8,10 +8,12 @@ import { SkillListComponent } from './pages/skill/list.component';
 import { SkillGroupFormComponent } from './pages/group/form.component';
 import { TableHeaderComponent } from 'src/app/modules/shared/table-header/table-header.component';
 import { SkillService } from 'src/app/core/services/recruitment/skill.service';
-import { SkillModelMocks } from 'src/app/core/mocks/skill.modal.mocks';
+import { SkillGroupService } from 'src/app/core/services/recruitment/skill-group.service';
 import { SkillGroupListComponent } from './pages/group/list.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmDeleteComponent } from 'src/app/modules/shared/confirm-delete/confirm-delete.component';
+import { SkillModelMocks } from 'src/app/core/mocks/skill.model.mocks';
+import { SkillGroupModelMock } from 'src/app/core/mocks/skill-group.model.mocks';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,9 @@ import { ConfirmDeleteComponent } from 'src/app/modules/shared/confirm-delete/co
     ],
     providers: [
       SkillService,
+      SkillGroupService,
       SkillModelMocks,
+      SkillGroupModelMock,
     ],
     entryComponents: [
       SkillFormComponent,

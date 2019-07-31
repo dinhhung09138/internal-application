@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, pipe } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
-import { SkillModel } from '../../models/recruitment/skill.model';
-import { SkillModelMocks } from '../../mocks/skill.modal.mocks';
+import { SkillModel } from '../../models/module/recruitment/skill.model';
+import { SkillModelMocks } from '../../mocks/skill.model.mocks';
 
 @Injectable()
 export class SkillService {
@@ -11,7 +11,6 @@ export class SkillService {
   constructor(private http: HttpClient, private skillMock: SkillModelMocks) { }
 
   list(): Observable<SkillModel[]> {
-    console.log('list function service');
 
     return this.skillMock.initList();
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SkillModel } from 'src/app/core/models/recruitment/skill.model';
+import { SkillModel } from 'src/app/core/models/module/recruitment/skill.model';
 import { SkillService } from 'src/app/core/services/recruitment/skill.service';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
 

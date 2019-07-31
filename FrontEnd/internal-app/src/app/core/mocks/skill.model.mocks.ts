@@ -1,4 +1,4 @@
-import { SkillModel } from '../models/recruitment/skill.model';
+import { SkillModel } from '../models/module/recruitment/skill.model';
 import { Observable, of } from 'rxjs';
 
 export class SkillModelMocks {
