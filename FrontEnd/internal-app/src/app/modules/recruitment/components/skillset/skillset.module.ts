@@ -11,6 +11,7 @@ import { SkillService } from 'src/app/core/services/recruitment/skill.service';
 import { SkillModelMocks } from 'src/app/core/mocks/skill.modal.mocks';
 import { SkillGroupListComponent } from './pages/group/list.component';
 import { FormsModule } from '@angular/forms';
+import { ConfirmDeleteComponent } from 'src/app/modules/shared/confirm-delete/confirm-delete.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
       SkillGroupListComponent,
       TableFooterComponent,
       TableHeaderComponent,
+      ConfirmDeleteComponent,
     ],
     imports: [
       CommonModule,

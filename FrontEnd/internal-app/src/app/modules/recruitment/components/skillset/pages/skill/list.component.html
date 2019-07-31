@@ -12,7 +12,7 @@
             </div>
         </div>
         &nbsp;
-        <button class="btn btn-outline-danger" (click)="onClickDeleteAll()"><i class="fa fa-times-circle"></i> Delete</button>
+        <button class="btn btn-outline-danger" (click)="onClickDeleteAll(confirmDelete)"><i class="fa fa-times-circle"></i> Delete</button>
     </div>
     <div class="card-body">
         <div class="row">
@@ -41,7 +41,7 @@
                             <td>{{ item.name }}</td>
                             <td class="action">
                                 <button class="btn btn-outline-primary mr-1" (click)="onClickEdit(item, form)"><i class="fa fa-pencil-square-o"></i></button>
-                                <button class="btn btn-outline-danger mr-1" (click)="onClickDelete(item)"><i class="fa fa-remove"></i></button>
+                                <button class="btn btn-outline-danger mr-1" (click)="onClickDelete(item, confirmDelete)"><i class="fa fa-remove"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -52,5 +52,8 @@
     </div>
 </div>
 <ng-template #form>
-    <app-recruitment-skill-form [model]="item" [isEdit]="isEdit"></app-recruitment-skill-form>
+    <app-recruitment-skill-form [model]="selectedItem" [isEdit]="isEdit"></app-recruitment-skill-form>
+</ng-template>
+<ng-template #confirmDelete>
+  <app-confirm-delete [isDeleteAll]="isDeleteAll" (confirmStatus)="onDeleteConfirm($event)"></app-confirm-delete>
 </ng-template>
