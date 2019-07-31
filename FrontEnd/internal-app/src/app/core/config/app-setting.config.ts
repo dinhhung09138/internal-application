@@ -1,8 +1,23 @@
-export const AppSetting = {
+export class AppSetting {
 
-  modalOptions: {
-    ariaLabelledBy: 'modal-basic-title',
-    centered: true,
-    scrollable: false
-  },
+  static readonly ModalOptions = {
+    modalOptions: {
+      ariaLabelledBy: 'modal-basic-title',
+      centered: true,
+      scrollable: false
+    },
+    modalSmallOptions: {
+      ariaLabelledBy: 'modal-basic-title',
+      centered: true,
+      scrollable: false,
+      size: 'sm' as any
+    },
+  };
+
+  static readonly FormResponseState = {
+    new: 1,
+    edit: 2,
+    delete: 3
+  };
+
 }
