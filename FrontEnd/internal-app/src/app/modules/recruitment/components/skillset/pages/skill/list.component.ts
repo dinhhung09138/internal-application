@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SkillModel } from 'src/app/core/models/recruitment/skill.model';
 import { SkillService } from 'src/app/core/services/recruitment/skill.service';
-import { SkillFormComponent } from './form.component';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
 
 
@@ -13,9 +11,6 @@ import { AppSetting } from 'src/app/core/config/app-setting.config';
 })
 
 export class SkillListComponent implements OnInit {
-
-  @ViewChild(SkillFormComponent, {static: false})
-  private formComponent: SkillFormComponent;
 
   selectAll = false;
   listData: SkillModel[] = [];
@@ -46,16 +41,21 @@ export class SkillListComponent implements OnInit {
    onClickAdd(modal: any) {
      this.isEdit = false;
      this.item = new SkillModel();
-     // this.modalService.open(modal, AppSetting.modalOptions);
-     this.modalService.open(this.formComponent, AppSetting.modalOptions);
-    // const ref = this.modalService.open(SkillFormComponent);
-    // ref.componentInstance.title = 'title';
+     this.modalService.open(modal, AppSetting.modalOptions);
    }
 
    onClickEdit(item: SkillModel, modal: any) {
       this.isEdit = true;
       this.item = item;
-      this.modalService.open(modal);
+      this.modalService.open(modal, AppSetting.modalOptions);
+   }
+
+   onClickDeleteAll() {
+     const countSelected = this.listData.filter(m => m.selected).map(m => m.selected).length;
+
+     if (countSelected > 0) {
+
+     }
    }
 
    onClickDelete(item: SkillModel) {
