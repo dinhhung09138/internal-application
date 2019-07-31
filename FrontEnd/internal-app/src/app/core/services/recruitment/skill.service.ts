@@ -4,32 +4,24 @@ import { Observable, of, pipe } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { SkillModel } from '../../models/module/recruitment/skill.model';
 import { SkillModelMocks } from '../../mocks/skill.model.mocks';
+import { TableResponseModel } from '../../models/table/table-response.model';
 
 @Injectable()
 export class SkillService {
 
   constructor(private http: HttpClient, private skillMock: SkillModelMocks) { }
 
-  list(): Observable<SkillModel[]> {
+  list(): Observable<TableResponseModel> {
 
-    return this.skillMock.initList();
+    const response = new TableResponseModel();
+    response.currentPage = 2;
+    response.pageSize = 10;
+    response.filteredItem = 25;
+    response.totalItem = 25;
+    response.list = this.skillMock.initList();
 
-    return this.skillMock.initList().pipe(
-      map( (data: any[]) => {
-        console.log(data);
-        return data;
-      })
-    );
+    return of(response);
 
-    return this.skillMock.initList().pipe(
-      map((response) => {
-        console.log(response);
-        return response;
-      }),
-      tap( (listData: SkillModel[]) => console.log(listData) ),
-      catchError(this.handleError<any>('list')),
-      // tap( () => console.log('toto'))
-    );
   }
 
   /**

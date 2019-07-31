@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SkillModel } from 'src/app/core/models/module/recruitment/skill.model';
 import { SkillService } from 'src/app/core/services/recruitment/skill.service';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
+import { TableResponseModel } from 'src/app/core/models/table/table-response.model';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class SkillListComponent implements OnInit {
   // Set true when user click onto checkbox 'select all'
   selectAll = false;
   // List of skill model
-  listData: SkillModel[] = [];
+  tableData: TableResponseModel;
 
   // Set 'true' if edit item, 'false' if add new item
   isEdit = false;
@@ -24,6 +25,8 @@ export class SkillListComponent implements OnInit {
 
   // Set status is 'true' when user click delete all button
   isDeleteAll = false;
+
+  isLoading = false;
 
   constructor(private skillService: SkillService, private modalService: NgbModal) { }
 
@@ -60,7 +63,7 @@ export class SkillListComponent implements OnInit {
    */
   onClickAllCheck() {
     this.selectAll = !this.selectAll;
-    this.listData.forEach(item => {
+    this.tableData.list.forEach((item: SkillModel)=> {
       item.selected = this.selectAll;
     });
   }
@@ -102,7 +105,7 @@ export class SkillListComponent implements OnInit {
    * @param modal Modal popup name
    */
   onClickDeleteAll(modal: any) {
-    const countSelected = this.listData.filter(m => m.selected).map(m => m.selected).length;
+    const countSelected = this.tableData.list.filter(m => m.selected).map(m => m.selected).length;
 
     if (countSelected > 0) {
        this.modalService.open(modal, AppSetting.ModalOptions.modalSmallOptions);
@@ -119,6 +122,14 @@ export class SkillListComponent implements OnInit {
       this.modalService.open(modal, AppSetting.ModalOptions.modalSmallOptions);
   }
 
+  /**
+   * Event raise when user click change page on table footer
+   * @param page Page number
+   */
+  onChangePage(page: number) {
+    console.log(page);
+  }
+
   //#endregion
 
   //#region Private functions
@@ -127,9 +138,9 @@ export class SkillListComponent implements OnInit {
     * Get list of data
     */
   private getList() {
-    this.skillService.list().subscribe(res => {
+    this.skillService.list().subscribe((res: TableResponseModel) => {
       console.log(res);
-      this.listData = res;
+      this.tableData = res;
     });
   }
 

@@ -6,9 +6,9 @@
             <i class="fa fa-file"></i>  Export  <i class="fa fa-caret-down"></i>
           </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item btn btn-outline-primary" href="#"><i class="fa fa-file-excel-o"></i>  Excel</a>
-                <a class="dropdown-item btn btn-outline-primary" href="#"><i class="fa fa-file-text-o"></i>  Excel</a>
-                <a class="dropdown-item btn btn-outline-primary" href="#"><i class="fa fa-file-pdf-o"></i>  Pdf</a>
+                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-excel-o"></i>  Excel</a>
+                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-text-o"></i>  Excel</a>
+                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-pdf-o"></i>  Pdf</a>
             </div>
         </div>
         &nbsp;
@@ -32,7 +32,7 @@
                             <th class="action"></th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let item of listData">
+                    <tbody *ngFor="let item of tableData.list as SkillModel">
                         <tr>
                             <td class="check">
                                 <input type="checkbox" [checked]="item.selected" (click)="onClickItemCheck(item)" />
@@ -48,12 +48,14 @@
                 </table>
             </div>
         </div>
-        <app-table-footer></app-table-footer>
+        <app-table-footer [totalItem]="tableData.totalItem" [totalFiltered]="tableData.filteredItem" [currentPage]="tableData.currentPage" [pageSize]="tableData.pageSize" (changePageEvent)="onChangePage($event)" [isLoading]="isLoading">
+
+        </app-table-footer>
     </div>
 </div>
 <ng-template #form>
     <app-recruitment-skill-form [model]="selectedItem" [isEdit]="isEdit"></app-recruitment-skill-form>
 </ng-template>
 <ng-template #confirmDelete>
-  <app-confirm-delete [isDeleteAll]="isDeleteAll" (confirmStatus)="onDeleteConfirm($event)"></app-confirm-delete>
+    <app-confirm-delete [isDeleteAll]="isDeleteAll" (confirmStatus)="onDeleteConfirm($event)"></app-confirm-delete>
 </ng-template>
