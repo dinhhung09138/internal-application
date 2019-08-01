@@ -1,0 +1,30 @@
+<div class="row" *ngIf="isLoading">
+    <div class="col-12 text-center">
+        <i class="fa fa-spin fa-spinner"></i>
+    </div>
+</div>
+<div class="row" *ngIf="!isLoading && totalItem === 0">
+    <div class="col-12 text-center">No data vailable</div>
+</div>
+<div class="row" *ngIf="!isLoading">
+    <div class="col-md-6 col-xs-12">
+        {{ info }}
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <nav class="float-right" aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item" [ngClass]="{'disabled' : currentPage === 1}">
+                    <a class="page-link" aria-label="Previous" (click)="currentPage === 1 ? false : changePage(-1)">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link">page {{ currentPage }} in {{ totalPage }}</a></li>
+                <li class="page-item" [ngClass]="{'disabled' : currentPage === totalPage}">
+                    <a class="page-link" aria-label="Next" (click)="currentPage === totalPage ? false : changePage(1)">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

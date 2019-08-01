@@ -1,0 +1,7 @@
+<ngb-toast *ngFor="let msg of messageService.toasts" [class]="msg.classname" [autohide]="true" [delay]="msg.delay || 40000"
+          (hide)="messageService.remove(msg)">
+  <ng-template [ngIf]="isTemplate(msg)" [ngIfElse]="text">
+    <ng-template [ngTemplateOutlet]="msg.textOrTpl"></ng-template>
+  </ng-template>
+  <ng-template #text>{{ msg.textOrTpl }}</ng-template>
+</ngb-toast>

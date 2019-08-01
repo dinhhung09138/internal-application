@@ -1,0 +1,68 @@
+<div class="card">
+    <div class="card-header">
+        <button class="btn btn-outline-primary" (click)="onClickAdd(form)"><i class="fa fa-plus-circle"></i>  New</button> &nbsp;
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
+            <i class="fa fa-file"></i>  Export  <i class="fa fa-caret-down"></i>
+          </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-excel-o"></i>  Excel</a>
+                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-text-o"></i>  Excel</a>
+                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-pdf-o"></i>  Pdf</a>
+            </div>
+        </div>
+        &nbsp;
+        <button class="btn btn-outline-danger" (click)="onClickDeleteAll(confirmDelete)"><i class="fa fa-times-circle"></i> Delete</button>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12"></div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-md-2 col-sm-4 col-xs-12">
+            </div>
+            <div class="col-md-8 col-sm-4 col-xs-12"></div>
+            <div class="col-md-2 col-sm-4 col-xs-12">
+                <app-table-search [isLoading]="isLoading" [value]="filter.searchKey" (searchValueChange)="onSearchChange($event)"></app-table-search>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="check">
+                                <input type="checkbox" [checked]="selectAll" (click)="onClickAllCheck()" />
+                            </th>
+                            <th sortable="GroupName" scope="col" (sort)="onSort($event)" style="width: 350px;">Group</th>
+                            <th sortable="Name" scope="col" (sort)="onSort($event)">Name</th>
+                            <th class="action"></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of tableData.list as SkillModel">
+                        <tr>
+                            <td class="check">
+                                <input type="checkbox" [checked]="item.selected" (click)="onClickItemCheck(item)" />
+                            </td>
+                            <td>{{ item.groupName }}</td>
+                            <td>{{ item.name }}</td>
+                            <td class="action">
+                                <button class="btn btn-outline-primary mr-1" (click)="onClickEdit(item, form)"><i class="fa fa-pencil-square-o"></i></button>
+                                <button class="btn btn-outline-danger mr-1" (click)="onClickDelete(item, confirmDelete)"><i class="fa fa-remove"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <app-table-footer [totalItem]="tableData.totalItem" [totalFiltered]="tableData.filteredItem" [currentPage]="tableData.currentPage" [pageSize]="tableData.pageSize" (changePageEvent)="onChangePage($event)" [isLoading]="isLoading">
+
+        </app-table-footer>
+    </div>
+</div>
+<ng-template #form>
+    <app-recruitment-skill-form [model]="selectedItem" [isEdit]="isEdit"></app-recruitment-skill-form>
+</ng-template>
+<ng-template #confirmDelete>
+    <app-confirm-delete [isDeleteAll]="isDeleteAll" (confirmStatus)="onDeleteConfirm($event)"></app-confirm-delete>
+</ng-template>
