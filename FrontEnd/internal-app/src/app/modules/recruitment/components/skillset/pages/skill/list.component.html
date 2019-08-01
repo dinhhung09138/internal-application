@@ -34,8 +34,8 @@
                             <th class="check">
                                 <input type="checkbox" [checked]="selectAll" (click)="onClickAllCheck()" />
                             </th>
-                            <th style="width: 350px;">Group</th>
-                            <th>Name</th>
+                            <th sortable="GroupName" scope="col" (sort)="onSort($event)" style="width: 350px;">Group</th>
+                            <th sortable="Name" scope="col" (sort)="onSort($event)">Name</th>
                             <th class="action"></th>
                         </tr>
                     </thead>

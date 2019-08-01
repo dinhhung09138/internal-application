@@ -1,5 +1,5 @@
 .table {
-  margin-bottom: .3rem;
+    margin-bottom: .3rem;
 }
 
 .table td,
@@ -26,4 +26,28 @@
 
 .table input[type=checkbox]:before {
     font-size: 15px;
+}
+
+.table thead th[scope=col] {
+    cursor: pointer;
+}
+
+.table thead th[scope=col]:before {
+    font-family: FontAwesome;
+    content: '\f0dc';
+    float: right;
+}
+
+.table thead th[scope=col].asc:before {
+    font-family: FontAwesome;
+    content: '\f160';
+    float: right;
+    color: white;
+}
+
+.table thead th[scope=col].desc:before {
+    font-family: FontAwesome;
+    content: '\f161';
+    float: right;
+    color: white;
 }

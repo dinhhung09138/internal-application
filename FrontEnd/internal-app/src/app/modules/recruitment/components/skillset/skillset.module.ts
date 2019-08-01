@@ -14,6 +14,7 @@ import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete
 import { SkillModelMocks } from 'src/app/core/mocks/skill.model.mocks';
 import { SkillGroupModelMock } from 'src/app/core/mocks/skill-group.model.mocks';
 import { TableSearchComponent } from 'src/app/shared/components/table-search/table-search.component';
+import { NgbdSortableHeader } from 'src/app/shared/directives/sortable.directive';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { TableSearchComponent } from 'src/app/shared/components/table-search/tab
       TableFooterComponent,
       TableSearchComponent,
       ConfirmDeleteComponent,
+      NgbdSortableHeader,
     ],
     imports: [
       CommonModule,

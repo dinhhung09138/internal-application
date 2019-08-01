@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewChildren, QueryList } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SkillModel } from 'src/app/core/models/module/recruitment/skill.model';
 import { SkillService } from 'src/app/core/services/recruitment/skill.service';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
 import { TableResponseModel } from 'src/app/core/models/table/table-response.model';
 import { TableFilterModel } from 'src/app/core/models/table/table-filter.model';
+import { NgbdSortableHeader, SortEvent } from 'src/app/shared/directives/sortable.directive';
+import { SortModel } from 'src/app/core/models/table/sort.model';
 
 
 @Component({
@@ -13,6 +16,8 @@ import { TableFilterModel } from 'src/app/core/models/table/table-filter.model';
 })
 
 export class SkillListComponent implements OnInit {
+
+  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
   // Set true when user click onto checkbox 'select all'
   selectAll = false;
@@ -138,6 +143,20 @@ export class SkillListComponent implements OnInit {
   onSearchChange(text?: string) {
     this.filter.searchKey = text || '';
     this.getList();
+  }
+
+  onSort({column, direction}: SortEvent) {
+    //Resetting other headers
+    this.headers.forEach(header => {
+      if (header.sortable !== column) {
+        header.direction = '';
+      }
+    });
+
+    console.log(column);
+    console.log(direction);
+
+    // this.filter.sorts.push({column: column, direction: direction});
   }
 
   //#endregion
