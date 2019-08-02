@@ -11,7 +11,7 @@ import { ChildActivationEnd } from '@angular/router';
 
 export class HomeComponent implements OnInit {
 
-  @ViewChild(ConfirmDeleteComponent, {static: true}) child: ConfirmDeleteComponent;
+  // @ViewChild(ConfirmDeleteComponent, {static: true}) child: ConfirmDeleteComponent;
 
   constructor(private modal: NgbModal) { }
 
@@ -21,6 +21,6 @@ export class HomeComponent implements OnInit {
 
   onOpenModal() {
     console.log('modal open click');
-    const modelRef = this.modal.open(ConfirmDeleteComponent, { size: 'sm'});
+   //  const modelRef = this.modal.open(ConfirmDeleteComponent, { size: 'sm'});
   }
 }

@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RecruitmentComponent } from './recruitment.component';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
+import { SkillGroupFormComponent } from './components/skillset/pages/group/form.component';
+import { SkillFormComponent } from './components/skillset/pages/skill/form.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RecruitmentNavigationComponent } from './shared/recruitment-navigation/recruitment-navigation.component';
+import { RecruitmentSidebarComponent } from './shared/recruitment-sidebar/recruitment-sidebar.component';
+import { RecruitmentComponent } from './recruitment.component';
 
 const routes: Routes = [
   { path: '',
@@ -40,13 +46,22 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    RecruitmentComponent,
+    RecruitmentSidebarComponent,
+    RecruitmentNavigationComponent,
     ConfirmDeleteComponent,
+    SkillGroupFormComponent,
+    SkillFormComponent,
   ],
   imports: [
+    FormsModule,
+    CommonModule,
     RouterModule.forChild(routes)
   ],
   entryComponents: [
     ConfirmDeleteComponent,
+    SkillGroupFormComponent,
+    SkillFormComponent,
   ],
   exports: [RouterModule]
 })

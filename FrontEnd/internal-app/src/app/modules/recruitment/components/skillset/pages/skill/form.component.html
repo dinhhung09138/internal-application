@@ -14,8 +14,8 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <select name="groupName" class="form-control" tabindex="1" focus [(ngModel)]="model.groupId">
-                    <option *ngFor="let item of listGroup" value="{{ item.value }}">{{ item.title }}</option>
-                  </select>
+                  <option [value]="item.value" *ngFor="let item of listGroup">{{ item.title }}</option>
+                </select>
             </div>
         </div>
         <div class="row">
