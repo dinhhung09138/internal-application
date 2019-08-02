@@ -10,7 +10,6 @@ import { SkillService } from 'src/app/core/services/recruitment/skill.service';
 import { SkillGroupService } from 'src/app/core/services/recruitment/skill-group.service';
 import { SkillGroupListComponent } from './pages/group/list.component';
 import { FormsModule } from '@angular/forms';
-import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { SkillModelMocks } from 'src/app/core/mocks/skill.model.mocks';
 import { SkillGroupModelMock } from 'src/app/core/mocks/skill-group.model.mocks';
 import { TableSearchComponent } from 'src/app/shared/components/table-search/table-search.component';
@@ -25,7 +24,6 @@ import { NgbdSortableHeader } from 'src/app/shared/directives/sortable.directive
       SkillGroupListComponent,
       TableFooterComponent,
       TableSearchComponent,
-      ConfirmDeleteComponent,
       NgbdSortableHeader,
     ],
     imports: [

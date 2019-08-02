@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RecruitmentComponent } from './recruitment.component';
+import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 
 const routes: Routes = [
   { path: '',
@@ -38,8 +39,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  declarations: [
+    ConfirmDeleteComponent,
+  ],
   imports: [
     RouterModule.forChild(routes)
+  ],
+  entryComponents: [
+    ConfirmDeleteComponent,
   ],
   exports: [RouterModule]
 })
