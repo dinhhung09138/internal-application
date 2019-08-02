@@ -7,7 +7,9 @@ import { AppSetting } from 'src/app/core/config/app-setting.config';
 import { TableResponseModel } from 'src/app/core/models/table/table-response.model';
 import { TableFilterModel } from 'src/app/core/models/table/table-filter.model';
 import { NgbdSortableHeader, SortEvent } from 'src/app/shared/directives/sortable.directive';
-import { SortModel } from 'src/app/core/models/table/sort.model';
+import { SkillFormComponent } from './form.component';
+import { FormResponseModel } from 'src/app/core/models/form-response.model';
+import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 
 
 @Component({
@@ -43,28 +45,6 @@ export class SkillListComponent implements OnInit {
     this.getList();
   }
 
-  //#region Listener events
-
-  /**
-   * Event raise when user click OK or Cancel button on delete confirm popup
-   *
-   * @param {boolean} event Response status
-   * @memberof SkillListComponent
-   */
-  onDeleteConfirm(event: boolean) {
-    if (event === true) {
-      console.log('delete function');
-    }
-  }
-
-  onSaveConfirm(event: boolean) {
-    if (event === true) {
-
-    }
-  }
-
-  //#endregion
-
   //#region control events
 
   /**
@@ -72,7 +52,7 @@ export class SkillListComponent implements OnInit {
    */
   onClickAllCheck() {
     this.selectAll = !this.selectAll;
-    this.tableData.list.forEach((item: SkillModel)=> {
+    this.tableData.list.forEach((item: SkillModel) => {
       item.selected = this.selectAll;
     });
   }
@@ -92,10 +72,10 @@ export class SkillListComponent implements OnInit {
    * Event raise when user click add new item
    * @param modal Modal popup name
    */
-  onClickAdd(modal: any) {
+  onClickAdd() {
     this.isEdit = false;
     this.selectedItem = new SkillModel();
-    this.modalService.open(modal, AppSetting.ModalOptions.modalOptions);
+    this.openInputForm();
   }
 
   /**
@@ -103,21 +83,21 @@ export class SkillListComponent implements OnInit {
    * @param item Current item selected
    * @param modal Modal popup name
    */
-  onClickEdit(item: SkillModel, modal: any) {
-     this.isEdit = true;
-     this.selectedItem = item;
-     this.modalService.open(modal, AppSetting.ModalOptions.modalOptions);
+  onClickEdit(item: SkillModel) {
+    this.isEdit = true;
+    this.selectedItem = item;
+    this.openInputForm();
   }
 
   /**
    * Event raise when user click delete button on button bar
    * @param modal Modal popup name
    */
-  onClickDeleteAll(modal: any) {
+  onClickDeleteAll() {
     const countSelected = this.tableData.list.filter(m => m.selected).map(m => m.selected).length;
 
     if (countSelected > 0) {
-       this.modalService.open(modal, AppSetting.ModalOptions.modalSmallOptions);
+       this.openConfirmDeleteForm();
     }
   }
 
@@ -127,8 +107,9 @@ export class SkillListComponent implements OnInit {
    * @param modal Modal popup name
    */
   onClickDelete(item: SkillModel, modal: any) {
-      this.selectedItem = item;
-      this.modalService.open(modal, AppSetting.ModalOptions.modalSmallOptions);
+    this.isDeleteAll = false;
+    this.selectedItem = item;
+    this.openConfirmDeleteForm();
   }
 
   /**
@@ -146,8 +127,8 @@ export class SkillListComponent implements OnInit {
   }
 
   onSort({column, direction}: SortEvent) {
-    //Resetting other headers
-    this.headers.forEach(header => {
+    // Resetting other headers
+    this.headers.forEach((header) => {
       if (header.sortable !== column) {
         header.direction = '';
       }
@@ -169,6 +150,32 @@ export class SkillListComponent implements OnInit {
   private getList() {
     this.skillService.list().subscribe((res: TableResponseModel) => {
       this.tableData = res;
+    });
+  }
+
+  private openInputForm() {
+    const modalRef = this.modalService.open(SkillFormComponent, AppSetting.ModalOptions.modalOptions);
+    modalRef.componentInstance.isEdit = this.isEdit;
+    modalRef.componentInstance.model = this.selectedItem;
+    modalRef.result.then((response: FormResponseModel) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    }).finally(() => {
+      console.log('finally');
+      modalRef.close();
+    });
+  }
+
+  private openConfirmDeleteForm() {
+    const modalRef = this.modalService.open(ConfirmDeleteComponent, AppSetting.ModalOptions.modalSmallOptions);
+    modalRef.result.then((response: FormResponseModel) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    }).finally(() => {
+      console.log('finally');
+      modalRef.close();
     });
   }
 

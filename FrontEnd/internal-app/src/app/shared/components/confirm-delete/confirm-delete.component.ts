@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormResponseModel } from 'src/app/core/models/form-response.model';
 /**
  * Popup confirm when user click delete botton
  * Raise event allow delete when user click OK button
@@ -35,13 +36,13 @@ export class ConfirmDeleteComponent implements OnInit {
    * Event raise when user click OK button
    */
   onClickOK() {
-    this.modal.close(true);
+    this.modal.close(new FormResponseModel(true));
   }
 
   /**
    * Event raise when user click close button
    */
   onClickClose() {
-    this.modal.close(false);
+    this.modal.close(new FormResponseModel(false));
   }
 }

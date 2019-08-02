@@ -8,6 +8,10 @@ import { CommonModule } from '@angular/common';
 import { RecruitmentNavigationComponent } from './shared/recruitment-navigation/recruitment-navigation.component';
 import { RecruitmentSidebarComponent } from './shared/recruitment-sidebar/recruitment-sidebar.component';
 import { RecruitmentComponent } from './recruitment.component';
+import { SkillService } from 'src/app/core/services/recruitment/skill.service';
+import { SkillGroupService } from 'src/app/core/services/recruitment/skill-group.service';
+import { SkillModelMocks } from 'src/app/core/mocks/skill.model.mocks';
+import { SkillGroupModelMock } from 'src/app/core/mocks/skill-group.model.mocks';
 
 const routes: Routes = [
   { path: '',
@@ -57,6 +61,12 @@ const routes: Routes = [
     FormsModule,
     CommonModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    SkillService,
+    SkillGroupService,
+    SkillModelMocks,
+    SkillGroupModelMock,
   ],
   entryComponents: [
     ConfirmDeleteComponent,

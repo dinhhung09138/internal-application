@@ -1,7 +1,9 @@
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SkillGroupModel } from '../models/module/recruitment/skill-group.model';
 import { SelectItemModel } from '../models/select-item.model';
 
+@Injectable()
 export class SkillGroupModelMock {
 
 

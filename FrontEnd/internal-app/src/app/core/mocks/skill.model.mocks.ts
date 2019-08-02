@@ -1,6 +1,8 @@
+import { Injectable } from '@angular/core';
 import { SkillModel } from '../models/module/recruitment/skill.model';
 import { Observable, of } from 'rxjs';
 
+@Injectable()
 export class SkillModelMocks {
 
   list: SkillModel[] = [];
