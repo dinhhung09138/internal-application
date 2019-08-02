@@ -13,10 +13,8 @@
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                <select class="form-control" tabindex="1" focus>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
+                <select name="groupName" class="form-control" tabindex="1" focus [(ngModel)]="model.groupId">
+                    <option *ngFor="let item of listGroup" value="{{ item.value }}">{{ item.title }}</option>
                   </select>
             </div>
         </div>
@@ -27,7 +25,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                <input type="text" class="form-control" value="{{model.name}}" tabindex="2" />
+                <input name="name" type="text" class="form-control" [(ngModel)]="model.name" tabindex="2" />
             </div>
         </div>
     </div>

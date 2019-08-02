@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Input, Output } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SkillModel } from '../../../../../../core/models/module/recruitment/skill.model';
+import { SkillGroupService } from 'src/app/core/services/recruitment/skill-group.service';
+import { SelectItemModel } from 'src/app/core/models/select-item.model';
 
 @Component({
   selector: 'app-recruitment-skill-form',
@@ -15,12 +17,14 @@ export class SkillFormComponent implements OnInit {
 
   formTitle: string;
 
+  listGroup: SelectItemModel[] = [];
 
 
-  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) { }
+  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private skillGroupService: SkillGroupService) { }
 
   ngOnInit() {
     this.setFormTitle();
+    this.getListGroup();
   }
 
   private setFormTitle() {
@@ -37,6 +41,12 @@ export class SkillFormComponent implements OnInit {
 
   onClickClose() {
     this.modalService.dismissAll();
+  }
+
+  private getListGroup() {
+    this.skillGroupService.comboboxData().subscribe(response => {
+      this.listGroup = response;
+    });
   }
 
 }

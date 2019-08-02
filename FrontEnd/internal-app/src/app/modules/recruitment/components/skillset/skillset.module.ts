@@ -41,9 +41,6 @@ import { NgbdSortableHeader } from 'src/app/shared/directives/sortable.directive
       SkillModelMocks,
       SkillGroupModelMock,
     ],
-    entryComponents: [
-      SkillFormComponent,
-    ],
 })
 
 export class SkillSetModule {}
