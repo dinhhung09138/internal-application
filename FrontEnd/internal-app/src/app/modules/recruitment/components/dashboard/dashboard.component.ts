@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
+import { MessageService } from 'src/app/core/services/message.service';
 
 @Component({
   selector: 'app-candidate-dashboard',
@@ -11,7 +12,9 @@ import { AppSetting } from 'src/app/core/config/app-setting.config';
 
 export class DashboardComponent implements OnInit {
 
-  constructor(private modal: NgbModal) { }
+  count = 1;
+
+  constructor(private modal: NgbModal, private message: MessageService) { }
 
   ngOnInit() {
   }
@@ -22,5 +25,21 @@ export class DashboardComponent implements OnInit {
     modalRef.result.then((response) => {
       console.log(response);
     });
+  }
+
+  onShowMsg() {
+    if (this.count === 1) {
+      this.message.success('Success');
+    } else {
+      if (this.count === 2) {
+        this.message.warning('Warning');
+      } else {
+        this.message.error('Error');
+      }
+    }
+    this.count += 1;
+    if (this.count === 4) {
+      this.count = 1;
+    }
   }
 }

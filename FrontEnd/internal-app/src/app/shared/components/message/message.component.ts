@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, OnInit } from '@angular/core';
 import { MessageService } from 'src/app/core/services/message.service';
 
 @Component({
@@ -7,12 +7,11 @@ import { MessageService } from 'src/app/core/services/message.service';
   styleUrls: ['./message.component.css']
 })
 
-export class MessageComponent {
+export class MessageComponent implements OnInit {
 
   constructor(public messageService: MessageService) { }
 
-  isTemplate(toast) {
-    return toast.textOrTpl instanceof TemplateRef;
+  ngOnInit() {
   }
 
 }
