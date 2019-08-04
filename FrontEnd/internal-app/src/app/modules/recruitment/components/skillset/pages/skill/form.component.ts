@@ -15,11 +15,8 @@ export class SkillFormComponent implements OnInit {
 
   @Input() isEdit = false;
   @Input() model: SkillModel = new SkillModel();
-
   formTitle: string;
-
   listGroup: SelectItemModel[] = [];
-
 
   constructor(public activeModal: NgbActiveModal, private skillGroupService: SkillGroupService) { }
 
@@ -36,6 +33,9 @@ export class SkillFormComponent implements OnInit {
     }
   }
 
+  /**
+   * Event raise when user click save button
+   */
   onClickSave() {
     if (this.model.groupId.length > 0) {
       const group = this.listGroup.find(m => m.title === this.model.groupId);
@@ -46,6 +46,9 @@ export class SkillFormComponent implements OnInit {
     this.activeModal.close(new FormResponseModel(true, this.model));
   }
 
+  /**
+   * Event raise when user click close button or 'x' button on title form
+   */
   onClickClose() {
     this.activeModal.close(new FormResponseModel(false));
   }

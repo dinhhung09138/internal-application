@@ -11,6 +11,9 @@ export class SkillService {
 
   constructor(private http: HttpClient, private skillMock: SkillModelMocks) { }
 
+  /**
+   * Get list of skill
+   */
   list(): Observable<TableResponseModel> {
 
     const response = new TableResponseModel();

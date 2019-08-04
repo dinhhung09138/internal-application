@@ -8,6 +8,7 @@ import { SkillGroupListComponent } from './pages/group/list.component';
 import { FormsModule } from '@angular/forms';
 import { TableSearchComponent } from 'src/app/shared/components/table-search/table-search.component';
 import { NgbdSortableHeader } from 'src/app/shared/directives/sortable.directive';
+import { ContainerLoading } from 'src/app/shared/components/container-loading/container-loading.component';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { NgbdSortableHeader } from 'src/app/shared/directives/sortable.directive
       TableFooterComponent,
       TableSearchComponent,
       NgbdSortableHeader,
+      ContainerLoading
     ],
     imports: [
       CommonModule,

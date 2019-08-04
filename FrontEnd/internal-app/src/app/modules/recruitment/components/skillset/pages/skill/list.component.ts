@@ -153,6 +153,9 @@ export class SkillListComponent implements OnInit {
     });
   }
 
+  /**
+   * Open input form
+   */
   private openInputForm() {
     const modalRef = this.modalService.open(SkillFormComponent, AppSetting.ModalOptions.modalOptions);
     modalRef.componentInstance.isEdit = this.isEdit;
@@ -167,6 +170,9 @@ export class SkillListComponent implements OnInit {
     });
   }
 
+  /**
+   * Open confirm dialog when user click button delete
+   */
   private openConfirmDeleteForm() {
     const modalRef = this.modalService.open(ConfirmDeleteComponent, AppSetting.ModalOptions.modalSmallOptions);
     modalRef.result.then((response: FormResponseModel) => {

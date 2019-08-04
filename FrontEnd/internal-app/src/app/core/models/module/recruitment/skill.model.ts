@@ -3,6 +3,7 @@ export class SkillModel {
   name: string;
   groupId: string;
   groupName: string;
+  isActive: boolean;
   selected: boolean;
 
   constructor() {
@@ -10,6 +11,7 @@ export class SkillModel {
     this.name = '';
     this.groupId = '';
     this.groupName = '';
+    this.isActive = false;
     this.selected = false;
   }
 }

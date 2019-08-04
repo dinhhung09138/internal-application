@@ -11,16 +11,20 @@ export class SkillGroupModelMock {
 
 
   private init() {
-    this.list.push({ id: '1', name: 'Group 1', selected: false });
-    this.list.push({ id: '2', name: 'Group 2', selected: false });
-    this.list.push({ id: '3', name: 'Group 3', selected: false });
-    this.list.push({ id: '4', name: 'Group 4', selected: false });
-    this.list.push({ id: '5', name: 'Group 5', selected: false});
+    this.list.push({ id: '1', name: 'Group 1', isActive: false, selected: false });
+    this.list.push({ id: '2', name: 'Group 2', isActive: false, selected: false });
+    this.list.push({ id: '3', name: 'Group 3', isActive: false, selected: false });
+    this.list.push({ id: '4', name: 'Group 4', isActive: false, selected: false });
+    this.list.push({ id: '5', name: 'Group 5', isActive: false, selected: false});
   }
 
-  initList(): Observable<SkillGroupModel[]> {
-    this.init();
-    return of(this.list);
+  initList(): SkillGroupModel[] {
+    this.list.push({ id: '1', name: 'Group 1', isActive: false, selected: false });
+    this.list.push({ id: '2', name: 'Group 2', isActive: false, selected: false });
+    this.list.push({ id: '3', name: 'Group 3', isActive: false, selected: false });
+    this.list.push({ id: '4', name: 'Group 4', isActive: false, selected: false });
+    this.list.push({ id: '5', name: 'Group 5', isActive: false, selected: false});
+    return this.list;
   }
 
   comboboxData(): Observable<SelectItemModel[]> {

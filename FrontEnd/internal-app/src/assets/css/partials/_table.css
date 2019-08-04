@@ -5,6 +5,8 @@
 .table td,
 .table th {
     padding: .15rem;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 .table thead tr {
@@ -18,9 +20,19 @@
     text-align: center;
 }
 
+.table tbody tr td.check>i.fa-check-square-o {
+    color: red;
+}
+
 .table thead tr th.action,
 .table tbody tr td.action {
     width: 80px;
+    text-align: center;
+}
+
+.table thead tr th.active,
+.table tbody tr td.active {
+    width: 60px;
     text-align: center;
 }
 

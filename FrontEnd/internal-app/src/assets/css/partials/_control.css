@@ -14,7 +14,7 @@ input[type=checkbox]:hover {
 input[type=checkbox]:before {
     font-family: "FontAwesome";
     content: "\f00c";
-    font-size: 20px;
+    font-size: 17px;
     color: transparent !important;
     background: white;
     width: 15px;
@@ -85,7 +85,7 @@ input[type="text"]:focus {
 }
 
 .form-control {
-    height: calc(1em + .75rem + 2px);
+    height: calc(1.2em + .75rem + 2px);
 }
 
 select {

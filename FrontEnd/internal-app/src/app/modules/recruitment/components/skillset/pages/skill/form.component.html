@@ -28,6 +28,12 @@
                 <input name="name" type="text" class="form-control" [(ngModel)]="model.name" tabindex="2" />
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Active: </span>
+                <input type="checkbox" [(ngModel)]="model.isActive" [checked]="model.isActive" />
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-primary" tabindex="3" (click)="onClickSave()">Save</button>
