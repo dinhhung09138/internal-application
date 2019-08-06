@@ -9,6 +9,11 @@
     display: table-cell;
 }
 
+.table thead th,
+.table tbody td {
+  vertical-align: middle;
+}
+
 .table thead tr {
     background-color: #17a2b8;
     color: white;

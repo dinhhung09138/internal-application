@@ -3,7 +3,9 @@
         <app-recruitment-sidebar [openSidebarState]="openSidebarState"></app-recruitment-sidebar>
         <div id="content">
             <app-recruitment-navigation (openSidebarClick)="openSidebarClick($event)" [openSidebarState]="openSidebarState"></app-recruitment-navigation>
-            <router-outlet></router-outlet>
+            <div class="container-fluid p-1">
+              <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>
