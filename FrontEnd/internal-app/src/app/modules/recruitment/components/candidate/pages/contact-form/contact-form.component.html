@@ -1,7 +1,7 @@
 <form>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Contact info: {{ candidateName }}</h4>
-        <button type="button" class="close" aria-label="Close" (click)="onClickClose()" tabindex="5">
+        <button type="button" class="close" aria-label="Close" (click)="onClickClose()" tabindex="10">
     <span aria-hidden="true">&times;</span>
   </button>
     </div>
@@ -14,7 +14,7 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <span *ngIf="!isEdit" class="form-control" ngbAutoFocus>{{ contactItem.address }}</span>
-                <input [disabled]="!isEdit" class="form-control" [(ngModel)]="contactItem.address" ngbAutoFocus tabindex="1" maxlength="150" />
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.address" ngbAutoFocus tabindex="1" maxlength="150" />
             </div>
         </div>
         <div class="row">
@@ -30,24 +30,35 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <span>Skyper:</span>
+                <span><i class="fa fa-skype" aria-hidden="true"></i> Skyper:</span>
             </div>
         </div>
         <div class="row form-group">
             <div class="col-md-12">
                 <span *ngIf="!isEdit" class="form-control">{{ contactItem.skyper }}</span>
-                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.skyper" tabindex="4" maxlength="15" />
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.skyper" tabindex="3" maxlength="15" />
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <span>Zalo:</span>
+                <span><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp:</span>
             </div>
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                <span *ngIf="!isEdit" class="form-control">{{ contactItem.zalo }}</span>
-                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.zalo" tabindex="5" maxlength="15" />
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.whatsApp }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.whatsApp" ngbAutoFocus tabindex="4" maxlength="15" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span><i class="fa fa-slack" aria-hidden="true"></i> slack:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.slack }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.slack" tabindex="5" maxlength="150" />
             </div>
         </div>
         <div class="row">
@@ -58,35 +69,24 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <span *ngIf="!isEdit" class="form-control">{{ contactItem.viber }}</span>
-                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.viber" ngbAutoFocus tabindex="6" maxlength="15" />
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.viber" tabindex="6" maxlength="15" />
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <span>slack:</span>
+                <span>Zalo:</span>
             </div>
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                <span *ngIf="!isEdit" class="form-control">{{ contactItem.slack }}</span>
-                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.slack" ngbAutoFocus tabindex="7" maxlength="150" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <span>Whatsapp:</span>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-12">
-                <span *ngIf="!isEdit" class="form-control">{{ contactItem.whatsapp }}</span>
-                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.whatsapp" ngbAutoFocus tabindex="8" maxlength="15" />
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.zalo }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.zalo" tabindex="7" maxlength="15" />
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" *ngIf="!isEdit" class="btn btn-outline-primary" tabindex="9" (click)="onClickEdit()">Edit</button>
-        <button type="button" *ngIf="isEdit" class="btn btn-outline-primary" tabindex="10" (click)="onClickSave()">Save</button>
-        <button type="button" class="btn btn-outline-dark" tabindex="11" (click)="onClickClose()">Cancel</button>
+        <button type="button" *ngIf="!isEdit" class="btn btn-outline-primary" tabindex="8" (click)="onClickEdit()">Edit</button>
+        <button type="button" *ngIf="isEdit" class="btn btn-outline-primary" tabindex="8" (click)="onClickSave()">Save</button>
+        <button type="button" class="btn btn-outline-dark" tabindex="9" (click)="onClickClose()">Cancel</button>
     </div>
 </form>

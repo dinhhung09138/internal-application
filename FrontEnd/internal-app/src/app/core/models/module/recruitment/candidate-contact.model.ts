@@ -8,7 +8,7 @@ export class CandidateContactModel {
   zalo: string;
   viber: string;
   slack: string;
-  whatsapp: string;
+  whatsApp: string;
 
   constructor() {
     this.id = '';
@@ -20,7 +20,7 @@ export class CandidateContactModel {
     this.zalo = '';
     this.viber = '';
     this.slack = '';
-    this.whatsapp = '';
+    this.whatsApp = '';
   }
 
 }
