@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class CandidateComponent implements OnInit {
 
+  isViewDetail = false;             // false: show list of candidate, true: show detail of candidate
+
   constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.isViewDetail = false;
+   }
+
 }
