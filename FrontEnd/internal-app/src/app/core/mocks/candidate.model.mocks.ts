@@ -21,6 +21,9 @@ export class CandidateModelMock {
     contact.email = 'abc@gmail.com';
     contact.skyper = '090099988';
     contact.zalo = '1090099988';
+    contact.slack = 'slack';
+    contact.viber = 'viber';
+    contact.whatsApp = 'whatsapp';
 
     const network = new CandidateSocialNetworkModel();
     network.id = '1';
@@ -31,7 +34,6 @@ export class CandidateModelMock {
     network.website = '/web';
     network.github = '/git..';
     network.youtube = '/yb...';
-
 
     const c1 = new CandidateModel();
     c1.id = '1';

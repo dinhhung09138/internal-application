@@ -15,6 +15,7 @@ import { SkillGroupModelMock } from 'src/app/core/mocks/skill-group.model.mocks'
 import { CandidateContactFormComponent } from './components/candidate/pages/contact-form/contact-form.component';
 import { CandidateService } from 'src/app/core/services/recruitment/candidate.service';
 import { CandidateModelMock } from 'src/app/core/mocks/candidate.model.mocks';
+import { CandidateSocialNetworkFormComponent } from './components/candidate/pages/social-form/social-form.component';
 
 const routes: Routes = [
   { path: '',
@@ -59,6 +60,7 @@ const routes: Routes = [
     ConfirmDeleteComponent,
     SkillGroupFormComponent,
     CandidateContactFormComponent,
+    CandidateSocialNetworkFormComponent,
     SkillFormComponent,
   ],
   imports: [
@@ -79,6 +81,7 @@ const routes: Routes = [
     SkillGroupFormComponent,
     SkillFormComponent,
     CandidateContactFormComponent,
+    CandidateSocialNetworkFormComponent,
   ],
   exports: [RouterModule]
 })

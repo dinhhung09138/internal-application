@@ -1,12 +1,12 @@
 export class CandidateSocialNetworkModel {
   id: string;
   candidateId: string;
-  facebook: string;
+  website: string;
   linkedIn: string;
   twitter: string;
-  youtube: string;
   github: string;
-  website: string;
+  youtube: string;
+  facebook: string;
 
   constructor() {
     this.id = '';

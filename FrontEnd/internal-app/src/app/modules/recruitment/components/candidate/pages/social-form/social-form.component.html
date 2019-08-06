@@ -1,0 +1,81 @@
+<form>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Contact info: {{ candidateName }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onClickClose()" tabindex="9">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <span><i class="fa fa-internet-explorer" aria-hidden="true"></i> Website:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control" ngbAutoFocus>{{ networkItem.website }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="networkItem.website" ngbAutoFocus tabindex="1" maxlength="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ networkItem.linkedIn }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="networkItem.linkedIn" tabindex="2" maxlength="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ networkItem.twitter }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="networkItem.twitter" tabindex="3" maxlength="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span><i class="fa fa-github" aria-hidden="true"></i> Github:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ networkItem.github }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="networkItem.github" ngbAutoFocus tabindex="4" maxlength="15" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span><i class="fa fa-youtube-square" aria-hidden="true"></i> Youtube:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ networkItem.youtube }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="networkItem.youtube" tabindex="5" maxlength="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ networkItem.facebook }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="networkItem.facebook" tabindex="6" maxlength="150" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" *ngIf="!isEdit" class="btn btn-outline-primary" tabindex="7" (click)="onClickEdit()">Edit</button>
+        <button type="button" *ngIf="isEdit" class="btn btn-outline-primary" tabindex="7" (click)="onClickSave()">Save</button>
+        <button type="button" class="btn btn-outline-dark" tabindex="8" (click)="onClickClose()">Cancel</button>
+    </div>
+</form>

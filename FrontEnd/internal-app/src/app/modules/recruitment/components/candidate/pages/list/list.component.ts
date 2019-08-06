@@ -10,6 +10,7 @@ import { CandidateSocialNetworkModel } from 'src/app/core/models/module/recruitm
 import { CandidateContactModel } from 'src/app/core/models/module/recruitment/candidate-contact.model';
 import { CandidateContactFormComponent } from '../contact-form/contact-form.component';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
+import { CandidateSocialNetworkFormComponent } from '../social-form/social-form.component';
 
 @Component({
   selector: 'app-candidate-list',
@@ -71,8 +72,6 @@ export class CandidateListComponent implements OnInit {
   }
 
   onClickOpenContact(item: CandidateContactModel) {
-    console.log('open contact');
-    console.log(item);
 
     const candidate = this.tableData.list.find(m => m.id === item.candidateId);
 
@@ -86,8 +85,15 @@ export class CandidateListComponent implements OnInit {
   }
 
   onClickOpenSocialNetWork(item: CandidateSocialNetworkModel) {
-    console.log('open net work');
-    console.log(item);
+
+    const candidate = this.tableData.list.find(m => m.id === item.candidateId);
+
+    const modalRef = this.modal.open(CandidateSocialNetworkFormComponent, AppSetting.ModalOptions.modalOptions);
+    modalRef.componentInstance.networkItem = item;
+
+    if (candidate) {
+      modalRef.componentInstance.candidateName = candidate.fullName;
+    }
   }
 
   /**
