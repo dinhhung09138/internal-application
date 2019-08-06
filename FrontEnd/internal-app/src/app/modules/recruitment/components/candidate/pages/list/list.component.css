@@ -1,0 +1,48 @@
+div.candidate {
+  width: '350px';
+}
+div.candidate div.img {
+  width: 80px;
+  float: left;
+  text-align: center;
+  height: 100%;
+}
+
+div.candidate div.img div i {
+  font-size: 20px;
+  margin: 5px;
+}
+
+div.candidate div.img div a:hover {
+  cursor: pointer;
+}
+
+div.candidate div.img div i.fa-address-card-o {
+  color: #b33406;
+}
+
+div.candidate div.img div i.fa-share-alt {
+  color: #28bb3f;
+}
+
+div.candidate div.img img {
+  width: 70px;
+  height: 70px;
+}
+
+div.candidate div.info {
+  float: right;
+  width: 230px;
+}
+
+.star::before {
+  font-family: FontAwesome;
+  content: '\f005';
+  color: #71707161;
+}
+
+.star-voted::before {
+  font-family: FontAwesome;
+  content: '\f005';
+  color: #28bb3f;
+}
