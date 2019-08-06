@@ -101,8 +101,9 @@ select:focus {
     padding: .1rem .4rem;
 }
 
-.btn-outline-primary {
-    color: #138496;
+.btn-outline-primary,
+.btn-outline-primary.disabled {
+    color: #138496 !important;
     border-color: #17a2b8;
 }
 
