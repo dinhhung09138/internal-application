@@ -1,0 +1,92 @@
+<form>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Contact info: {{ candidateName }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onClickClose()" tabindex="5">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <span>Address:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control" ngbAutoFocus>{{ contactItem.address }}</span>
+                <input [disabled]="!isEdit" class="form-control" [(ngModel)]="contactItem.address" ngbAutoFocus tabindex="1" maxlength="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Email:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.email }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.email" tabindex="2" maxlength="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Skyper:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.skyper }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.skyper" tabindex="4" maxlength="15" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Zalo:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.zalo }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.zalo" tabindex="5" maxlength="15" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Viber:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.viber }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.viber" ngbAutoFocus tabindex="6" maxlength="15" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>slack:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.slack }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.slack" ngbAutoFocus tabindex="7" maxlength="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Whatsapp:</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <span *ngIf="!isEdit" class="form-control">{{ contactItem.whatsapp }}</span>
+                <input *ngIf="isEdit" class="form-control" [(ngModel)]="contactItem.whatsapp" ngbAutoFocus tabindex="8" maxlength="15" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" *ngIf="!isEdit" class="btn btn-outline-primary" tabindex="9" (click)="onClickEdit()">Edit</button>
+        <button type="button" *ngIf="isEdit" class="btn btn-outline-primary" tabindex="10" (click)="onClickSave()">Save</button>
+        <button type="button" class="btn btn-outline-dark" tabindex="11" (click)="onClickClose()">Cancel</button>
+    </div>
+</form>
