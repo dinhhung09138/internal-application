@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RecruitmentRoutingModule } from './recruitment-route.module';
 
 @NgModule({
   declarations: [
   ],
   imports: [
-    RecruitmentRoutingModule
+    CommonModule,
+    RecruitmentRoutingModule,
   ],
-  exports: [],
-  bootstrap: []
+  exports: [
+  ],
 })
 
 export class RecruitmentModule {
