@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-recruitment-navigation',
-  templateUrl: './recruitment-navigation.component.html'
+  templateUrl: './recruitment-navigation.component.html',
+  styleUrls: ['./recruitment-navigation.component.css']
 })
 
 export class RecruitmentNavigationComponent implements OnInit {
