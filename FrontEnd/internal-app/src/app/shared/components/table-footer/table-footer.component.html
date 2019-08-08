@@ -1,16 +1,16 @@
-<div class="row" *ngIf="isLoading">
+<div class="row botttom-fixed mr-1" *ngIf="isLoading">
     <div class="col-12 text-center">
         <i class="fa fa-spin fa-spinner"></i>
     </div>
 </div>
-<div class="row" *ngIf="!isLoading && totalItem === 0">
+<div class="row botttom-fixed mr-1" *ngIf="!isLoading && totalItem === 0">
     <div class="col-12 text-center">No data vailable</div>
 </div>
-<div class="row" *ngIf="!isLoading">
+<div class="row botttom-fixed mr-1" *ngIf="!isLoading">
     <div class="col-md-6 col-xs-12">
         {{ info }}
     </div>
-    <div class="col-md-6 col-xs-12">
+    <div class="col-md-6 col-xs-12 pr-1">
         <nav class="float-right" aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item" [ngClass]="{'disabled' : currentPage === 1}">
