@@ -8,13 +8,7 @@ import { Component } from '@angular/core';
 
 export class RecruitmentComponent {
 
-  openSidebarState = true;
-
   constructor() {
-  }
-
-  openSidebarClick(event: boolean) {
-    this.openSidebarState = event;
   }
 
 }
