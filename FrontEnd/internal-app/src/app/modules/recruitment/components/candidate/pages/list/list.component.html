@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<div class="card-body">
+<div class="card-body pb-0">
     <div class="row">
         <div class="col-lg-2 col-md-3 col-xs-12 body-scroll search-box pr-1 pl-2">
             <h5>Location</h5>
@@ -79,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-10 col-md-9 col-xs-12 pl-1 pr-2" style="position:relative">
+        <div class="col-lg-10 col-md-9 col-xs-12 pl-1 pr-2" style="position:relative; overflow-x: auto;">
             <table class="table table-hover table-bordered table-striped table-scroll">
                 <thead>
                     <tr>
@@ -91,16 +91,16 @@
                         <th>Rating</th>
                         <th>Skills</th>
                         <th>History</th>
-                        <th style="width: 120px;">Recruitor</th>
-                        <th style="width: 80px;">Updated</th>
-                        <th style="width: 120px;">Updated by</th>
-                        <th class="active">Active</th>
-                        <th class="action"></th>
+                        <th>Recruitor</th>
+                        <th>Updated</th>
+                        <th>Updated by</th>
+                        <th>Active</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of tableData.list as CandidateModel">
-                        <td class="check">
+                        <td>
                             <input type="checkbox" [checked]="item.selected" (click)="onClickItemCheck(item)" />
                         </td>
                         <td>
@@ -117,18 +117,10 @@
                                         <div class="col-12">
                                             <h5>{{ item.fullName }}</h5>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">Position: {{ item.jobPosition }}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">Level: {{ item.jobLevelName }}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">Phone: {{ item.contact ? item.contact.phone : '' }}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">Email: {{ item.contact ? item.contact.email : '' }}</div>
+                                        <div class="col-12 p-0">Position: {{ item.jobPosition }}</div>
+                                        <div class="col-12 p-0">Level: {{ item.jobLevelName }}</div>
+                                        <div class="col-12 p-0">Phone: {{ item.contact ? item.contact.phone : '' }}</div>
+                                        <div class="col-12 p-0">Email: {{ item.contact ? item.contact.email : '' }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -159,5 +151,10 @@
             <app-table-footer [totalItem]="tableData.totalItem" [totalFiltered]="tableData.filteredItem" [currentPage]="tableData.currentPage" [pageSize]="tableData.pageSize" (changePageEvent)="onChangePage($event)" [isLoading]="isLoading">
             </app-table-footer>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!-- <iframe [src]="https://www.youtube.com/embed/c9F5kMUfFKk"></iframe> -->
+      </div>
     </div>
 </div>

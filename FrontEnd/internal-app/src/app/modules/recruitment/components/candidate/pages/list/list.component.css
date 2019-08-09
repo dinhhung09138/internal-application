@@ -1,5 +1,5 @@
 div.candidate {
-    width: '350px';
+    width: '300px';
 }
 
 div.candidate div.img {
@@ -32,8 +32,7 @@ div.candidate div.img img {
 }
 
 div.candidate div.info {
-    float: right;
-    width: 230px;
+    width: 235px;
 }
 
 .star::before {
@@ -50,10 +49,10 @@ div.candidate div.info {
 
 .search-box {
     background-color: #dee2e6;
-    height: -moz-calc(100vh - 130px);
-    height: -webkit-calc(100vh - 130px);
-    height: -o-calc(100vh - 130px);
-    height: calc(100vh - 130px);
+    height: -moz-calc(100vh - 120px);
+    height: -webkit-calc(100vh - 120px);
+    height: -o-calc(100vh - 120px);
+    height: calc(100vh - 120px);
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -69,17 +68,20 @@ div.candidate div.info {
 .search-box-skill {
     min-height: 100px;
 }
-
+.table-scroll {
+  width: 100%;
+  table-layout: fixed;
+}
 .table-scroll thead,
 .table-scroll body {
-    width: 100%;
-    display: block;
+  width: 100%;
+  display: block;
 }
 
 .table-scroll thead tr,
 .table-scroll tbody tr {
-    width: 100%;
-    display: table;
+  width: 100%;
+  display: table;
 }
 
 .table-scroll thead tr th,
@@ -87,35 +89,71 @@ div.candidate div.info {
     display: table-cell;
 }
 
-.table-scroll thead tr::nth-child(0),
-.table-scroll tbody tr::nth-child(0) {
-    width: 50px;
+.table-scroll thead tr th:nth-child(1),
+.table-scroll tbody tr td:nth-child(1) {
+    width: 25px !important;
+    text-align: center;
 }
 
-.table-scroll thead tr:nth-child(1),
-.table-scroll tbody tr:nth-child(1) {
-    width: 320px;
+.table-scroll thead tr th:nth-child(2),
+.table-scroll tbody tr td:nth-child(2) {
+    width: 320px !important;
 }
 
-.table-scroll thead tr:nth-child(2),
-.table-scroll tbody tr:nth-child(2) {
-    width: 150px;
+.table-scroll thead tr th:nth-child(3),
+.table-scroll tbody tr td:nth-child(3) {
+    width: 100px;
 }
 
-.table-scroll thead tr:nth-child(3),
-.table-scroll tbody tr:nth-child(3) {
-    width: 50px;
+.table-scroll thead tr th:nth-child(4),
+.table-scroll tbody tr td:nth-child(4) {
+    width: 70px;
+}
+
+.table-scroll thead tr th:nth-child(5),
+.table-scroll tbody tr td:nth-child(5) {
+    width: 200px;
+}
+
+.table-scroll thead tr th:nth-child(6),
+.table-scroll tbody tr td:nth-child(6) {
+    width: 130px;
+}
+
+.table-scroll thead tr th:nth-child(7),
+.table-scroll tbody tr td:nth-child(7) {
+    width: 70px;
+}
+
+.table-scroll thead tr th:nth-child(8),
+.table-scroll tbody tr td:nth-child(8) {
+    width: 80px;
+}
+
+.table-scroll thead tr th:nth-child(9),
+.table-scroll tbody tr td:nth-child(9) {
+    width: 120px;
+}
+
+.table-scroll thead tr th:nth-child(10),
+.table-scroll tbody tr td:nth-child(10) {
+    width: 80px;
+}
+
+.table-scroll thead tr th:nth-child(11),
+.table-scroll tbody tr td:nth-child(11) {
+    width: 60px;
 }
 
 .table-scroll tbody {
-    height: -moz-calc(100vh - 150px);
-    height: -webkit-calc(100vh - 150px);
-    height: -o-calc(100vh - 150px);
-    height: calc(100vh - 150px);
+    height: -moz-calc(100vh - 210px);
+    height: -webkit-calc(100vh - 210px);
+    height: -o-calc(100vh - 210px);
+    height: calc(100vh - 210px);
     overflow-y: auto;
     overflow-x: hidden;
     position: absolute;
-    width: 100%;
+    width: 99%;
 }
 
 .table-scroll tbody::-webkit-scrollbar,
@@ -138,4 +176,13 @@ div.candidate div.info {
 .table-scroll tbody::-webkit-scrollbar-thumb {
     width: 3px;
     background-color: #138496;
+}
+
+.table-horizontal-scroll {
+  /* width: -moz-calc(100vw - 210px);
+  width: -webkit-calc(100vw - 210px);
+  width: -o-calc(100vw - 210px);
+  width: calc(100vw - 210px); */
+  width: 500px;
+  overflow-x: auto;
 }
