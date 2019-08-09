@@ -6,7 +6,7 @@
 <div class="row botttom-fixed mr-1" *ngIf="!isLoading && totalItem === 0">
     <div class="col-12 text-center">No data vailable</div>
 </div>
-<div class="row botttom-fixed table-footer-bg mr-1" *ngIf="!isLoading">
+<div class="row botttom-fixed table-footer-bg mr-1" *ngIf="!isLoading" [ngStyle]="{'min-width.px': minWidth}">
     <div class="col-md-6 col-xs-12">
         {{ info }}
     </div>

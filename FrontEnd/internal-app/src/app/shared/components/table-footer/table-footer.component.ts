@@ -12,6 +12,7 @@ export class TableFooterComponent implements OnInit {
 
   @Output() changePageEvent = new EventEmitter<number>();
 
+  @Input() minWidth = 1024;
   @Input() totalItem: number;
   @Input() totalFiltered: number;
   @Input() currentPage: number;

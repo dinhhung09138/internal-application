@@ -148,7 +148,7 @@
                     </tr>
                 </tbody>
             </table>
-            <app-table-footer [totalItem]="tableData.totalItem" [totalFiltered]="tableData.filteredItem" [currentPage]="tableData.currentPage" [pageSize]="tableData.pageSize" (changePageEvent)="onChangePage($event)" [isLoading]="isLoading">
+            <app-table-footer [minWidth]="1366" [totalItem]="tableData.totalItem" [totalFiltered]="tableData.filteredItem" [currentPage]="tableData.currentPage" [pageSize]="tableData.pageSize" (changePageEvent)="onChangePage($event)" [isLoading]="isLoading">
             </app-table-footer>
         </div>
     </div>
