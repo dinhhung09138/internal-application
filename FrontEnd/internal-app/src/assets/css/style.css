@@ -6,10 +6,13 @@
 @import "partials/_control.css";
 @import "partials/_pagination.css";
 @import "partials/_modal.css";
+@import "partials/_scroll.css";
 body {
     font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     background: #fafafa;
     font-size: 13px;
+    min-width: 100vw;
+    max-width: 100vh;
 }
 
 button,
@@ -38,11 +41,6 @@ a:focus {
     transition: all 0.3s;
 }
 
-body {
-    min-width: 100vw;
-    max-width: 100vh;
-}
-
 .container-fluid .card,
 .container-fluid .nav {
     margin-top: 40px;
@@ -52,8 +50,8 @@ body {
     padding: .25rem .5rem;
 }
 
-.btn:hover {
-    cursor: hand;
+.card-body {
+  padding: 1em;
 }
 
 .inner-addon {
@@ -70,6 +68,18 @@ body {
     right: 0px;
 }
 
+.star::before {
+  font-family: FontAwesome;
+  content: '\f005';
+  color: #71707161;
+}
+
+.star-voted::before {
+  font-family: FontAwesome;
+  content: '\f005';
+  color: #28bb3f;
+}
+
 .body-scroll {
     height: -moz-calc(100vh - 60px);
     height: -webkit-calc(100vh - 60px);
@@ -77,26 +87,4 @@ body {
     height: calc(100vh - 60px);
     overflow-y: auto;
     overflow-x: hidden;
-}
-
-.body-scroll::-webkit-scrollbar,
-.body-scroll::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -o-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    width: 3px;
-    background-color: #F5F5F5;
-}
-
-.body-scroll::-webkit-scrollbar {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -o-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    width: 3px;
-    background-color: #138496;
-}
-
-.body-scroll::-webkit-scrollbar-thumb {
-    width: 3px;
-    background-color: #138496;
 }

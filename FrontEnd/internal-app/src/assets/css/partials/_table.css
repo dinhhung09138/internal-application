@@ -45,6 +45,9 @@
     font-size: 15px;
 }
 
+/* Sortable in table */
+/*---------------------------*/
+
 .table thead th[scope=col] {
     cursor: pointer;
 }
@@ -67,4 +70,36 @@
     content: '\f161';
     float: right;
     color: white;
+}
+
+/* Scroll in table */
+/*---------------------------*/
+
+.table-scroll {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-scroll thead,
+.table-scroll body {
+  width: 100%;
+  display: block;
+}
+
+.table-scroll thead tr,
+.table-scroll tbody tr {
+  width: 100%;
+  display: table;
+}
+
+.table-scroll thead tr th,
+.table-scroll tbody tr td {
+    display: table-cell;
+}
+
+.table-scroll tbody {
+  overflow: auto;
+  position: absolute;
+  width: 99%;
+  min-width: 1366px;
 }

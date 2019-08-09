@@ -101,6 +101,10 @@ select:focus {
     padding: .1rem .4rem;
 }
 
+.btn:hover {
+  cursor: hand;
+}
+
 .btn-outline-primary,
 .btn-outline-primary.disabled {
     color: #138496 !important;
@@ -113,6 +117,10 @@ select:focus {
     border-color: #17a2b8;
 }
 
+.btn-outline-primary:hover i {
+  color: white;
+}
+
 .border-top-panel {
     border: 1px solid #17a2b8;
 }
@@ -123,6 +131,3 @@ select:focus {
     font-weight: bold;
 }
 
-.card-body {
-    padding: 1em;
-}
