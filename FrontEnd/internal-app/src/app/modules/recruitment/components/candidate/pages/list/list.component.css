@@ -7,6 +7,7 @@ div.candidate div.img {
     float: left;
     text-align: center;
     height: 100%;
+    display: inline;
 }
 
 div.candidate div.img div i {
@@ -33,6 +34,7 @@ div.candidate div.img img {
 
 div.candidate div.info {
     width: 235px;
+    display: inline;
 }
 
 .search-box {
@@ -57,9 +59,11 @@ div.candidate div.info {
     min-height: 100px;
 }
 
+
 /*Table css*/
+
 .table-scroll {
-  min-width: 1366px;
+    min-width: 1366px;
 }
 
 .table-scroll thead tr th:nth-child(1),
@@ -110,12 +114,14 @@ div.candidate div.info {
 
 .table-scroll thead tr th:nth-child(10),
 .table-scroll tbody tr td:nth-child(10) {
-    width: 80px;
+    width: 50px;
+    text-align: center;
 }
 
 .table-scroll thead tr th:nth-child(11),
 .table-scroll tbody tr td:nth-child(11) {
-    width: 60px;
+    width: 80px;
+    text-align: center;
 }
 
 .table-scroll tbody {
@@ -125,5 +131,3 @@ div.candidate div.info {
     height: calc(100vh - 187px);
     min-width: 1366px;
 }
-
-
