@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -33,7 +33,13 @@ import { HttpInterceptorProviders } from './core/intercepters/interceptors';
   ],
   providers: [
     HttpInterceptorProviders,
+    NgbModalConfig,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private modalConfig: NgbModalConfig) {
+    modalConfig.backdrop = 'static';
+    modalConfig.keyboard = false;
+  }
+ }
