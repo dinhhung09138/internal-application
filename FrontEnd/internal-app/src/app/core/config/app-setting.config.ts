@@ -16,6 +16,12 @@ export class AppSetting {
       scrollable: false,
       size: 'sm' as any
     },
+    modalLoadingOptions: {
+      ariaLabelledBy: 'modal-basic-title',
+      centered: true,
+      scrollable: false,
+      size: 'loading' as any
+    },
   };
 
   static readonly FormResponseState = {
