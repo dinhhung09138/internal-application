@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a [routerLink]="['/recruitment/candidate']" class="nav-link">Candidates</a>
+                <a [routerLink]="['/recruitment/candidate']" [routerLinkActive]="'active'" class="nav-link">Candidates</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -25,16 +25,16 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a [routerLink]="['/recruitment/calendar']" class="nav-link">Calendar</a>
+                <a [routerLink]="['/recruitment/calendar']" [routerLinkActive]="'active'" class="nav-link">Calendar</a>
             </li>
             <li class="nav-item">
-                <a [routerLink]="['/recruitment/mail']" class="nav-link">Mail</a>
+                <a [routerLink]="['/recruitment/mail']" [routerLinkActive]="'active'" class="nav-link">Mail</a>
             </li>
             <li class="nav-item">
-                <a [routerLink]="['/recruitment/report']" class="nav-link">Report</a>
+                <a [routerLink]="['/recruitment/report']" [routerLinkActive]="'active'" class="nav-link">Report</a>
             </li>
             <li class="nav-item">
-                <a [routerLink]="['/recruitment/skillset']" class="nav-link">Skillset</a>
+                <a [routerLink]="['/recruitment/skillset']" [routerLinkActive]="'active'" class="nav-link">Skillset</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -42,18 +42,12 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
             <li class="nav-item dropdown no-content">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-comment-o" aria-hidden="true"></i>
                     <span class="badge badge-danger">40</span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
@@ -65,7 +59,7 @@
                     <i class="fa fa-bell-o" aria-hidden="true"></i>
                     <span class="badge badge-danger">40</span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
@@ -77,7 +71,7 @@
                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
                     <span class="badge badge-danger">40</span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
@@ -88,7 +82,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
