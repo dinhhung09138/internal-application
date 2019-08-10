@@ -11,11 +11,11 @@
 
 .table thead th,
 .table tbody td {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .table thead tr {
-    background-color: #17a2b8;
+    background-color: #138496;
     color: white;
 }
 
@@ -45,7 +45,10 @@
     font-size: 15px;
 }
 
+
 /* Sortable in table */
+
+
 /*---------------------------*/
 
 .table thead th[scope=col] {
@@ -72,24 +75,27 @@
     color: white;
 }
 
+
 /* Scroll in table */
+
+
 /*---------------------------*/
 
 .table-scroll {
-  width: 100%;
-  table-layout: fixed;
+    width: 100%;
+    table-layout: fixed;
 }
 
 .table-scroll thead,
 .table-scroll body {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 
 .table-scroll thead tr,
 .table-scroll tbody tr {
-  width: 100%;
-  display: table;
+    width: 100%;
+    display: table;
 }
 
 .table-scroll thead tr th,
@@ -98,8 +104,8 @@
 }
 
 .table-scroll tbody {
-  overflow: auto;
-  position: absolute;
-  width: 99%;
-  min-width: 1366px;
+    overflow: auto;
+    position: absolute;
+    width: 99%;
+    min-width: 1366px;
 }
