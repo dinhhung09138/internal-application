@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
 import { MessageService } from 'src/app/core/services/message.service';
+import { ModalLoadingComponent } from 'src/app/shared/components/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-candidate-dashboard',
@@ -25,6 +26,10 @@ export class DashboardComponent implements OnInit {
     modalRef.result.then((response) => {
       console.log(response);
     });
+  }
+
+  openLoadingModal() {
+    const modalRef = this.modal.open(ModalLoadingComponent, AppSetting.ModalOptions.modalLoadingOptions);
   }
 
   onShowMsg() {
