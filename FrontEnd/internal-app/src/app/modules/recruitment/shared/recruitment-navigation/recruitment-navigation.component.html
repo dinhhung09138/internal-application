@@ -33,8 +33,14 @@
             <li class="nav-item">
                 <a [routerLink]="['/recruitment/report']" [routerLinkActive]="'active'" class="nav-link">Report</a>
             </li>
-            <li class="nav-item">
-                <a [routerLink]="['/recruitment/skillset']" [routerLinkActive]="'active'" class="nav-link">Skillset</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownSkillSet" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Skillset
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownSkillSet">
+                    <a class="dropdown-item" [routerLink]="['/recruitment/skillset/group']">Group</a>
+                    <a class="dropdown-item" [routerLink]="['/recruitment/skillset/skill']">List of skill</a>
+                </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
