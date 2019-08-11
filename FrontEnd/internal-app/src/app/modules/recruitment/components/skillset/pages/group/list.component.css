@@ -1,0 +1,46 @@
+.horizontal-scroll {
+    height: -moz-calc(100vh - 125px);
+    height: -webkit-calc(100vh - 125px);
+    height: -o-calc(100vh - 125px);
+    height: calc(100vh - 125px);
+}
+
+.table-scroll {
+    min-width: 1024px !important;
+}
+
+.table-scroll tbody {
+    height: -moz-calc(100vh - 187px);
+    height: -webkit-calc(100vh - 187px);
+    height: -o-calc(100vh - 187px);
+    height: calc(100vh - 187px);
+    min-width: 1024px !important;
+}
+
+.table-scroll thead tr th:nth-child(1),
+.table-scroll tbody tr td:nth-child(1) {
+    width: 25px !important;
+    text-align: center;
+}
+
+.table-scroll thead tr th:nth-child(2),
+.table-scroll tbody tr td:nth-child(2) {
+    min-width: 250px;
+}
+
+.table-scroll thead tr th:nth-child(3),
+.table-scroll tbody tr td:nth-child(3) {
+    width: 50px;
+    text-align: center;
+}
+
+.table-scroll thead tr th:nth-child(4),
+.table-scroll tbody tr td:nth-child(4) {
+    width: 80px;
+    text-align: center;
+}
+
+.table-scroll thead tr th:nth-child(5),
+.table-scroll tbody tr td:nth-child(5) {
+    width: 6px;
+}

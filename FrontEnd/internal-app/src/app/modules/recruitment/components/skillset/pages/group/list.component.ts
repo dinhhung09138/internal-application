@@ -13,7 +13,8 @@ import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete
 
 @Component({
   selector: 'app-recruitment-skill-group-list',
-  templateUrl: './list.component.html'
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
 })
 export class SkillGroupListComponent implements OnInit {
 

@@ -29,8 +29,6 @@ export class TableFooterComponent implements OnInit {
 
     this.setInformation();
     this.setPagination();
-    console.log((this.totalItem / this.pageSize));
-    console.log((this.totalItem % this.pageSize));
    }
 
 

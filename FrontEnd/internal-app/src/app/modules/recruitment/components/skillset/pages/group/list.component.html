@@ -1,60 +1,58 @@
-<div class="card">
-    <div class="card-header">
-        <button class="btn btn-outline-primary" (click)="onClickAdd()"><i class="fa fa-plus-circle"></i>  New</button> &nbsp;
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
-          <i class="fa fa-file"></i>  Export  <i class="fa fa-caret-down"></i>
-        </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-excel-o"></i>  Excel</a>
-                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-text-o"></i>  Excel</a>
-                <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-pdf-o"></i>  Pdf</a>
+<div class="card-header">
+    <div class="row mb-1">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <button class="btn btn-outline-primary" (click)="onClickAdd()"><i class="fa fa-plus-circle"></i>  New</button> &nbsp;
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
+              <i class="fa fa-file"></i>  Export  <i class="fa fa-caret-down"></i>
+            </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-excel-o"></i>  Excel</a>
+                    <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-text-o"></i>  Excel</a>
+                    <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-pdf-o"></i>  Pdf</a>
+                </div>
             </div>
+            &nbsp;
+            <button class="btn btn-outline-danger" (click)="onClickDeleteAll()"><i class="fa fa-times-circle"></i> Delete</button>
         </div>
-        &nbsp;
-        <button class="btn btn-outline-danger" (click)="onClickDeleteAll()"><i class="fa fa-times-circle"></i> Delete</button>
+        <div class="col-md-4 col-sm-2 col-xs-12"></div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+            <app-table-search [isLoading]="isLoading" [value]="filter.searchKey" (searchValueChange)="onSearchChange($event)"></app-table-search>
+        </div>
     </div>
-    <div class="card-body">
-        <div class="row mb-1">
-            <div class="col-md-2 col-sm-4 col-xs-12">
-            </div>
-            <div class="col-md-8 col-sm-4 col-xs-12"></div>
-            <div class="col-md-2 col-sm-4 col-xs-12">
-                <app-table-search [isLoading]="isLoading" [value]="filter.searchKey" (searchValueChange)="onSearchChange($event)"></app-table-search>
-            </div>
+</div>
+<div class="card-body pb-0">
+    <div class="row">
+        <div class="col-md-12 pl-2 pr-2 horizontal-scroll">
+            <table class="table table-hover table-bordered table-striped table-scroll">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" [checked]="selectAll" (click)="onClickAllCheck()" />
+                        </th>
+                        <th sortable="Name" scope="col" (sort)="onSort($event)">Name</th>
+                        <th>Active</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tableData.list as SkillGroupModel">
+                        <td>
+                            <input type="checkbox" [checked]="item.selected" (click)="onClickItemCheck(item)" />
+                        </td>
+                        <td>{{ item.name }}</td>
+                        <td>
+                            <input type="checkbox" [checked]="item.isActive" disabled />
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary mr-1" (click)="onClickEdit(item)"><i class="fa fa-pencil-square-o"></i></button>
+                            <button class="btn btn-outline-danger mr-1" (click)="onClickDelete(item)"><i class="fa fa-remove"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-table-footer [minWidth]="1024" [totalItem]="tableData.totalItem" [totalFiltered]="tableData.filteredItem" [currentPage]="tableData.currentPage" [pageSize]="tableData.pageSize" (changePageEvent)="onChangePage($event)" [isLoading]="isLoading">
+            </app-table-footer>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-hover table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th class="check">
-                                <input type="checkbox" [checked]="selectAll" (click)="onClickAllCheck()" />
-                            </th>
-                            <th sortable="Name" scope="col" (sort)="onSort($event)">Name</th>
-                            <th class="active">Active</th>
-                            <th class="action"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of tableData.list as SkillGroupModel">
-                            <td class="check">
-                                <input type="checkbox" [checked]="item.selected" (click)="onClickItemCheck(item)" />
-                            </td>
-                            <td>{{ item.name }}</td>
-                            <td class="active">
-                                <input type="checkbox" [checked]="item.isActive" disabled />
-                            </td>
-                            <td class="action">
-                                <button class="btn btn-outline-primary mr-1" (click)="onClickEdit(item)"><i class="fa fa-pencil-square-o"></i></button>
-                                <button class="btn btn-outline-danger mr-1" (click)="onClickDelete(item)"><i class="fa fa-remove"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <app-table-footer [totalItem]="tableData.totalItem" [totalFiltered]="tableData.filteredItem" [currentPage]="tableData.currentPage" [pageSize]="tableData.pageSize" (changePageEvent)="onChangePage($event)" [isLoading]="isLoading">
-        </app-table-footer>
     </div>
 </div>

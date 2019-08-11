@@ -10,6 +10,7 @@ import { NgbdSortableHeader, SortEvent } from 'src/app/shared/directives/sortabl
 import { SkillFormComponent } from './form.component';
 import { FormResponseModel } from 'src/app/core/models/form-response.model';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
+import { ModalLoadingComponent } from 'src/app/shared/components/modal-loading/modal-loading.component';
 
 
 @Component({
@@ -73,6 +74,10 @@ export class SkillListComponent implements OnInit {
    * @param modal Modal popup name
    */
   onClickAdd() {
+
+    this.modalService.open(ModalLoadingComponent, AppSetting.ModalOptions.modalOptions);
+    return;
+
     this.isEdit = false;
     this.selectedItem = new SkillModel();
     this.openInputForm();

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CandidateComponent } from './candidate.component';
 import { CandidateListComponent } from './pages/list/list.component';
-import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
     declarations: [
