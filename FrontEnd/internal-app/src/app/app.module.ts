@@ -13,6 +13,9 @@ import { FooterComponent } from './shared/components/footer/footer.commponent';
 import { MessageComponent } from './shared/components/message/message.component';
 import { RecruitmentModule } from './modules/recruitment/recruitment.module';
 import { HttpInterceptorProviders } from './core/intercepters/interceptors';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessageResource } from './core/config/message-resource';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +29,15 @@ import { HttpInterceptorProviders } from './core/intercepters/interceptors';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RecruitmentModule,
     NgbModule,
     AppRoutingModule
   ],
   providers: [
+    MessageResource,
     HttpInterceptorProviders,
     NgbModalConfig,
   ],

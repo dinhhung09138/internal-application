@@ -104,7 +104,7 @@
 }
 
 .table-scroll tbody {
-    overflow: auto;
+    overflow: overlay;
     position: absolute;
     width: 99%;
     min-width: 1366px;

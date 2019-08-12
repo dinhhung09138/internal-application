@@ -1,9 +1,11 @@
 export class AppSetting {
 
+  /** Table page size */
   static readonly table = {
     pageSize: 20,
   };
 
+  /** Modal option config */
   static readonly ModalOptions = {
     modalOptions: {
       ariaLabelledBy: 'modal-basic-title',

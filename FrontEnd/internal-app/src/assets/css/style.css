@@ -51,7 +51,7 @@ a:focus {
 }
 
 .card-body {
-  padding: 1em;
+    padding: 1em;
 }
 
 .inner-addon {
@@ -69,15 +69,15 @@ a:focus {
 }
 
 .star::before {
-  font-family: FontAwesome;
-  content: '\f005';
-  color: #71707161;
+    font-family: FontAwesome;
+    content: '\f005';
+    color: #71707161;
 }
 
 .star-voted::before {
-  font-family: FontAwesome;
-  content: '\f005';
-  color: #28bb3f;
+    font-family: FontAwesome;
+    content: '\f005';
+    color: #28bb3f;
 }
 
 .body-scroll {
@@ -85,6 +85,6 @@ a:focus {
     height: -webkit-calc(100vh - 60px);
     height: -o-calc(100vh - 60px);
     height: calc(100vh - 60px);
-    overflow-y: auto;
+    overflow-y: overflow;
     overflow-x: hidden;
 }

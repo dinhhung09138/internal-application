@@ -76,16 +76,22 @@ input[type="radio"]:disabled+.label-text:before {
 }
 
 input[type="text"] {
-    border: 1px solid #17a2b8;
+    border: 1px solid #138496;
     padding: 0px 3px;
 }
 
-input[type="text"]:focus {
-    background-color: #abeef987;
-}
+input[type="text"]:focus {}
 
 .form-control {
     height: calc(1.2em + .75rem + 2px);
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #138496;
+    outline: 0;
+    box-shadow: none;
 }
 
 select {
@@ -102,7 +108,7 @@ select:focus {
 }
 
 .btn:hover {
-  cursor: hand;
+    cursor: hand;
 }
 
 .btn-outline-primary,
@@ -118,7 +124,7 @@ select:focus {
 }
 
 .btn-outline-primary:hover i {
-  color: white;
+    color: white;
 }
 
 .border-top-panel {
@@ -131,3 +137,14 @@ select:focus {
     font-weight: bold;
 }
 
+
+/** Form validation*/
+
+input.ng-invalid {
+    border: 1px solid #dc3545;
+}
+
+span.ng-invalid {
+    width: 100%;
+    color: #dc3545;
+}
