@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" autocomplete="off" (submit)="onSubmit()">
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">{{ formTitle }}</h4>
         <button type="button" class="close" aria-label="Close" (click)="onClickClose()" tabindex="5">
@@ -13,7 +13,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                <select name="groupName" class="form-control" tabindex="1" ngbAutoFocus [(ngModel)]="model.groupId">
+                <select name="groupName" class="form-control" tabindex="1" ngbAutoFocus formControlName="groupId">
                   <option [value]="item.value" *ngFor="let item of listGroup">{{ item.title }}</option>
                 </select>
             </div>
@@ -25,18 +25,13 @@
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                <input name="name" type="text" class="form-control" [(ngModel)]="model.name" tabindex="2" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <span>Active: </span>
-                <input type="checkbox" [(ngModel)]="model.isActive" [checked]="model.isActive" />
+                <input name="name" type="text" class="form-control" formControlName="name" tabindex="2" />
+                <span *ngIf="isSubmit && f.name.errors">{{ formLabel.requiredName }}</span>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" tabindex="3" (click)="onClickSave()">Save</button>
+        <button type="submit" class="btn btn-outline-primary" tabindex="3">Save</button>
         <button type="button" class="btn btn-outline-dark" tabindex="4" (click)="onClickClose()">Cancel</button>
     </div>
 </form>

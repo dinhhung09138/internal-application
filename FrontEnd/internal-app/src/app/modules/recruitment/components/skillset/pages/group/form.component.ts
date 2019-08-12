@@ -21,8 +21,9 @@ export class SkillGroupFormComponent implements OnInit {
   formTitle: string;
   form: FormGroup;
   isSubmit = false;
-  formMessage = {
-    cancelButton: MessageResource.ButtonCancel,
+  formLabel = {
+    save: MessageResource.Button.Save,
+    cancel: MessageResource.Button.Cancel,
     requiredName: MessageResource.SkillGroup.RequiredName,
   }
 
@@ -52,13 +53,8 @@ export class SkillGroupFormComponent implements OnInit {
 
   get f() { return this.form.controls; }
 
-  /**
-   * Event raise when user click save button
-   */
   onSubmit() {
     this.isSubmit = true;
-
-    console.log(this.form);
 
     if( this.form.invalid) {
       return;
@@ -68,17 +64,14 @@ export class SkillGroupFormComponent implements OnInit {
 
     this.groupService.save(this.model).subscribe((response: ApiResponseModel) => {
       if (response.success) {
-        this.messageService.success(MessageResource.SaveSuccess);
+        this.messageService.success(MessageResource.CommonMessage.SaveSuccess);
         this.activeModal.close(new FormResponseModel(true, this.model));
       } else {
-        this.messageService.error(MessageResource.Error);
+        this.messageService.error(MessageResource.CommonMessage.Error);
       }
     });
   }
 
-  /**
-   * Event raise when user click close button or 'x' button on title form
-   */
   onClickClose() {
     this.activeModal.close(new FormResponseModel(false));
   }

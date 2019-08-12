@@ -1,19 +1,19 @@
 <div class="card-header">
     <div class="row mb-1">
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <button class="btn btn-outline-primary" (click)="onClickAdd()"><i class="fa fa-plus-circle"></i>  New</button> &nbsp;
+            <button class="btn btn-outline-primary" (click)="onClickAdd()"><i class="fa fa-plus-circle"></i>  {{ formLabel.new }}</button> &nbsp;
             <div class="btn-group">
                 <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
-              <i class="fa fa-file"></i>  Export  <i class="fa fa-caret-down"></i>
+              <i class="fa fa-file"></i>  {{ formLabel.export }}  <i class="fa fa-caret-down"></i>
             </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-excel-o"></i>  Excel</a>
-                    <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-text-o"></i>  Excel</a>
+                    <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-text-o"></i>  Text</a>
                     <a class="dropdown-item btn btn-outline-primary" href="javascript:;"><i class="fa fa-file-pdf-o"></i>  Pdf</a>
                 </div>
             </div>
             &nbsp;
-            <button class="btn btn-outline-danger" (click)="onClickDeleteAll()"><i class="fa fa-times-circle"></i> Delete</button>
+            <button class="btn btn-outline-danger" (click)="onClickDeleteAll()"><i class="fa fa-times-circle"></i> {{ formLabel.delete }}</button>
         </div>
         <div class="col-md-4 col-sm-2 col-xs-12"></div>
         <div class="col-md-2 col-sm-4 col-xs-12">

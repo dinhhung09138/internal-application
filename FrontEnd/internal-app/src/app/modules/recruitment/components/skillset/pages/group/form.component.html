@@ -14,7 +14,7 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <input type="text" ngbAutoFocus class="form-control" formControlName="name" tabindex="1" maxlength="100" required />
-                <span *ngIf="isSubmit && f.name.errors" class="ng-invalid">{{ messageResource.SkillGroup.RequiredName }}</span>
+                <span *ngIf="isSubmit && f.name.errors" class="ng-invalid">{{ formLabel.requiredName }}</span>
             </div>
         </div>
     </div>

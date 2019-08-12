@@ -11,11 +11,15 @@ import { SkillFormComponent } from './form.component';
 import { FormResponseModel } from 'src/app/core/models/form-response.model';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { ModalLoadingComponent } from 'src/app/shared/components/modal-loading/modal-loading.component';
+import { MessageService } from 'src/app/core/services/message.service';
+import { MessageResource } from 'src/app/core/config/message-resource';
+import { ApiResponseModel } from 'src/app/core/models/api-response.model';
 
 
 @Component({
   selector: 'app-recruitment-skill-list',
-  templateUrl: './list.component.html'
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
 })
 
 export class SkillListComponent implements OnInit {
@@ -39,7 +43,15 @@ export class SkillListComponent implements OnInit {
 
   isLoading = false;
 
-  constructor(private skillService: SkillService, private modalService: NgbModal) { }
+  formLabel = {
+    new: MessageResource.Button.New,
+    delete: MessageResource.Button.Delete,
+    export: MessageResource.Button.Export,
+  }
+
+  constructor(private skillService: SkillService,
+              private messageService: MessageService,
+              private modalService: NgbModal) { }
 
   ngOnInit() {
     this.filter = new TableFilterModel();
@@ -74,9 +86,6 @@ export class SkillListComponent implements OnInit {
    * @param modal Modal popup name
    */
   onClickAdd() {
-
-    this.modalService.open(ModalLoadingComponent, AppSetting.ModalOptions.modalOptions);
-    return;
 
     this.isEdit = false;
     this.selectedItem = new SkillModel();
@@ -153,7 +162,7 @@ export class SkillListComponent implements OnInit {
     * Get list of data
     */
   private getList() {
-    this.skillService.list().subscribe((res: TableResponseModel) => {
+    this.skillService.list(this.filter).subscribe((res: TableResponseModel) => {
       this.tableData = res;
     });
   }
@@ -166,12 +175,13 @@ export class SkillListComponent implements OnInit {
     modalRef.componentInstance.isEdit = this.isEdit;
     modalRef.componentInstance.model = this.selectedItem;
     modalRef.result.then((response: FormResponseModel) => {
-      console.log(response);
+      if (response.status === true) {
+        this.getList();
+      }
     }).catch((error) => {
       console.log(error);
     }).finally(() => {
-      console.log('finally');
-      modalRef.close();
+      // TODO
     });
   }
 
@@ -181,12 +191,20 @@ export class SkillListComponent implements OnInit {
   private openConfirmDeleteForm() {
     const modalRef = this.modalService.open(ConfirmDeleteComponent, AppSetting.ModalOptions.modalSmallOptions);
     modalRef.result.then((response: FormResponseModel) => {
-      console.log(response);
+      if (response.status === true) {
+        this.skillService.delete(this.selectedItem.id).subscribe((response: ApiResponseModel) => {
+          if (response.success) {
+            this.getList();
+            this.messageService.success(MessageResource.CommonMessage.DeleteSuccess)
+          } else {
+            this.messageService.error(MessageResource.CommonMessage.Error);
+          }
+        });
+      }
     }).catch((error) => {
       console.log(error);
     }).finally(() => {
-      console.log('finally');
-      modalRef.close();
+      // TODO
     });
   }
 

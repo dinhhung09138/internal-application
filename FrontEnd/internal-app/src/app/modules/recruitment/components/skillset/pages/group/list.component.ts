@@ -40,6 +40,13 @@ export class SkillGroupListComponent implements OnInit {
 
   isLoading = false;
 
+  formLabel = {
+    new: MessageResource.Button.New,
+    delete: MessageResource.Button.Delete,
+    export: MessageResource.Button.Export,
+
+  }
+
   constructor(private skillGroupService: SkillGroupService,
               private messageService: MessageService,
               private modal: NgbModal) { }
@@ -160,11 +167,13 @@ export class SkillGroupListComponent implements OnInit {
     modalRef.componentInstance.isEdit = this.isEdit;
     modalRef.componentInstance.model = this.selectedItem;
     modalRef.result.then((response: FormResponseModel) => {
-      this.getList();
+      if (response.status === true) {
+        this.getList();
+      }
     }).catch((error) => {
       console.log(error);
     }).finally(() => {
-      modalRef.close();
+      // TODO
     });
   }
 
@@ -174,13 +183,13 @@ export class SkillGroupListComponent implements OnInit {
   private openConfirmDeleteForm() {
     const modalRef = this.modal.open(ConfirmDeleteComponent, AppSetting.ModalOptions.modalSmallOptions);
     modalRef.result.then((response: FormResponseModel) => {
-      if (response.status) {
+      if (response.status === true) {
         this.skillGroupService.delete(this.selectedItem.id).subscribe((response: ApiResponseModel) => {
           if (response.success) {
             this.getList();
-            this.messageService.success(MessageResource.DeleteSuccess)
+            this.messageService.success(MessageResource.CommonMessage.DeleteSuccess)
           } else {
-            this.messageService.error(MessageResource.Error);
+            this.messageService.error(MessageResource.CommonMessage.Error);
           }
         });
       }
