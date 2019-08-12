@@ -80,8 +80,6 @@ input[type="text"] {
     padding: 0px 3px;
 }
 
-input[type="text"]:focus {}
-
 .form-control {
     height: calc(1.2em + .75rem + 2px);
 }
@@ -114,17 +112,29 @@ select:focus {
 .btn-outline-primary,
 .btn-outline-primary.disabled {
     color: #138496 !important;
-    border-color: #17a2b8;
+    border-color: #138496;
 }
 
 .btn-outline-primary:hover {
     color: white;
-    background-color: #17a2b8;
-    border-color: #17a2b8;
+    background-color: #138496;
+    border-color: #138496;
 }
 
-.btn-outline-primary:hover i {
+.dropdown-item {
+    color: #138496;
+}
+
+.dropdown-item:hover,
+.dropdown-item:active {
     color: white;
+    background-color: #138496;
+    border-color: #138496;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:hover i {
+    color: white !important;
 }
 
 .border-top-panel {
@@ -140,8 +150,9 @@ select:focus {
 
 /** Form validation*/
 
+select.ng-invalid,
 input.ng-invalid {
-    border: 1px solid #dc3545;
+    border: 1px solid #dc3545 !important;
 }
 
 span.ng-invalid {

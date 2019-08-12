@@ -14,12 +14,13 @@
 
 .modal-header .close {
     padding: .3rem .5rem;
-    margin: -.3rem -.2rem -.5rem auto;
+    margin: -.3rem .2rem -.5rem auto;
 }
 
 .modal-title {
     line-height: 1.2;
     color: #138496;
+    margin-left: 10px;
 }
 
 .modal-footer {
