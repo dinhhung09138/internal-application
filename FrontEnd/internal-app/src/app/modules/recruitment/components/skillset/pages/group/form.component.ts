@@ -45,9 +45,9 @@ export class SkillGroupFormComponent implements OnInit {
 
   private setFormTitle() {
     if (this.isEdit) {
-      this.formTitle = 'Edit group';
+      this.formTitle = MessageResource.SkillGroup.formEdit;
     } else {
-      this.formTitle = 'Add new group';
+      this.formTitle = MessageResource.SkillGroup.formNew;
     }
   }
 

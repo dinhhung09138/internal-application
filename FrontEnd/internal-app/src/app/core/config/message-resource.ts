@@ -19,10 +19,14 @@ export class MessageResource {
 
   /** Skill group message */
   static readonly SkillGroup = {
-    RequiredName: 'Name must required'
+    formNew: 'Add new group',
+    formEdit: 'Edit group',
+    RequiredName: 'Name must required',
   };
 
   static readonly Skill = {
-    RequiredName: 'Name must required'
+    formNew: 'Add new skill',
+    formEdit: 'Edit skill',
+    RequiredName: 'Name must required',
   }
 }

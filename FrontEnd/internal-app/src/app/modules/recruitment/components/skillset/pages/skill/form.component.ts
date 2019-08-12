@@ -50,9 +50,9 @@ export class SkillFormComponent implements OnInit {
 
   private setFormTitle() {
     if (this.isEdit) {
-      this.formTitle = 'Edit skill';
+      this.formTitle = MessageResource.Skill.formEdit;
     } else {
-      this.formTitle = 'Add new skill';
+      this.formTitle = MessageResource.Skill.formNew;
     }
   }
 
