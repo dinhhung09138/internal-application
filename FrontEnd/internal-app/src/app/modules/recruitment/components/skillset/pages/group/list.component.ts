@@ -108,9 +108,8 @@ export class SkillGroupListComponent implements OnInit {
   /**
    * Event raise when user click delete icon on table body
    * @param item Current item selected
-   * @param modal Modal popup name
    */
-  onClickDelete(item: SkillGroupModel, modal: any) {
+  onClickDelete(item: SkillGroupModel) {
     this.isDeleteAll = false;
     this.selectedItem = item;
     this.openConfirmDeleteForm();
@@ -178,6 +177,7 @@ export class SkillGroupListComponent implements OnInit {
       if (response.status) {
         this.skillGroupService.delete(this.selectedItem.id).subscribe((response: ApiResponseModel) => {
           if (response.success) {
+            this.getList();
             this.messageService.success(MessageResource.DeleteSuccess)
           } else {
             this.messageService.error(MessageResource.Error);
