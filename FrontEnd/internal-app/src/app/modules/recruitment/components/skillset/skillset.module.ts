@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { SkillSetComponent } from './skillset.component';
 import { SkillListComponent } from './pages/skill/list.component';
 import { SkillGroupListComponent } from './pages/group/list.component';
-import { FormsModule } from '@angular/forms';
 import { NgbdSortableHeader } from 'src/app/shared/directives/sortable.directive';
 import { ContainerLoading } from 'src/app/shared/components/container-loading/container-loading.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -19,7 +18,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ],
     imports: [
       CommonModule,
-      FormsModule,
       SharedModule,
       RouterModule.forChild([
         { path: 'group', component: SkillGroupListComponent, data: { title: 'List group of skill' }},

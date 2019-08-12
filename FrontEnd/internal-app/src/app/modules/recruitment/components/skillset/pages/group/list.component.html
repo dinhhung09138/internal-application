@@ -31,7 +31,6 @@
                             <input type="checkbox" [checked]="selectAll" (click)="onClickAllCheck()" />
                         </th>
                         <th sortable="Name" scope="col" (sort)="onSort($event)">Name</th>
-                        <th>Active</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -42,12 +41,12 @@
                         </td>
                         <td>{{ item.name }}</td>
                         <td>
-                            <input type="checkbox" [checked]="item.isActive" disabled />
-                        </td>
-                        <td>
                             <button class="btn btn-outline-primary mr-1" (click)="onClickEdit(item)"><i class="fa fa-pencil-square-o"></i></button>
                             <button class="btn btn-outline-danger mr-1" (click)="onClickDelete(item)"><i class="fa fa-remove"></i></button>
                         </td>
+                    </tr>
+                    <tr *ngIf="!tableData.list || tableData.list.length === 0" class="text-center">
+                        No data available
                     </tr>
                 </tbody>
             </table>

@@ -5,6 +5,9 @@ import { SkillGroupModel } from '../../models/module/recruitment/skill-group.mod
 import { SkillGroupModelMock } from '../../mocks/skill-group.model.mocks';
 import { SelectItemModel } from '../../models/select-item.model';
 import { TableResponseModel } from '../../models/table/table-response.model';
+import { map } from 'rxjs/operators';
+import { TableFilterModel } from '../../models/table/table-filter.model';
+import { ApiResponseModel } from '../../models/api-response.model';
 
 @Injectable()
 export class SkillGroupService {
@@ -14,17 +17,18 @@ export class SkillGroupService {
   /**
    * Get list of skill
    */
-  list(): Observable<TableResponseModel> {
+  list(filter: TableFilterModel): Observable<TableResponseModel> {
 
-    const response = new TableResponseModel();
-    response.currentPage = 2;
-    response.pageSize = 10;
-    response.filteredItem = 25;
-    response.totalItem = 25;
-    response.list = this.skillGroupMock.initList();
+    return this.skillGroupMock.initList(filter);
 
-    return of(response);
+  }
 
+  save(item: SkillGroupModel): Observable<ApiResponseModel> {
+    return this.skillGroupMock.save(item);
+  }
+
+  delete(id: string): Observable<ApiResponseModel> {
+    return this.skillGroupMock.delete(id);
   }
 
   /**

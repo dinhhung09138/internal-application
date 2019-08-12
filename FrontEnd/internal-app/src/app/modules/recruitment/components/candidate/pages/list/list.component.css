@@ -43,7 +43,7 @@ div.candidate div.info {
     height: -webkit-calc(100vh - 120px);
     height: -o-calc(100vh - 120px);
     height: calc(100vh - 120px);
-    overflow-y: auto;
+    overflow-y: overflow;
     overflow-x: hidden;
 }
 

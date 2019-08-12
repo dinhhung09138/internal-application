@@ -10,6 +10,9 @@ import { SkillGroupFormComponent } from './form.component';
 import { AppSetting } from 'src/app/core/config/app-setting.config';
 import { FormResponseModel } from 'src/app/core/models/form-response.model';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
+import { ApiResponseModel } from 'src/app/core/models/api-response.model';
+import { MessageService } from 'src/app/core/services/message.service';
+import { MessageResource } from 'src/app/core/config/message-resource';
 
 @Component({
   selector: 'app-recruitment-skill-group-list',
@@ -37,7 +40,9 @@ export class SkillGroupListComponent implements OnInit {
 
   isLoading = false;
 
-  constructor(private skillGroupService: SkillGroupService, private modal: NgbModal) { }
+  constructor(private skillGroupService: SkillGroupService,
+              private messageService: MessageService,
+              private modal: NgbModal) { }
 
   ngOnInit() {
     this.filter = new TableFilterModel();
@@ -132,10 +137,6 @@ export class SkillGroupListComponent implements OnInit {
         header.direction = '';
       }
     });
-
-    console.log(column);
-    console.log(direction);
-
     // this.filter.sorts.push({column: column, direction: direction});
   }
 
@@ -147,7 +148,7 @@ export class SkillGroupListComponent implements OnInit {
     * Get list of data
     */
    private getList() {
-    this.skillGroupService.list().subscribe((res: TableResponseModel) => {
+    this.skillGroupService.list(this.filter).subscribe((res: TableResponseModel) => {
       this.tableData = res;
     });
   }
@@ -160,11 +161,10 @@ export class SkillGroupListComponent implements OnInit {
     modalRef.componentInstance.isEdit = this.isEdit;
     modalRef.componentInstance.model = this.selectedItem;
     modalRef.result.then((response: FormResponseModel) => {
-      console.log(response);
+      this.getList();
     }).catch((error) => {
       console.log(error);
     }).finally(() => {
-      console.log('finally');
       modalRef.close();
     });
   }
@@ -175,11 +175,18 @@ export class SkillGroupListComponent implements OnInit {
   private openConfirmDeleteForm() {
     const modalRef = this.modal.open(ConfirmDeleteComponent, AppSetting.ModalOptions.modalSmallOptions);
     modalRef.result.then((response: FormResponseModel) => {
-      console.log(response);
+      if (response.status) {
+        this.skillGroupService.delete(this.selectedItem.id).subscribe((response: ApiResponseModel) => {
+          if (response.success) {
+            this.messageService.success(MessageResource.DeleteSuccess)
+          } else {
+            this.messageService.error(MessageResource.Error);
+          }
+        });
+      }
     }).catch((error) => {
       console.log(error);
     }).finally(() => {
-      console.log('finally');
       modalRef.close();
     });
   }

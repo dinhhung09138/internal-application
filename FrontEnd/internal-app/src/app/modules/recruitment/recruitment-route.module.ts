@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { SkillGroupFormComponent } from './components/skillset/pages/group/form.component';
 import { SkillFormComponent } from './components/skillset/pages/skill/form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RecruitmentNavigationComponent } from './shared/recruitment-navigation/recruitment-navigation.component';
 import { RecruitmentSidebarComponent } from './shared/recruitment-sidebar/recruitment-sidebar.component';
@@ -64,8 +64,9 @@ const routes: Routes = [
     SkillFormComponent,
   ],
   imports: [
-    FormsModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   providers: [
