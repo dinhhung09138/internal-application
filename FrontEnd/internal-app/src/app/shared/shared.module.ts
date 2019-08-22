@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TableSearchComponent } from 'src/app/shared/components/table-search/table-search.component';
 import { TableFooterComponent } from 'src/app/shared/components/table-footer/table-footer.component';
 import { ModalLoadingComponent } from './components/modal-loading/modal-loading.component';
+import { NgbdSortableHeader } from './directives/sortable.directive';
 
 @NgModule({
   imports:[
@@ -12,11 +13,13 @@ import { ModalLoadingComponent } from './components/modal-loading/modal-loading.
     ModalLoadingComponent,
     TableSearchComponent,
     TableFooterComponent,
+    NgbdSortableHeader,
   ],
   exports: [
     ModalLoadingComponent,
     TableSearchComponent,
-    TableFooterComponent
+    TableFooterComponent,
+    NgbdSortableHeader,
   ],
 })
 
