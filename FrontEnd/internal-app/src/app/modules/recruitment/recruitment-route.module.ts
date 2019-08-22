@@ -16,6 +16,9 @@ import { CandidateContactFormComponent } from './components/candidate/pages/cont
 import { CandidateService } from 'src/app/core/services/recruitment/candidate.service';
 import { CandidateModelMock } from 'src/app/core/mocks/candidate.model.mocks';
 import { CandidateSocialNetworkFormComponent } from './components/candidate/pages/social-form/social-form.component';
+import { ProcessSettingFormComponent } from './components/setting/process/process.form.component';
+import { ProcessSettingService } from 'src/app/core/services/recruitment/process-setting.service';
+import { ProcessSettingModelMock } from 'src/app/core/mocks/process-setting.model.mocks';
 
 const routes: Routes = [
   { path: '',
@@ -49,6 +52,10 @@ const routes: Routes = [
   {
     path: 'mail',
     loadChildren: () => import('./components/mail/mail.module').then(m => m.MailModule)
+  },
+  {
+    path: 'setting/process',
+    loadChildren: () => import('./components/setting/process/process.module').then(m => m.ProcessModule)
   }
 ];
 
@@ -62,6 +69,7 @@ const routes: Routes = [
     CandidateContactFormComponent,
     CandidateSocialNetworkFormComponent,
     SkillFormComponent,
+    ProcessSettingFormComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +84,8 @@ const routes: Routes = [
     SkillGroupModelMock,
     CandidateService,
     CandidateModelMock,
+    ProcessSettingService,
+    ProcessSettingModelMock,
   ],
   entryComponents: [
     ConfirmDeleteComponent,
@@ -83,6 +93,7 @@ const routes: Routes = [
     SkillFormComponent,
     CandidateContactFormComponent,
     CandidateSocialNetworkFormComponent,
+    ProcessSettingFormComponent,
   ],
   exports: [RouterModule]
 })

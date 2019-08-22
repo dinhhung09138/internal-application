@@ -29,4 +29,10 @@ export class MessageResource {
     formEdit: 'Edit skill',
     RequiredName: 'Name must required',
   }
+
+  static readonly ProcessSetting = {
+    formNew: 'Add new process',
+    formEdit: 'Edit process',
+    RequiredName: 'Name must required',
+  }
 }
