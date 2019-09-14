@@ -1,1 +1,10 @@
 FrontEnd/node_modules/
+BackEnd/InternalApplication/DataAccess/Internal.DataAccess/obj/
+BackEnd/InternalApplication/DataAccess/Internal.DataAccess/bin/
+BackEnd/InternalApplication/InternalApplication/bin/
+BackEnd/InternalApplication/InternalApplication/obj/
+BackEnd/InternalApplication/Business/Internal.Business/obj/
+BackEnd/InternalApplication/Business/Internal.Business.Login/obj/
+BackEnd/InternalApplication/Business/Internal.Business.Login/bin/
+BackEnd/InternalApplication/.vs/InternalApplication/v16/
+BackEnd/InternalApplication/Business/Internal.Business/bin/
