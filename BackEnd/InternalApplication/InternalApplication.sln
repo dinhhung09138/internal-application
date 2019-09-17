@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternalApplication", "Inte
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{CC8EBFF5-3521-4527-8140-44C09C21C753}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Business.Login", "Business\Internal.Business.Login\Internal.Business.Login.csproj", "{9B9C720B-39E4-4DB1-9885-38F071ECD78D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{97D869F7-0CF9-4B23-B5F7-DC12090BC137}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.DataAccess", "DataAccess\Internal.DataAccess\Internal.DataAccess.csproj", "{1905BBA5-3789-4AA0-8BD2-83653D4A9C47}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{37D4E848-50CB-4843-8479-FBE436AAFBC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Common", "Models\Model.Common\Model.Common.csproj", "{0C781E6C-192E-42DC-817D-BE8DC9153607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.DataAccess", "DataAccess\Internal.DataAccess\Internal.DataAccess.csproj", "{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Business", "Business\Internal.Business\Internal.Business.csproj", "{0A24E47F-69E4-4442-A87D-4D954015CE40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,21 +27,26 @@ Global
 		{7667CC3E-912F-480F-BADC-41714963E8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7667CC3E-912F-480F-BADC-41714963E8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7667CC3E-912F-480F-BADC-41714963E8D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B9C720B-39E4-4DB1-9885-38F071ECD78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B9C720B-39E4-4DB1-9885-38F071ECD78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B9C720B-39E4-4DB1-9885-38F071ECD78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B9C720B-39E4-4DB1-9885-38F071ECD78D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1905BBA5-3789-4AA0-8BD2-83653D4A9C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1905BBA5-3789-4AA0-8BD2-83653D4A9C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1905BBA5-3789-4AA0-8BD2-83653D4A9C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1905BBA5-3789-4AA0-8BD2-83653D4A9C47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C781E6C-192E-42DC-817D-BE8DC9153607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C781E6C-192E-42DC-817D-BE8DC9153607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C781E6C-192E-42DC-817D-BE8DC9153607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C781E6C-192E-42DC-817D-BE8DC9153607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A24E47F-69E4-4442-A87D-4D954015CE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A24E47F-69E4-4442-A87D-4D954015CE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A24E47F-69E4-4442-A87D-4D954015CE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A24E47F-69E4-4442-A87D-4D954015CE40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9B9C720B-39E4-4DB1-9885-38F071ECD78D} = {CC8EBFF5-3521-4527-8140-44C09C21C753}
-		{1905BBA5-3789-4AA0-8BD2-83653D4A9C47} = {97D869F7-0CF9-4B23-B5F7-DC12090BC137}
+		{0C781E6C-192E-42DC-817D-BE8DC9153607} = {37D4E848-50CB-4843-8479-FBE436AAFBC8}
+		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0} = {97D869F7-0CF9-4B23-B5F7-DC12090BC137}
+		{0A24E47F-69E4-4442-A87D-4D954015CE40} = {CC8EBFF5-3521-4527-8140-44C09C21C753}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {505F2321-A92F-47D8-8C88-823B35CB4825}

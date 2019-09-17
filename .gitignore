@@ -8,3 +8,6 @@ BackEnd/InternalApplication/Business/Internal.Business.Login/obj/
 BackEnd/InternalApplication/Business/Internal.Business.Login/bin/
 BackEnd/InternalApplication/.vs/InternalApplication/v16/
 BackEnd/InternalApplication/Business/Internal.Business/bin/
+BackEnd/InternalApplication/Models/Model.Common/obj/
+BackEnd/InternalApplication/Models/Model.Common/bin/
+BackEnd/InternalApplication/.vs/
