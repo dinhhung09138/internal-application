@@ -11,3 +11,13 @@ BackEnd/InternalApplication/Business/Internal.Business/bin/
 BackEnd/InternalApplication/Models/Model.Common/obj/
 BackEnd/InternalApplication/Models/Model.Common/bin/
 BackEnd/InternalApplication/.vs/
+BackEnd/InternalApplication/DataAccess/Internal.Data.IRepository/obj/
+BackEnd/InternalApplication/DataAccess/Internal.Data.ITableRepository/obj/
+BackEnd/InternalApplication/DataAccess/Internal.Data.SQL.Repository/obj/
+BackEnd/InternalApplication/DataAccess/Internal.Data.SQL.TableRepository/bin/
+BackEnd/InternalApplication/DataAccess/Internal.Data.SQL.TableRepository/obj/
+BackEnd/InternalApplication/Services/Internal.Service.Common/obj/
+BackEnd/InternalApplication/Services/Internal.Service.Common/bin/
+BackEnd/InternalApplication/DataAccess/Internal.Data.IRepository/bin/
+BackEnd/InternalApplication/DataAccess/Internal.Data.ITableRepository/bin/
+BackEnd/InternalApplication/DataAccess/Internal.Data.SQL.Repository/bin/
