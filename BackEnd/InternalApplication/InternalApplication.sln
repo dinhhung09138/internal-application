@@ -11,23 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{37D4E848-50CB-4843-8479-FBE436AAFBC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Common", "Models\Model.Common\Model.Common.csproj", "{0C781E6C-192E-42DC-817D-BE8DC9153607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.Common", "Models\Model.Common\Model.Common.csproj", "{0C781E6C-192E-42DC-817D-BE8DC9153607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.DataAccess", "DataAccess\Internal.DataAccess\Internal.DataAccess.csproj", "{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Business", "Business\Internal.Business\Internal.Business.csproj", "{0A24E47F-69E4-4442-A87D-4D954015CE40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Business", "Business\Internal.Business\Internal.Business.csproj", "{0A24E47F-69E4-4442-A87D-4D954015CE40}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{164BDE6C-293A-4461-A344-9FA950681407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Service.Common", "Services\Internal.Service.Common\Internal.Service.Common.csproj", "{65095BAC-1916-48C2-96C5-BF72498CB897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Service.Common", "Services\Internal.Service.Common\Internal.Service.Common.csproj", "{65095BAC-1916-48C2-96C5-BF72498CB897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Data.IRepository", "DataAccess\Internal.Data.IRepository\Internal.Data.IRepository.csproj", "{3A44BC9A-A2B8-4B6A-96C2-9445FD7929E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Data.IRepository", "DataAccess\Internal.Data.IRepository\Internal.Data.IRepository.csproj", "{3A44BC9A-A2B8-4B6A-96C2-9445FD7929E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Data.ITableRepository", "DataAccess\Internal.Data.ITableRepository\Internal.Data.ITableRepository.csproj", "{149BA446-2D92-4826-85F1-FBFF7EA81BF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Data.ITableRepository", "DataAccess\Internal.Data.ITableRepository\Internal.Data.ITableRepository.csproj", "{149BA446-2D92-4826-85F1-FBFF7EA81BF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Data.SQL.TableRepository", "DataAccess\Internal.Data.SQL.TableRepository\Internal.Data.SQL.TableRepository.csproj", "{1EAC3932-09AA-4978-AB2E-CB1F6D4AE389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Data.SQL.TableRepository", "DataAccess\Internal.Data.SQL.TableRepository\Internal.Data.SQL.TableRepository.csproj", "{1EAC3932-09AA-4978-AB2E-CB1F6D4AE389}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Data.SQL.Repository", "DataAccess\Internal.Data.SQL.Repository\Internal.Data.SQL.Repository.csproj", "{D178BA54-6F93-4884-A2D7-87397F82AC0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Data.SQL.Repository", "DataAccess\Internal.Data.SQL.Repository\Internal.Data.SQL.Repository.csproj", "{D178BA54-6F93-4884-A2D7-87397F82AC0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +41,6 @@ Global
 		{0C781E6C-192E-42DC-817D-BE8DC9153607}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C781E6C-192E-42DC-817D-BE8DC9153607}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C781E6C-192E-42DC-817D-BE8DC9153607}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A24E47F-69E4-4442-A87D-4D954015CE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A24E47F-69E4-4442-A87D-4D954015CE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A24E47F-69E4-4442-A87D-4D954015CE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,7 +71,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0C781E6C-192E-42DC-817D-BE8DC9153607} = {37D4E848-50CB-4843-8479-FBE436AAFBC8}
-		{5B48CFD7-AB71-45A2-8AB7-B23701AC9FC0} = {97D869F7-0CF9-4B23-B5F7-DC12090BC137}
 		{0A24E47F-69E4-4442-A87D-4D954015CE40} = {CC8EBFF5-3521-4527-8140-44C09C21C753}
 		{65095BAC-1916-48C2-96C5-BF72498CB897} = {164BDE6C-293A-4461-A344-9FA950681407}
 		{3A44BC9A-A2B8-4B6A-96C2-9445FD7929E5} = {97D869F7-0CF9-4B23-B5F7-DC12090BC137}

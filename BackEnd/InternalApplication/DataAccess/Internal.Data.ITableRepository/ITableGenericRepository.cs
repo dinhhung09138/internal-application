@@ -41,25 +41,35 @@ namespace Internal.Data.ITableRepository
         /// <returns>no return.</returns>
         Task AddAsync(T entity);
 
+        /// <summary>
+        /// Delete entity item.
+        /// </summary>
+        /// <param name="entity">Entity item.</param>
         void Delete(T entity);
 
-        void DeleteRange(T[] items);
+        /// <summary>
+        /// Delete a list of entity item.
+        /// </summary>
+        /// <param name="entity">list of entity item.</param>
+        void DeleteRange(T[] entity);
 
-        T FirstOrDefault(string[] includes = null, Expression<Func<T, bool>> where = null);
-
-        Task<T> FirstOrDefaultAsync(string[] includes = null, Expression<Func<T, bool>> where = null);
-
-        IQueryable<T> Query(string[] includes = null);
-
-        T SingleOrDefault(string[] includes = null, Expression<Func<T, bool>> where = null);
-
-        Task<T> SingleOrDefaultAsync(string[] includes = null, Expression<Func<T, bool>> where = null);
-
+        /// <summary>
+        /// Update entity item.
+        /// </summary>
+        /// <param name="entity">Entity item.</param>
         void Update(T entity);
 
-        void UpdateRange(T[] entityToUpdate);
+        /// <summary>
+        /// Update entity item. Using asynchonous method.
+        /// </summary>
+        /// <param name="entity">Entity item.</param>
+        void UpdateAsync(T entity);
 
-        Task<int> BatchUpdateAsync(Expression<Func<T, bool>> where, Expression<Func<T, T>> updateFactory);
+        /// <summary>
+        /// Update list of entity item.
+        /// </summary>
+        /// <param name="entity">List of entity item.</param>
+        void UpdateRange(T[] entity);
 
     }
 }
