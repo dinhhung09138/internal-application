@@ -21,3 +21,9 @@ BackEnd/InternalApplication/Services/Internal.Service.Common/bin/
 BackEnd/InternalApplication/DataAccess/Internal.Data.IRepository/bin/
 BackEnd/InternalApplication/DataAccess/Internal.Data.ITableRepository/bin/
 BackEnd/InternalApplication/DataAccess/Internal.Data.SQL.Repository/bin/
+BackEnd/InternalApplication/DataAccess/Internal.UnitOfWork/obj/
+BackEnd/InternalApplication/DataAccess/Modules/Internal.Data.Security/obj/
+BackEnd/InternalApplication/DataAccess/Internal.UnitOfWork/bin/
+BackEnd/InternalApplication/DataAccess/Internal.IUnitOfWork/obj/
+BackEnd/InternalApplication/DataAccess/Modules/Internal.Data.Security/bin/
+BackEnd/InternalApplication/DataAccess/Internal.IUnitOfWork/bin/
