@@ -21,5 +21,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Internal.Data.ITableRepository\Internal.Data.ITableRepository.csproj" />
+    <ProjectReference Include="..\Internal.Data.SQL.Repository\Internal.Data.SQL.Repository.csproj" />
+  </ItemGroup>
 
 </Project>

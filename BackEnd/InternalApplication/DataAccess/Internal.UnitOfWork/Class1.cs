@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Internal.Data.SQL.TableRepository
+namespace Internal.UnitOfWork
 {
     public class Class1
     {
