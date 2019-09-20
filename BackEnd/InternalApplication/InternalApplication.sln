@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{FB12
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Data.Security", "DataAccess\Modules\Internal.Data.Security\Internal.Data.Security.csproj", "{618920AE-A14B-4989-8ECA-5C9B5F9DF5A9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{FC298DF6-E27F-432A-BA02-D9C10BE3213D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildEntityModel", "Tools\BuildEntityModel\BuildEntityModel.csproj", "{5A51E2E7-D2AE-40C2-BB52-CB9522F0F912}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,10 @@ Global
 		{618920AE-A14B-4989-8ECA-5C9B5F9DF5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{618920AE-A14B-4989-8ECA-5C9B5F9DF5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{618920AE-A14B-4989-8ECA-5C9B5F9DF5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A51E2E7-D2AE-40C2-BB52-CB9522F0F912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A51E2E7-D2AE-40C2-BB52-CB9522F0F912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A51E2E7-D2AE-40C2-BB52-CB9522F0F912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A51E2E7-D2AE-40C2-BB52-CB9522F0F912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +109,7 @@ Global
 		{8D077E72-C1D6-4E23-991B-48324EACDF85} = {97D869F7-0CF9-4B23-B5F7-DC12090BC137}
 		{FB1236F5-4AE5-46D9-A999-53A2DD273CD0} = {97D869F7-0CF9-4B23-B5F7-DC12090BC137}
 		{618920AE-A14B-4989-8ECA-5C9B5F9DF5A9} = {FB1236F5-4AE5-46D9-A999-53A2DD273CD0}
+		{5A51E2E7-D2AE-40C2-BB52-CB9522F0F912} = {FC298DF6-E27F-432A-BA02-D9C10BE3213D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {505F2321-A92F-47D8-8C88-823B35CB4825}

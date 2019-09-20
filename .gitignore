@@ -27,3 +27,5 @@ BackEnd/InternalApplication/DataAccess/Internal.UnitOfWork/bin/
 BackEnd/InternalApplication/DataAccess/Internal.IUnitOfWork/obj/
 BackEnd/InternalApplication/DataAccess/Modules/Internal.Data.Security/bin/
 BackEnd/InternalApplication/DataAccess/Internal.IUnitOfWork/bin/
+BackEnd/InternalApplication/Tools/BuildEntityModel/bin/
+BackEnd/InternalApplication/Tools/BuildEntityModel/obj/
