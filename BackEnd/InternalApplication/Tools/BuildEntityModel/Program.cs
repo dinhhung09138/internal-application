@@ -9,8 +9,6 @@ namespace BuildEntityModel
     class Program
     {
 
-        private string ConnectionString = "";
-        private string NameSpace = "";
 
         /// <summary>
         /// Main class.
@@ -18,7 +16,11 @@ namespace BuildEntityModel
         /// <param name="args">srgs object.</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            Processing process = new Processing();
+            process.Process();
+            Console.WriteLine("Process completed");
+            Console.ReadLine();
         }
     }
 }

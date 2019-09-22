@@ -4,7 +4,7 @@ namespace BuildEntityModel.Enums
     /// <summary>
     /// Constraint enum
     /// </summary>
-    public enum EConstraint
+    public enum SqlConstraintType
     {
         None = 0,
         PrimaryKey = 1,
