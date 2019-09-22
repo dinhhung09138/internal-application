@@ -16,7 +16,7 @@ namespace BuildEntityModel
     public class DatabaseProcessing
     {
 
-        private string ConnectionString = "Server=112.78.2.118;Database=chacd26d_trandinhhung;User Id=chacd26d_admin;Password=Hung@0919649242;";
+        private string ConnectionString = "Server=.sql;Database=None;User Id=None;Password=None;";
 
         /// <summary>
         /// Get list table with columns information function
@@ -57,7 +57,7 @@ namespace BuildEntityModel
 
                         DataTable table = new DataTable();
 
-                        SqlCommand cmd = new SqlCommand("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES", connection);
+                        SqlCommand cmd = new SqlCommand("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES ORDER BY TABLE_NAME", connection);
                         cmd.CommandType = CommandType.Text;
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
 

@@ -5,6 +5,7 @@ namespace BuildEntityModel
     using System.Text;
     using System.Collections.Generic;
     using BuildEntityModel.Models;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Processing class
@@ -16,7 +17,7 @@ namespace BuildEntityModel
 
         }
 
-        public void Process()
+        public async Task Process()
         {
             try
             {
@@ -26,10 +27,12 @@ namespace BuildEntityModel
 
                 listTable = dbProcess.GetTableInfor();
 
+                Console.WriteLine($"total table: {listTable.Count}");
+
                 if(listTable.Count > 0)
                 {
                     EntityModelProcessing modelProcessing = new EntityModelProcessing();
-                    modelProcessing.Processing(listTable);
+                    await modelProcessing.Processing(listTable);
                 }
                 else
                 {

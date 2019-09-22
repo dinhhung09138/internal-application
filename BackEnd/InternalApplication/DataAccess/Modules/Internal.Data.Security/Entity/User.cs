@@ -2,8 +2,6 @@
 namespace Internal.Data.Security.Entity
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// User entity.
