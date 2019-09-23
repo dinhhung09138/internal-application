@@ -2,13 +2,12 @@
 namespace BuildEntityModel
 {
     using System;
+    using System.Linq;
     using System.Data;
     using System.Data.SqlClient;
-    using System.Text;
     using System.Collections.Generic;
     using BuildEntityModel.Models;
     using BuildEntityModel.Enums;
-    using System.Linq;
 
     /// <summary>
     /// Database processing.
@@ -40,7 +39,7 @@ namespace BuildEntityModel
             return listTable;
         }
 
-        /// <summary>
+        /// <summary> 
         /// Get list table name from database.
         /// </summary>
         /// <returns>List<Table></returns>
