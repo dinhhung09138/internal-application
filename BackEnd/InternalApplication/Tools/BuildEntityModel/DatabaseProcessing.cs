@@ -15,7 +15,7 @@ namespace BuildEntityModel
     public class DatabaseProcessing
     {
 
-        private string ConnectionString = "Server=.sql;Database=None;User Id=None;Password=None;";
+        private string ConnectionString = "Server=112.78.2.118;Database=chacd26d_trandinhhung;User Id=chacd26d_admin;Password=Hung@760119!;";
 
         /// <summary>
         /// Get list table with columns information function
