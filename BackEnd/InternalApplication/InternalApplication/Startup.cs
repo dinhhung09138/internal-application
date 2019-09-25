@@ -55,7 +55,7 @@ namespace InternalApplication
         {
             app.CustomizeMvc();
 
-            app.SetupEnvironment(env);
+            app.SetupEnvironment(env, loggerFactory);
         }
     }
 }

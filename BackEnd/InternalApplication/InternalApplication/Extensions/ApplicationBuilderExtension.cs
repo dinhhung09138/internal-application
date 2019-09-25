@@ -16,6 +16,11 @@ namespace InternalApplication.Extensions
     /// </summary>
     public static class ApplicationBuilderExtension
     {
+        /// <summary>
+        /// Customize MVC method.
+        /// </summary>
+        /// <param name="app">IApplicationBuilder object.</param>
+        /// <returns>IApplicationBuilder</returns>
         public static IApplicationBuilder CustomizeMvc(this IApplicationBuilder app)
         {
             app.UseMvc(routes =>
