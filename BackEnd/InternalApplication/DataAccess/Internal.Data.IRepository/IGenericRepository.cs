@@ -3,8 +3,9 @@ namespace Internal.Data.IRepository
 {
     using System;
     using System.Linq;
-    using System.Linq.Expressions;
     using System.Threading.Tasks;
+    using System.Linq.Expressions;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Generic repository interface.
@@ -58,8 +59,9 @@ namespace Internal.Data.IRepository
         /// <summary>
         /// Build a queryable.
         /// </summary>
+        /// <param name="includes">The specified seed value is used as the initial accumulator value.</param>
         /// <returns>IQueryable.</returns>
-        IQueryable<T> Query();
+        IQueryable<T> Query(string[] includes = null);
 
         /// <summary>
         /// Get the a single record based on the condition.
