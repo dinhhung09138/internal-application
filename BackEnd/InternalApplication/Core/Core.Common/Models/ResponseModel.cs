@@ -10,12 +10,21 @@ namespace Core.Common.Models
     public class ResponseModel
     {
         /// <summary>
-        /// Check response object is true or false based on error list count.
+        /// Constructor.
         /// </summary>
-        public bool Success { get { return Errors.Count > 0 ? true : false; } }
+        public ResponseModel()
+        {
+            this.Errors = new List<string>();
+            this.Extra = new List<object>();
+        }
 
         /// <summary>
-        /// List of error string.
+        /// Response status code
+        /// </summary>
+        public Enums.ResponseStatus ResponseStatus { get; set; }
+
+        /// <summary>
+        /// List of error or warning string.
         /// </summary>
         public List<string> Errors { get; set; }
 
@@ -25,7 +34,7 @@ namespace Core.Common.Models
         public object Result { get; set; }
 
         /// <summary>
-        /// Extra data.
+        /// Extra data response.
         /// </summary>
         public List<object> Extra { get; set; }
     }
