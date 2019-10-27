@@ -51,6 +51,7 @@ namespace InternalApplication
         /// </summary>
         /// <param name="app">IApplicationBuilder.</param>
         /// <param name="env">IHostingEnvironment.</param>
+        /// <param name="loggerFactory">Logger factory.</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.CustomizeMvc();
