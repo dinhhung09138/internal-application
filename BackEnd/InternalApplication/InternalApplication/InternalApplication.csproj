@@ -32,8 +32,4 @@
     <Folder Include="Constants\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Models\Model.Common\Model.Common.csproj" />
-  </ItemGroup>
-
 </Project>
