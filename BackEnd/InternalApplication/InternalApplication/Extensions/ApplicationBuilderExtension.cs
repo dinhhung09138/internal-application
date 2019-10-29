@@ -10,6 +10,7 @@ namespace InternalApplication.Extensions
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
+    using Serilog;
 
     /// <summary>
     /// Application builder extension
@@ -67,6 +68,8 @@ namespace InternalApplication.Extensions
                 // see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            loggerFactory.AddSerilog();
 
             app.UseCors("InternalApplicationPolicy");
 
