@@ -37,7 +37,7 @@ namespace InternalApplication
         /// <param name="services">IServiceCollection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.DatabaseConfiguration();
+            services.DatabaseConfiguration(this.Configuration);
 
             services.AuthenticationConfiguration(this.Configuration);
 

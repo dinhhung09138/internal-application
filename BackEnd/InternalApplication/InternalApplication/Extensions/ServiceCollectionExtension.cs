@@ -12,6 +12,9 @@ namespace InternalApplication.Extensions
     using Microsoft.IdentityModel.Tokens;
     using System.Text;
     using Microsoft.AspNetCore.Mvc;
+    using Internal.DataAccess;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Http;
 
     /// <summary>
     /// Service collection extension class.
@@ -44,9 +47,15 @@ namespace InternalApplication.Extensions
         /// </summary>
         /// <param name="services">IServiceCollection object.</param>
         /// <returns>IServiceCollection</returns>
-        public static IServiceCollection DatabaseConfiguration(this IServiceCollection services)
+        public static IServiceCollection DatabaseConfiguration(this IServiceCollection services, IConfiguration config)
         {
-            // TODO
+            services.AddDbContext<InternalContext>(options =>
+                options.UseSqlServer(config.GetConnectionString("InternalConnection")),
+                ServiceLifetime.Scoped
+            );
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             return services;
         }
 
@@ -58,11 +67,13 @@ namespace InternalApplication.Extensions
         /// <returns>IServiceCollection</returns>
         public static IServiceCollection AuthenticationConfiguration(this IServiceCollection services, IConfiguration config)
         {
-            services.AddAuthentication(m => {
+            services.AddAuthentication(m =>
+            {
                 m.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 m.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(options => {
+            .AddJwtBearer(options =>
+            {
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateIssuer = true,
