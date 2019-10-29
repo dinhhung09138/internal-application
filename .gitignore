@@ -31,3 +31,13 @@ BackEnd/InternalApplication/Tools/BuildEntityModel/bin/
 BackEnd/InternalApplication/Tools/BuildEntityModel/obj/
 *.json
 BackEnd/InternalApplication/API/API.Common/obj/
+BackEnd/InternalApplication/Core/DataAccess/Core.Data.SQL.Repository/obj/
+BackEnd/InternalApplication/Core/DataAccess/Core.Data.IRepository/obj/
+BackEnd/InternalApplication/Core/DataAccess/Core.IUnitOfWork/obj/
+BackEnd/InternalApplication/Core/DataAccess/Modules/Core.Data.Security/obj/
+BackEnd/InternalApplication/Core/DataAccess/Core.UnitOfWork/obj/
+Mockup/
+Review/
+deploy/
+BackEnd/InternalApplication/Core/Models/Core.CommonModels/obj/
+BackEnd/InternalApplication/Core/Core.Common/obj/
