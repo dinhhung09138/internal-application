@@ -3,7 +3,7 @@ namespace Internal.DataAccess.Entity
 {
     using System;
 
-    class SessionLog
+    public class SessionLog
     {
         public Guid Id { get; set; }
         public string Token { get; set; }
