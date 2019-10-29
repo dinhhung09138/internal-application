@@ -47,7 +47,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{904320
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D88ACE5E-FA4C-4AFD-A008-C01C3A1C0E68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common", "Core\Core.Common\Core.Common.csproj", "{F8904C6B-D32C-4836-847B-D72743C4D718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Common", "Core\Core.Common\Core.Common.csproj", "{F8904C6B-D32C-4836-847B-D72743C4D718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal.Authentication", "Business\Internal.Authentication\Internal.Authentication.csproj", "{F5D61DA8-4F26-47C6-9B9D-26B356FEEDBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,10 @@ Global
 		{F8904C6B-D32C-4836-847B-D72743C4D718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8904C6B-D32C-4836-847B-D72743C4D718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8904C6B-D32C-4836-847B-D72743C4D718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5D61DA8-4F26-47C6-9B9D-26B356FEEDBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5D61DA8-4F26-47C6-9B9D-26B356FEEDBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5D61DA8-4F26-47C6-9B9D-26B356FEEDBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5D61DA8-4F26-47C6-9B9D-26B356FEEDBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +129,7 @@ Global
 		{90432039-86AF-4566-A43D-C1DBDBEB73E3} = {AE9A95FD-672C-487C-A77D-F6CAB0237DD8}
 		{D88ACE5E-FA4C-4AFD-A008-C01C3A1C0E68} = {AE9A95FD-672C-487C-A77D-F6CAB0237DD8}
 		{F8904C6B-D32C-4836-847B-D72743C4D718} = {AE9A95FD-672C-487C-A77D-F6CAB0237DD8}
+		{F5D61DA8-4F26-47C6-9B9D-26B356FEEDBD} = {CC8EBFF5-3521-4527-8140-44C09C21C753}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {505F2321-A92F-47D8-8C88-823B35CB4825}
