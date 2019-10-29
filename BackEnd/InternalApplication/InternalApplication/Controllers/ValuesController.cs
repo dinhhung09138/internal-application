@@ -5,6 +5,8 @@ namespace InternalApplication.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using API.Common.Controllers;
+    using Internal.Authentication.Interface;
     using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
@@ -12,8 +14,15 @@ namespace InternalApplication.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : BaseController
     {
+        private readonly IAuthenticationService _authenService;
+
+        public ValuesController(IServiceProvider provider, IAuthenticationService authenService) : base(provider)
+        {
+            this._authenService = authenService; 
+        }
+
         /// <summary>
         /// Get API
         /// </summary>
