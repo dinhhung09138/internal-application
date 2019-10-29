@@ -21,7 +21,7 @@ namespace Core.Common.Models
         /// <summary>
         /// Response status code
         /// </summary>
-        public Enums.ResponseStatus ResponseStatus { get; set; }
+        public Enums.ResponseStatus ResponseStatus { get; set; } = Enums.ResponseStatus.Success;
 
         /// <summary>
         /// List of error or warning string.
