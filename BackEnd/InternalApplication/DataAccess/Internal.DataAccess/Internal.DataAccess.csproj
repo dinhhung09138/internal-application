@@ -27,4 +27,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\DataAccess\Core.Data.IRepository\Core.Data.IRepository.csproj" />
+  </ItemGroup>
+
 </Project>
