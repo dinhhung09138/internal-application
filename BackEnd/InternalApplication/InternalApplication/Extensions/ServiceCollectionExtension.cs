@@ -15,6 +15,7 @@ namespace InternalApplication.Extensions
     using Internal.DataAccess;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Authentication;
 
     /// <summary>
     /// Service collection extension class.
@@ -108,6 +109,7 @@ namespace InternalApplication.Extensions
         /// <returns>IServiceCollection</returns>
         public static IServiceCollection InjectApplicationService(this IServiceCollection services)
         {
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
             return services;
         }
 
