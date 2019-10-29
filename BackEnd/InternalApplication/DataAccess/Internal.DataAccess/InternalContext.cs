@@ -24,12 +24,12 @@ namespace Internal.DataAccess
         /// <summary>
         /// User table
         /// </summary>
-        public virtual ITableGenericRepository<User> UserRepository { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         /// <summary>
         /// Session log table
         /// </summary>
-        public virtual ITableGenericRepository<SessionLog> SessionLogRepository { get; set; }
+        public virtual DbSet<SessionLog> SessionLog { get; set; }
 
         /// <summary>
         /// Model creating
