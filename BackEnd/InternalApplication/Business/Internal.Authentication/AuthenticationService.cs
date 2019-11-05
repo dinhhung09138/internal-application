@@ -10,6 +10,7 @@ namespace Internal.Authentication
     using Core.Common.Models;
     using Internal.DataAccess;
     using Internal.Authentication.Interface;
+    using Core.IUnitOfWork;
 
 
     /// <summary>
@@ -17,7 +18,7 @@ namespace Internal.Authentication
     /// </summary>
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly InternalUnitOfWork _context;
+        private readonly IInternalUnitOfWork _context;
         private readonly ILogger<AuthenticationService> _logger;
 
         /// <summary>
@@ -25,7 +26,7 @@ namespace Internal.Authentication
         /// </summary>
         /// <param name="context"></param>
         /// <param name="logger"></param>
-        public AuthenticationService(InternalUnitOfWork context, ILogger<AuthenticationService> logger)
+        public AuthenticationService(IInternalUnitOfWork context, ILogger<AuthenticationService> logger)
         {
             this._context = context;
             this._logger = logger;
@@ -48,7 +49,6 @@ namespace Internal.Authentication
                     response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                     return response;
                 }
-                
             }
             catch(Exception ex)
             {

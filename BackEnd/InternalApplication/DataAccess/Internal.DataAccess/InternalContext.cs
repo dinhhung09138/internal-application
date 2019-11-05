@@ -11,7 +11,7 @@ namespace Internal.DataAccess
     /// <summary>
     /// Internal context.
     /// </summary>
-    public class InternalContext : DbContext
+    public partial class InternalContext : DbContext
     {
         /// <summary>
         /// Constructor.
@@ -62,13 +62,18 @@ namespace Internal.DataAccess
                             .IsRequired(true)
                             .IsUnicode(false);
 
+                entity.Property(e => e.EmployeeId)
+                            .HasColumnName("EmployeeId")
+                            .IsRequired(true)
+                            .IsUnicode(false);
+
                 entity.Property(e => e.Password)
                             .HasColumnName("Password")
                             .HasMaxLength(300)
                             .IsRequired(true);
 
-                entity.Property(e => e.Locked)
-                            .HasColumnName("Locked")
+                entity.Property(e => e.IsActive)
+                            .HasColumnName("IsActive")
                             .IsRequired(true)
                             .HasDefaultValueSql("(0)");
 
@@ -77,24 +82,24 @@ namespace Internal.DataAccess
                             .HasColumnType("datetime")
                             .IsRequired(false);
 
-                entity.Property(e => e.CreatedBy)
-                            .HasColumnName("CreatedBy")
+                entity.Property(e => e.CreateBy)
+                            .HasColumnName("CreateBy")
                             .HasColumnType("uniqueidentifier")
                             .IsRequired(true);
 
-                entity.Property(e => e.CreatedDate)
-                            .HasColumnName("CreatedDate")
+                entity.Property(e => e.CreateDate)
+                            .HasColumnName("CreateDate")
                             .HasColumnType("datetime")
                             .IsRequired(true)
                             .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.UpdatedBy)
-                            .HasColumnName("UpdatedBy")
+                entity.Property(e => e.UpdateBy)
+                            .HasColumnName("UpdateBy")
                             .HasColumnType("uniqueidentifier")
                             .IsRequired(true);
 
-                entity.Property(e => e.UpdatedDate)
-                            .HasColumnName("UpdatedDate")
+                entity.Property(e => e.UpdateDate)
+                            .HasColumnName("UpdateDate")
                             .HasColumnType("datetime")
                             .IsRequired(true)
                             .HasDefaultValueSql("(getdate())");
@@ -104,15 +109,18 @@ namespace Internal.DataAccess
                             .IsRequired(true)
                             .HasDefaultValueSql("(0)");
 
-                entity.Property(e => e.DeletedBy)
-                            .HasColumnName("DeletedBy")
+                entity.Property(e => e.DeleteBy)
+                            .HasColumnName("DeleteBy")
                             .HasColumnType("uniqueidentifier")
                             .IsRequired(false);
 
-                entity.Property(e => e.DeletedDate)
-                            .HasColumnName("DeletedDate")
+                entity.Property(e => e.DeleteDate)
+                            .HasColumnName("DeleteDate")
                             .HasColumnType("datetime")
                             .IsRequired(false);
+
+                entity.Property(e => e.RowVersion)
+                            .HasColumnName("RowVersion").IsRowVersion();
 
             });
         }
@@ -155,8 +163,8 @@ namespace Internal.DataAccess
                             .IsRequired(true)
                             .HasDefaultValueSql("(0)");
 
-                entity.Property(e => e.Locked)
-                            .HasColumnName("Locked")
+                entity.Property(e => e.IsActive)
+                            .HasColumnName("IsActive")
                             .IsRequired(true)
                             .HasDefaultValueSql("(0)");
 
@@ -165,24 +173,24 @@ namespace Internal.DataAccess
                             .HasColumnType("datetime")
                             .IsRequired(false);
 
-                entity.Property(e => e.CreatedBy)
-                            .HasColumnName("CreatedBy")
+                entity.Property(e => e.CreateBy)
+                            .HasColumnName("CreateBy")
                             .HasColumnType("uniqueidentifier")
                             .IsRequired(true);
 
-                entity.Property(e => e.CreatedDate)
-                            .HasColumnName("CreatedDate")
+                entity.Property(e => e.CreateDate)
+                            .HasColumnName("CreateDate")
                             .HasColumnType("datetime")
                             .IsRequired(true)
                             .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.UpdatedBy)
-                            .HasColumnName("UpdatedBy")
+                entity.Property(e => e.UpdateBy)
+                            .HasColumnName("UpdateBy")
                             .HasColumnType("uniqueidentifier")
                             .IsRequired(true);
 
-                entity.Property(e => e.UpdatedDate)
-                            .HasColumnName("UpdatedDate")
+                entity.Property(e => e.UpdateDate)
+                            .HasColumnName("UpdateDate")
                             .HasColumnType("datetime")
                             .IsRequired(true)
                             .HasDefaultValueSql("(getdate())");
@@ -192,13 +200,13 @@ namespace Internal.DataAccess
                             .IsRequired(true)
                             .HasDefaultValueSql("(0)");
 
-                entity.Property(e => e.DeletedBy)
-                            .HasColumnName("DeletedBy")
+                entity.Property(e => e.DeleteBy)
+                            .HasColumnName("DeleteBy")
                             .HasColumnType("uniqueidentifier")
                             .IsRequired(false);
 
-                entity.Property(e => e.DeletedDate)
-                            .HasColumnName("DeletedDate")
+                entity.Property(e => e.DeleteDate)
+                            .HasColumnName("DeleteDate")
                             .HasColumnType("datetime")
                             .IsRequired(false);
             });

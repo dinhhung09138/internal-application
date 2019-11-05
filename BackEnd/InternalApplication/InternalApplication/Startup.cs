@@ -4,6 +4,7 @@
 
 namespace InternalApplication
 {
+    using Serilog;
     using InternalApplication.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -39,9 +40,9 @@ namespace InternalApplication
         {
             services.DatabaseConfiguration(this.Configuration);
 
-            services.AuthenticationConfiguration(this.Configuration);
-
             services.InjectApplicationService();
+
+            services.AuthenticationConfiguration(this.Configuration);
 
             services.CommonConfiguration();
         }
@@ -55,6 +56,8 @@ namespace InternalApplication
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.CustomizeMvc();
+
+            loggerFactory.AddSerilog();
 
             app.SetupEnvironment(env, loggerFactory);
         }

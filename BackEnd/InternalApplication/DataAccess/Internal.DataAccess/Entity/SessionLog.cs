@@ -11,14 +11,14 @@ namespace Internal.DataAccess.Entity
         public DateTime LogoutTime { get; set; }
         public DateTime ExpirationTime { get; set; }
         public bool IsOnline { get; set; }
-        public bool Locked { get; set; }
+        public bool IsActive { get; set; }
         public DateTime? LastLogin { get; set; }
-        public Guid CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public Guid UpdatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public Guid CreateBy { get; set; }
+        public DateTime CreateDate { get; set; }
+        public Guid UpdateBy { get; set; }
+        public DateTime UpdateDate { get; set; }
         public bool Deleted { get; set; }
-        public Guid? DeletedBy { get; set; }
-        public DateTime? DeletedDate { get; set; }
+        public Guid? DeleteBy { get; set; }
+        public DateTime? DeleteDate { get; set; }
     }
 }

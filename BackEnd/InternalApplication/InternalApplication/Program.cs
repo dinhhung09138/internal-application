@@ -33,13 +33,11 @@ namespace InternalApplication
                     .Build();
 
                 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
-                Log.Information("Starting web server...");
-
+                Log.Information("Starting webhost...");
                 CreateWebHostBuilder(args).Build().Run();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
                 Log.Fatal(ex, "Host terminated unexpectedly");
             }
             finally
@@ -55,8 +53,7 @@ namespace InternalApplication
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-                .ReadFrom.Configuration(hostingContext.Configuration));
+                .UseSerilog()
+                .UseStartup<Startup>();
     }
 }

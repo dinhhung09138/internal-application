@@ -15,7 +15,6 @@ namespace InternalApplication.Extensions
     using Internal.DataAccess;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Http;
-    using Core.IUnitOfWork;
     using Internal.Authentication;
     using Internal.Authentication.Interface;
 
@@ -53,8 +52,7 @@ namespace InternalApplication.Extensions
         public static IServiceCollection DatabaseConfiguration(this IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<InternalContext>(options =>
-                options.UseSqlServer(config.GetConnectionString("InternalConnection")),
-                ServiceLifetime.Scoped
+                options.UseSqlServer(config.GetConnectionString("InternalConnection"))
             );
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -111,7 +109,7 @@ namespace InternalApplication.Extensions
         /// <returns>IServiceCollection</returns>
         public static IServiceCollection InjectApplicationService(this IServiceCollection services)
         {
-            services.AddScoped<IGenericUnitOfWork, InternalUnitOfWork>();
+            services.AddScoped<IInternalUnitOfWork, InternalUnitOfWork>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             return services;
         }

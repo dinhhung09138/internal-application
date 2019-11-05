@@ -30,6 +30,8 @@ namespace InternalApplication.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            var response = _authenService.Login(new Core.Common.Models.LoginModel() { UserName = "an", Password = "Long" });
+
             return new string[] { "value1", "value2" };
         }
 
