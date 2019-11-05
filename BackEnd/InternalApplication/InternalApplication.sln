@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Business", "Busine
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{164BDE6C-293A-4461-A344-9FA950681407}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Service.Common", "Services\Internal.Service.Common\Internal.Service.Common.csproj", "{65095BAC-1916-48C2-96C5-BF72498CB897}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{FC298DF6-E27F-432A-BA02-D9C10BE3213D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildEntityModel", "Tools\BuildEntityModel\BuildEntityModel.csproj", "{5A51E2E7-D2AE-40C2-BB52-CB9522F0F912}"
