@@ -75,7 +75,7 @@ namespace Internal.DataAccess
                 entity.Property(e => e.IsActive)
                             .HasColumnName("IsActive")
                             .IsRequired(true)
-                            .HasDefaultValueSql("(0)");
+                            .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.LastLogin)
                             .HasColumnName("LastLogin")
@@ -107,7 +107,7 @@ namespace Internal.DataAccess
                 entity.Property(e => e.Deleted)
                             .HasColumnName("Deleted")
                             .IsRequired(true)
-                            .HasDefaultValueSql("(0)");
+                            .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.DeleteBy)
                             .HasColumnName("DeleteBy")
@@ -161,12 +161,12 @@ namespace Internal.DataAccess
                 entity.Property(e => e.IsOnline)
                             .HasColumnName("IsOnline")
                             .IsRequired(true)
-                            .HasDefaultValueSql("(0)");
+                            .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.IsActive)
                             .HasColumnName("IsActive")
                             .IsRequired(true)
-                            .HasDefaultValueSql("(0)");
+                            .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.LastLogin)
                             .HasColumnName("LastLogin")
@@ -198,7 +198,7 @@ namespace Internal.DataAccess
                 entity.Property(e => e.Deleted)
                             .HasColumnName("Deleted")
                             .IsRequired(true)
-                            .HasDefaultValueSql("(0)");
+                            .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.DeleteBy)
                             .HasColumnName("DeleteBy")
