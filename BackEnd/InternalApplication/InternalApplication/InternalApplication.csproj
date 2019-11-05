@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <AspNetCoreHostingModel>outofprocess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,7 +37,11 @@
   <ItemGroup>
     <Folder Include="Constants\" />
   </ItemGroup>
-
+ <ItemGroup>
+      <Content Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\API\API.Common\API.Common.csproj" />
     <ProjectReference Include="..\Business\Internal.Authentication\Internal.Authentication.csproj" />
