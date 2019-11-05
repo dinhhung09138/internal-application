@@ -29,5 +29,26 @@ namespace Core.Common.Extensions
             return source.Contains(".mov") || source.Contains(".mp4") || source.Contains("video");
         }
 
+        /// <summary>
+        /// Check pdf extension files.
+        /// </summary>
+        /// <param name="source">Source file name.</param>
+        /// <returns>true/false</returns>
+        public static bool HasPdfExtension(this string source)
+        {
+            source = source.ToLower();
+            return source.Contains("application/pdf");
+        }
+
+        /// <summary>
+        /// Check file extension method.
+        /// </summary>
+        /// <param name="source">Source file name.</param>
+        /// <returns>true/false</returns>
+        public static bool HasFileExtension(this string source)
+        {
+            return !source.HasImageExtension() && !source.HasVideoExtension();
+        }
+
     }
 }
