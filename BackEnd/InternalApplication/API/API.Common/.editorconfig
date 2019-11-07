@@ -2,3 +2,9 @@
 
 # SA1309: Field names should not begin with underscore
 dotnet_diagnostic.SA1309.severity = none
+
+# SA1633: File should have header
+dotnet_diagnostic.SA1633.severity = none
+
+# CA1031: Do not catch general exception types
+dotnet_diagnostic.CA1031.severity = none
