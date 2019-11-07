@@ -9,5 +9,10 @@
         /// Parameter invalid.
         /// </summary>
         public static readonly string PARAMS_INVALID = "Params invalid";
+
+        /// <summary>
+        /// Context invalid.
+        /// </summary>
+        public static readonly string CONTEXT_INVALID = "context invalid";
     }
 }

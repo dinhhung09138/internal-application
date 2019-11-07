@@ -50,7 +50,7 @@
         /// Get connection by key.
         /// </summary>
         /// <param name="key">key value.</param>
-        /// <returns>IReadOnlyList<string></returns>
+        /// <returns>IReadOnlyList of string.</returns>
         public IReadOnlyList<string> GetConnections(string key)
         {
             if (this.connections.TryGetValue(key, out var connections))
