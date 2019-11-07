@@ -1,4 +1,4 @@
-﻿namespace Core.Common.Services.Interface
+﻿namespace Core.Common.Services.Interfaces
 {
     using Core.Common.Models;
 

@@ -5,8 +5,8 @@
     using System.Linq;
     using System.Threading.Tasks;
     using API.Common.Controllers;
-    using Internal.Authentication.Interface;
     using Microsoft.AspNetCore.Mvc;
+    using Service.Authentication.Interfaces;
 
     /// <summary>
     /// Demo controller.

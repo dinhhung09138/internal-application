@@ -5,7 +5,7 @@
     using System.Security.Claims;
     using System.Text;
     using Core.Common.Models;
-    using Core.Common.Services.Interface;
+    using Core.Common.Services.Interfaces;
     using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
@@ -61,7 +61,7 @@
                 var refreshTokenData = new TokenModel
                 {
                     Token = token.RefreshToken,
-                    UserId = user?.Id ?? default(Guid),
+                    UserId = user?.Id ?? default,
                 };
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(jwtSecurityToken.ValidTo);

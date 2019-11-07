@@ -6,9 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using Core.Common.Services;
-    using Core.Common.Services.Interface;
-    using Internal.Authentication;
-    using Internal.Authentication.Interface;
+    using Core.Common.Services.Interfaces;
     using Internal.DataAccess;
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,6 +16,8 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
+    using Service.Authentication;
+    using Service.Authentication.Interfaces;
 
     /// <summary>
     /// Service collection extension class.
@@ -82,9 +82,9 @@
                     ValidateLifetime = true,
                     SaveSigninToken = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = config["JwtSecurityToken:Issuer"],
-                    ValidAudience = config["JwtSecurityToken:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSecurityToken:SecretKey"])),
+                    ValidIssuer = config[Core.Common.Constants.JwtConstant.ISSUER],
+                    ValidAudience = config[Core.Common.Constants.JwtConstant.AUDIENCE],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config[Core.Common.Constants.JwtConstant.SECRET_KEY])),
                 };
                 options.Events = new JwtBearerEvents
                 {

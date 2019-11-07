@@ -44,10 +44,10 @@
    </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\API\API.Common\API.Common.csproj" />
-    <ProjectReference Include="..\Business\Internal.Authentication\Internal.Authentication.csproj" />
     <ProjectReference Include="..\Core\Core.Common\Core.Common.csproj" />
     <ProjectReference Include="..\Core\DataAccess\Core.Data.SQL.Repository\Core.Data.SQL.Repository.csproj" />
     <ProjectReference Include="..\DataAccess\Internal.DataAccess\Internal.DataAccess.csproj" />
+    <ProjectReference Include="..\Services\Service.Authentication\Service.Authentication.csproj" />
   </ItemGroup>
 
 </Project>
