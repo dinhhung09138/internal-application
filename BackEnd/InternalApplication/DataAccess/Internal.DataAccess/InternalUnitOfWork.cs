@@ -23,7 +23,7 @@ namespace Internal.DataAccess
         /// <summary>
         /// Transaction object.
         /// </summary>
-        private readonly IDbContextTransaction _transaction;
+        private IDbContextTransaction _transaction;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InternalUnitOfWork"/> class.
@@ -37,43 +37,53 @@ namespace Internal.DataAccess
 
         private ITableGenericRepository<User> userRepository;
 
-        public ITableGenericRepository<User> UserRepository { get { return this.userRepository = this.userRepository ?? new TableGenericRepository<User>(this._context); } }
+        public ITableGenericRepository<User> UserRepository
+        {
+            get
+            {
+                return this.userRepository = this.userRepository ?? new TableGenericRepository<User>(this._context);
+            }
+        }
 
         public void BeginTransaction()
         {
-            throw new NotImplementedException();
+            this._transaction = _context.Database.BeginTransaction();
         }
 
-        public Task BeginTransactionAsync()
+        public async Task BeginTransactionAsync()
         {
-            throw new NotImplementedException();
+            this._transaction = await this._context.Database.BeginTransactionAsync();
         }
 
         public void CommitTransaction()
         {
-            throw new NotImplementedException();
+            this._transaction?.Commit();
         }
 
         public void RollbackTransaction()
         {
-            throw new NotImplementedException();
+            this._transaction.Rollback();
         }
 
         public int SaveChanges()
         {
-            throw new NotImplementedException();
+            return this._context.SaveChanges();
         }
 
-        public Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return await this._context.SaveChangesAsync();
         }
 
         public void Dispose()
         {
             if (this._context != null)
             {
-                _transaction?.Dispose();
+                if (this._transaction != null)
+                {
+                    this._transaction.Dispose();
+                }
+
                 _context.Dispose();
                 GC.SuppressFinalize(this);
             }

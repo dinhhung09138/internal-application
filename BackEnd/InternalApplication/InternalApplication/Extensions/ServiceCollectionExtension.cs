@@ -52,8 +52,10 @@
         /// <returns>IServiceCollection.</returns>
         public static IServiceCollection DatabaseConfiguration(this IServiceCollection services, IConfiguration config)
         {
-            services.AddDbContext<InternalContext>(options =>
-                options.UseSqlServer(config.GetConnectionString("InternalConnection")));
+            services.AddDbContext<InternalContext>(
+                options =>
+                options.UseSqlServer(config.GetConnectionString("InternalConnection")),
+                ServiceLifetime.Scoped);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
