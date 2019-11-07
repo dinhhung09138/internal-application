@@ -18,12 +18,12 @@ namespace Internal.DataAccess
         /// <summary>
         /// Database context.
         /// </summary>
-        private readonly InternalContext context;
+        private readonly InternalContext _context;
 
         /// <summary>
         /// Transaction object.
         /// </summary>
-        private readonly IDbContextTransaction transaction;
+        private readonly IDbContextTransaction _transaction;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InternalUnitOfWork"/> class.
@@ -32,12 +32,12 @@ namespace Internal.DataAccess
         /// <param name="context">Internal context.</param>
         public InternalUnitOfWork(InternalContext context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         private ITableGenericRepository<User> userRepository;
 
-        public ITableGenericRepository<User> UserRepository { get { return this.userRepository = this.userRepository ?? new TableGenericRepository<User>(this.context); } }
+        public ITableGenericRepository<User> UserRepository { get { return this.userRepository = this.userRepository ?? new TableGenericRepository<User>(this._context); } }
 
         public void BeginTransaction()
         {
@@ -71,10 +71,10 @@ namespace Internal.DataAccess
 
         public void Dispose()
         {
-            if (this.context != null)
+            if (this._context != null)
             {
-                transaction?.Dispose();
-                context.Dispose();
+                _transaction?.Dispose();
+                _context.Dispose();
                 GC.SuppressFinalize(this);
             }
         }

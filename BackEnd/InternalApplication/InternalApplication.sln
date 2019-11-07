@@ -5,13 +5,9 @@ VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternalApplication", "InternalApplication\InternalApplication.csproj", "{7667CC3E-912F-480F-BADC-41714963E8D3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{CC8EBFF5-3521-4527-8140-44C09C21C753}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{97D869F7-0CF9-4B23-B5F7-DC12090BC137}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{37D4E848-50CB-4843-8479-FBE436AAFBC8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Business", "Business\Internal.Business\Internal.Business.csproj", "{0A24E47F-69E4-4442-A87D-4D954015CE40}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{164BDE6C-293A-4461-A344-9FA950681407}"
 EndProject
@@ -33,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Data.SQL.Repository", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.IUnitOfWork", "Core\DataAccess\Core.IUnitOfWork\Core.IUnitOfWork.csproj", "{7ED2337A-C09E-43CF-824E-780EDECDC820}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.UnitOfWork", "Core\DataAccess\Core.UnitOfWork\Core.UnitOfWork.csproj", "{286A9D5D-C642-4934-A418-D1CC849FA3BC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.DataAccess", "DataAccess\Internal.DataAccess\Internal.DataAccess.csproj", "{AA766D36-740D-4098-9BA8-7D3355ABC241}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{90432039-86AF-4566-A43D-C1DBDBEB73E3}"
@@ -43,7 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D88ACE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Common", "Core\Core.Common\Core.Common.csproj", "{F8904C6B-D32C-4836-847B-D72743C4D718}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Authentication", "Business\Internal.Authentication\Internal.Authentication.csproj", "{F5D61DA8-4F26-47C6-9B9D-26B356FEEDBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Authentication", "Services\Service.Authentication\Service.Authentication.csproj", "{864A1216-E787-45C5-9A37-2D90BC8EF502}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

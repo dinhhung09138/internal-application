@@ -123,6 +123,15 @@ csharp_preserve_single_line_blocks = true
 # CA1822: Mark members as static
 dotnet_diagnostic.CA1822.severity = silent
 
+# IDE0058: Expression value is never used
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
+
+# CA1307: Specify StringComparison
+dotnet_diagnostic.CA1307.severity = none
+
+# SA1633: File should have header
+dotnet_diagnostic.SA1633.severity = none
+
 [*.vb] 
 # Modifier preferences 
 visual_basic_preferred_modifier_order = Partial,Default,Private,Protected,Public,Friend,NotOverridable,Overridable,MustOverride,Overloads,Overrides,MustInherit,NotInheritable,Static,Shared,Shadows,ReadOnly,WriteOnly,Dim,Const,WithEvents,Widening,Narrowing,Custom,Async:suggestion 
