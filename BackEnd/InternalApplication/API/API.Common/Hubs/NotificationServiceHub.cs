@@ -9,7 +9,7 @@
     /// </summary>
     public class NotificationServiceHub : BaseHub
     {
-        private readonly ConnectionMapping connectionMapping;
+        private readonly ConnectionMapping _connectionMapping;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NotificationServiceHub"/> class.
@@ -17,7 +17,7 @@
         /// <param name="connectionMapping">Connection mapping.</param>
         public NotificationServiceHub(ConnectionMapping connectionMapping)
         {
-            this.connectionMapping = connectionMapping;
+            this._connectionMapping = connectionMapping;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@
             var httpContext = this.Context.GetHttpContext();
             if (httpContext != null)
             {
-                this.connectionMapping.Add(this.CurrentUserId(), this.Context.ConnectionId);
+                this._connectionMapping.Add(this.CurrentUserId(), this.Context.ConnectionId);
             }
 
             return base.OnConnectedAsync();
@@ -45,7 +45,7 @@
             var httpContext = this.Context.GetHttpContext();
             if (httpContext != null)
             {
-                this.connectionMapping.Remove(this.CurrentUserId(), this.Context.ConnectionId);
+                this._connectionMapping.Remove(this.CurrentUserId(), this.Context.ConnectionId);
             }
 
             return base.OnDisconnectedAsync(exception);

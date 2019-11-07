@@ -35,3 +35,6 @@ dotnet_diagnostic.CA1031.severity = none
 
 # CA2227: Collection properties should be read only
 dotnet_diagnostic.CA2227.severity = silent
+
+# SA1309: Field names should not begin with underscore
+dotnet_diagnostic.SA1309.severity = none

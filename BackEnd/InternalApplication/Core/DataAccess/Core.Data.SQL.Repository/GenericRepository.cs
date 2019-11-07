@@ -17,7 +17,7 @@
         /// <summary>
         /// Entity model.
         /// </summary>
-        protected readonly DbSet<T> dbSet;
+        protected readonly DbSet<T> _dbSet;
 
         /// <summary>
         /// Constructor.
@@ -30,7 +30,7 @@
                 throw new Exception();
             }
 
-            this.dbSet = context.Set<T>();
+            this._dbSet = context.Set<T>();
         }
 
         /// <summary>
@@ -42,10 +42,10 @@
         {
             if (where != null)
             {
-                return this.dbSet.Any(where);
+                return this._dbSet.Any(where);
             }
 
-            return this.dbSet.Any();
+            return this._dbSet.Any();
         }
 
         /// <summary>
@@ -57,10 +57,10 @@
         {
             if (where != null)
             {
-                return await this.dbSet.AnyAsync(where).ConfigureAwait(false);
+                return await this._dbSet.AnyAsync(where).ConfigureAwait(false);
             }
 
-            return await this.dbSet.AnyAsync().ConfigureAwait(false);
+            return await this._dbSet.AnyAsync().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -72,10 +72,10 @@
         {
             if (where != null)
             {
-                return this.dbSet.Count(where);
+                return this._dbSet.Count(where);
             }
 
-            return this.dbSet.Count();
+            return this._dbSet.Count();
         }
 
         /// <summary>
@@ -87,10 +87,10 @@
         {
             if (where != null)
             {
-                return await this.dbSet.CountAsync(where).ConfigureAwait(false);
+                return await this._dbSet.CountAsync(where).ConfigureAwait(false);
             }
 
-            return await this.dbSet.CountAsync().ConfigureAwait(false);
+            return await this._dbSet.CountAsync().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -102,11 +102,11 @@
         {
             if (where != null)
             {
-                IQueryable<T> query = this.dbSet;
+                IQueryable<T> query = this._dbSet;
                 return query.FirstOrDefault(where);
             }
 
-            return this.dbSet.FirstOrDefault();
+            return this._dbSet.FirstOrDefault();
         }
 
         /// <summary>
@@ -119,11 +119,11 @@
         {
             if (where != null)
             {
-                IQueryable<T> query = this.dbSet;
+                IQueryable<T> query = this._dbSet;
                 return await query.FirstOrDefaultAsync(where).ConfigureAwait(false);
             }
 
-            return await this.dbSet.FirstOrDefaultAsync().ConfigureAwait(false);
+            return await this._dbSet.FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@
         /// <returns>IQueryable.</returns>
         public IQueryable<T> Query(string[] includes = null)
         {
-            var query = this.dbSet.AsNoTracking();
+            var query = this._dbSet.AsNoTracking();
             if (includes != null && includes.Any())
             {
                 query = includes.Aggregate(query, (current, inc) => current.Include(inc));
@@ -151,11 +151,11 @@
         {
             if (where != null)
             {
-                IQueryable<T> query = this.dbSet;
+                IQueryable<T> query = this._dbSet;
                 return query.SingleOrDefault(where);
             }
 
-            return this.dbSet.SingleOrDefault();
+            return this._dbSet.SingleOrDefault();
         }
 
         /// <summary>
@@ -168,11 +168,11 @@
         {
             if (where != null)
             {
-                IQueryable<T> query = this.dbSet;
+                IQueryable<T> query = this._dbSet;
                 return await query.SingleOrDefaultAsync(where).ConfigureAwait(false);
             }
 
-            return await this.dbSet.SingleOrDefaultAsync().ConfigureAwait(false);
+            return await this._dbSet.SingleOrDefaultAsync().ConfigureAwait(false);
         }
     }
 }

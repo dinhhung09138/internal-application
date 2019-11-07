@@ -12,12 +12,12 @@
         /// <summary>
         /// The alg.
         /// </summary>
-        private const string Alg = "HmacSHA256";
+        private const string _alg = "HmacSHA256";
 
         /// <summary>
         /// The salt.
         /// </summary>
-        private const string Salt = "rz8LuOtFBXphj9WQfvFh";
+        private const string _salt = "rz8LuOtFBXphj9WQfvFh";
 
         /// <summary>
         /// Returns a hashed password + salt, to be used in generating a token.
@@ -28,14 +28,14 @@
         /// </returns>
         public static string GetHashedPassword(string password)
         {
-            string key = string.Join(":", password, Salt);
+            string key = string.Join(":", password, _salt);
 
-            using (HMAC hmac = HMAC.Create(Alg))
+            using (HMAC hmac = HMAC.Create(_alg))
             {
                 StringBuilder builder = new StringBuilder();
 
                 // Hash the key.
-                hmac.Key = Encoding.UTF8.GetBytes(Salt);
+                hmac.Key = Encoding.UTF8.GetBytes(_salt);
                 hmac.ComputeHash(Encoding.UTF8.GetBytes(key));
 
                 foreach (byte num in hmac.Hash)

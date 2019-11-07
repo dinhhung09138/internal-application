@@ -19,17 +19,17 @@
         /// <summary>
         /// Connection mapping.
         /// </summary>
-        private readonly ConnectionMapping connectionMapping;
+        private readonly ConnectionMapping _connectionMapping;
 
         /// <summary>
         /// Logger service.
         /// </summary>
-        private readonly ILogger<BaseController> logger;
+        private readonly ILogger<BaseController> _logger;
 
         /// <summary>
         /// Hub context.
         /// </summary>
-        private readonly IHubContext<NotificationServiceHub> hubContext;
+        private readonly IHubContext<NotificationServiceHub> _hubContext;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseController"/> class.
@@ -37,15 +37,15 @@
         /// <param name="provider">Service provider.</param>
         public BaseController(IServiceProvider provider)
         {
-            this.logger = provider.GetService<ILogger<BaseController>>();
-            this.hubContext = provider.GetService<IHubContext<NotificationServiceHub>>();
-            this.connectionMapping = provider.GetService<ConnectionMapping>();
+            this._logger = provider.GetService<ILogger<BaseController>>();
+            this._hubContext = provider.GetService<IHubContext<NotificationServiceHub>>();
+            this._connectionMapping = provider.GetService<ConnectionMapping>();
         }
 
         /// <summary>
         /// Gets hub context.
         /// </summary>
-        protected IHubContext<NotificationServiceHub> HubContext => this.hubContext;
+        protected IHubContext<NotificationServiceHub> HubContext => this._hubContext;
 
         /// <summary>
         /// Get current user id.
@@ -72,12 +72,12 @@
         {
             try
             {
-                var connectionIds = this.connectionMapping.GetConnections(this.CurrentUserId());
-                await this.hubContext.Clients.AllExcept(connectionIds).SendAsync(eventName, item).ConfigureAwait(false);
+                var connectionIds = this._connectionMapping.GetConnections(this.CurrentUserId());
+                await this._hubContext.Clients.AllExcept(connectionIds).SendAsync(eventName, item).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"NotifyExceptCurrentUser {ex}");
+                this._logger.LogError($"NotifyExceptCurrentUser {ex}");
             }
         }
 
@@ -91,11 +91,11 @@
         {
             try
             {
-                await this.hubContext.Clients.All.SendAsync(eventName, item).ConfigureAwait(false);
+                await this._hubContext.Clients.All.SendAsync(eventName, item).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"NotifyToAll {ex}");
+                this._logger.LogError($"NotifyToAll {ex}");
             }
         }
 
@@ -110,12 +110,12 @@
         {
             try
             {
-                var connectionIds = this.connectionMapping.GetConnections(userId);
-                await this.hubContext.Clients.Clients(connectionIds).SendAsync(eventName, item).ConfigureAwait(false);
+                var connectionIds = this._connectionMapping.GetConnections(userId);
+                await this._hubContext.Clients.Clients(connectionIds).SendAsync(eventName, item).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
-                this.logger.LogError("NotifyToSingleUser=" + ex);
+                this._logger.LogError("NotifyToSingleUser=" + ex);
             }
         }
     }

@@ -16,9 +16,9 @@
     /// </summary>
     public class JwtTokenSecurityService : IJwtTokenSecurityService
     {
-        private readonly IConfiguration configuration;
-        private readonly IMemoryCache cache;
-        private readonly ILogger<JwtTokenSecurityService> logger;
+        private readonly IConfiguration _configuration;
+        private readonly IMemoryCache _cache;
+        private readonly ILogger<JwtTokenSecurityService> _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JwtTokenSecurityService"/> class.
@@ -29,9 +29,9 @@
         /// <param name="logger">ILogger.</param>
         public JwtTokenSecurityService(IConfiguration configuration, IMemoryCache cache, ILogger<JwtTokenSecurityService> logger)
         {
-            this.configuration = configuration;
-            this.cache = cache;
-            this.logger = logger;
+            this._configuration = configuration;
+            this._cache = cache;
+            this._logger = logger;
         }
 
         /// <summary>
@@ -65,20 +65,20 @@
                 };
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(jwtSecurityToken.ValidTo);
-                this.cache.Set(token.RefreshToken, refreshTokenData, cacheEntryOptions);
+                this._cache.Set(token.RefreshToken, refreshTokenData, cacheEntryOptions);
 
                 return token;
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"CreateToken {ex}");
+                this._logger.LogError($"CreateToken {ex}");
                 return null;
             }
         }
 
         private JwtSecurityToken GetJwtSecurityToken(UserModel user)
         {
-            var accessTokenLifeTimeValue = double.Parse(this.configuration["JwtSecurityToken:AccessTokenLifetime"]);
+            var accessTokenLifeTimeValue = double.Parse(this._configuration[Constants.JwtConstant.TOKEN_LIFE_TIME]);
 
             var now = DateTime.UtcNow;
             var accessTokenLifetime = now.AddMinutes(accessTokenLifeTimeValue);
@@ -90,12 +90,12 @@
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.configuration["JwtSecurityToken:SecretKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._configuration[Constants.JwtConstant.SECRET_KEY]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             return new JwtSecurityToken(
-                                        issuer: this.configuration["JwtSecurityToken:Issuer"],
-                                        audience: this.configuration["JwtSecurityToken:Audience"],
+                                        issuer: this._configuration[Constants.JwtConstant.ISSUER],
+                                        audience: this._configuration[Constants.JwtConstant.AUDIENCE],
                                         claims: claims,
                                         notBefore: now,
                                         expires: accessTokenLifetime,

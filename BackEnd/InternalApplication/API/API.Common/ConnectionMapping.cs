@@ -12,7 +12,7 @@
         /// <summary>
         /// Connection list.
         /// </summary>
-        private readonly Dictionary<string, HashSet<string>> connections = new Dictionary<string, HashSet<string>>();
+        private readonly Dictionary<string, HashSet<string>> _connections = new Dictionary<string, HashSet<string>>();
 
         /// <summary>
         /// Count number of connection.
@@ -21,7 +21,7 @@
         /// <returns>integer.</returns>
         public int Count(Func<KeyValuePair<string, HashSet<string>>, bool> where = null)
         {
-            return @where != null ? this.connections.Count(@where) : this.connections.Count;
+            return @where != null ? this._connections.Count(@where) : this._connections.Count;
         }
 
         /// <summary>
@@ -31,12 +31,12 @@
         /// <param name="connectionId">Connection id.</param>
         public void Add(string key, string connectionId)
         {
-            lock (this.connections)
+            lock (this._connections)
             {
-                if (!this.connections.TryGetValue(key, out var connections))
+                if (!this._connections.TryGetValue(key, out var connections))
                 {
                     connections = new HashSet<string>();
-                    this.connections.Add(key, connections);
+                    this._connections.Add(key, connections);
                 }
 
                 lock (connections)
@@ -53,7 +53,7 @@
         /// <returns>IReadOnlyList of string.</returns>
         public IReadOnlyList<string> GetConnections(string key)
         {
-            if (this.connections.TryGetValue(key, out var connections))
+            if (this._connections.TryGetValue(key, out var connections))
             {
                 return connections.ToList();
             }
@@ -67,7 +67,7 @@
         /// <returns>IReadOnlyCollection.<string></returns>
         public IReadOnlyCollection<string> GetAllConnections()
         {
-            return this.connections.Select(c => c.Key).ToList();
+            return this._connections.Select(c => c.Key).ToList();
         }
 
         /// <summary>
@@ -77,9 +77,9 @@
         /// <param name="connectionId">Connection id.</param>
         public void Remove(string key, string connectionId)
         {
-            lock (this.connections)
+            lock (this._connections)
             {
-                if (!this.connections.TryGetValue(key, out var connections))
+                if (!this._connections.TryGetValue(key, out var connections))
                 {
                     return;
                 }
@@ -90,7 +90,7 @@
 
                     if (connections.Count == 0)
                     {
-                        this.connections.Remove(key);
+                        this._connections.Remove(key);
                     }
                 }
             }

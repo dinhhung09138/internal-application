@@ -26,7 +26,7 @@
         /// <param name="entity">Entity item.</param>
         public void Add(T entity)
         {
-            this.dbSet.Add(entity);
+            this._dbSet.Add(entity);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// <returns>no return.</returns>
         public async Task AddAsync(T entity)
         {
-            await this.dbSet.AddAsync(entity).ConfigureAwait(false);
+            await this._dbSet.AddAsync(entity).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@
         /// <param name="entity">List of entity item.</param>
         public void AddRange(T[] entity)
         {
-            this.dbSet.AddRange(entity);
+            this._dbSet.AddRange(entity);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@
         /// <returns>no return.</returns>
         public async Task AddRangeAsync(T[] entity)
         {
-            await this.dbSet.AddRangeAsync(entity).ConfigureAwait(false);
+            await this._dbSet.AddRangeAsync(entity).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@
         /// <param name="entity">Entity item.</param>
         public void Delete(T entity)
         {
-            this.dbSet.Remove(entity);
+            this._dbSet.Remove(entity);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@
         /// <param name="entity">list of entity item.</param>
         public void DeleteRange(T[] entity)
         {
-            this.dbSet.RemoveRange(entity);
+            this._dbSet.RemoveRange(entity);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@
         /// <param name="entity">Entity item.</param>
         public void Update(T entity)
         {
-            this.dbSet.Update(entity);
+            this._dbSet.Update(entity);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@
         /// <param name="entity">List of entity item.</param>
         public void UpdateRange(T[] entity)
         {
-            this.dbSet.UpdateRange(entity);
+            this._dbSet.UpdateRange(entity);
         }
     }
 }
