@@ -33,9 +33,9 @@
         /// </summary>
         /// <returns>string[].</returns>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var response = this.authenService.Login(new Core.Common.Models.LoginModel() { UserName = "an", Password = "Long" });
+            var response = await this.authenService.Login(new Core.Common.Models.LoginModel() { UserName = "an", Password = "Long" }).ConfigureAwait(false);
             return Ok(response);
         }
     }
