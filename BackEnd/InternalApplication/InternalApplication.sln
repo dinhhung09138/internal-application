@@ -33,8 +33,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Data.SQL.Repository", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.IUnitOfWork", "Core\DataAccess\Core.IUnitOfWork\Core.IUnitOfWork.csproj", "{7ED2337A-C09E-43CF-824E-780EDECDC820}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.UnitOfWork", "Core\DataAccess\Core.UnitOfWork\Core.UnitOfWork.csproj", "{286A9D5D-C642-4934-A418-D1CC849FA3BC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.DataAccess", "DataAccess\Internal.DataAccess\Internal.DataAccess.csproj", "{AA766D36-740D-4098-9BA8-7D3355ABC241}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{90432039-86AF-4566-A43D-C1DBDBEB73E3}"

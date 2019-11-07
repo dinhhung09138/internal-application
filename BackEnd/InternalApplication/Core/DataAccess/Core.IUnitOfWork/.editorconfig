@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# SA1616: Element return value documentation should have text
+dotnet_diagnostic.SA1616.severity = none
+
+# SA1633: File should have header
+dotnet_diagnostic.SA1633.severity = none

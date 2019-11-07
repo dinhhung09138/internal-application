@@ -9,7 +9,6 @@
     /// </summary>
     public static class PasswordSecurityHelper
     {
-
         /// <summary>
         /// The alg.
         /// </summary>
@@ -33,11 +32,12 @@
 
             using (HMAC hmac = HMAC.Create(Alg))
             {
+                StringBuilder builder = new StringBuilder();
+
                 // Hash the key.
                 hmac.Key = Encoding.UTF8.GetBytes(Salt);
                 hmac.ComputeHash(Encoding.UTF8.GetBytes(key));
 
-                StringBuilder builder = new StringBuilder();
                 foreach (byte num in hmac.Hash)
                 {
                     builder.AppendFormat("{0:X2}", num);
