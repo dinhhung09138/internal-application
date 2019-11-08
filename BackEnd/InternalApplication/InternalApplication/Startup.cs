@@ -36,6 +36,7 @@ namespace InternalApplication
         /// <param name="services">IServiceCollection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigApiVersion();
             services.DatabaseConfiguration(this.Configuration);
 
             services.InjectApplicationService();

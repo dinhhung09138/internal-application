@@ -106,6 +106,28 @@
         }
 
         /// <summary>
+        /// api version configuration method.
+        /// </summary>
+        /// <param name="services">IServiceCollection object.</param>
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection ConfigApiVersion(this IServiceCollection services)
+        {
+            services.AddApiVersioning(options =>
+            {
+                // Flag used to add the version of API in the response header
+                options.ReportApiVersions = true;
+
+                // Flag used to set the default version when client has not specified any versions.
+                options.AssumeDefaultVersionWhenUnspecified = true;
+
+                // Default api version.
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+
+            return services;
+        }
+
+        /// <summary>
         /// Inject application method.
         /// </summary>
         /// <param name="services">IServiceCollection object.</param>
