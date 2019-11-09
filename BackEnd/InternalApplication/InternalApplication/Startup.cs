@@ -1,16 +1,15 @@
 ﻿// <copyright file="Startup.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-
 namespace InternalApplication
 {
     using InternalApplication.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using Serilog;
 
     /// <summary>
     /// Startup class.
@@ -37,11 +36,12 @@ namespace InternalApplication
         /// <param name="services">IServiceCollection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.DatabaseConfiguration();
-
-            services.AuthenticationConfiguration(this.Configuration);
+            services.ConfigApiVersion();
+            services.DatabaseConfiguration(this.Configuration);
 
             services.InjectApplicationService();
+
+            services.AuthenticationConfiguration(this.Configuration);
 
             services.CommonConfiguration();
         }
@@ -55,6 +55,8 @@ namespace InternalApplication
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.CustomizeMvc();
+
+            loggerFactory.AddSerilog();
 
             app.SetupEnvironment(env, loggerFactory);
         }

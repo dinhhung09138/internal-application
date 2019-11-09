@@ -27,4 +27,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\DataAccess\Core.Data.IRepository\Core.Data.IRepository.csproj" />
+    <ProjectReference Include="..\..\Core\DataAccess\Core.Data.SQL.Repository\Core.Data.SQL.Repository.csproj" />
+    <ProjectReference Include="..\..\Core\DataAccess\Core.IUnitOfWork\Core.IUnitOfWork.csproj" />
+  </ItemGroup>
+
 </Project>
