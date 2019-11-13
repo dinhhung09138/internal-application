@@ -6,26 +6,20 @@
     using System.Threading.Tasks;
     using API.Common.Controllers;
     using Microsoft.AspNetCore.Mvc;
-    using Service.Authentication.Interfaces;
 
     /// <summary>
     /// Demo controller.
     /// </summary>
     [Route("api/[controller]")]
-    [ApiController]
     public class ValuesController : BaseController
     {
-        private readonly IAuthenticationService authenService;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ValuesController"/> class.
         /// </summary>
-        /// <param name="provider">Provider service.</param>
-        /// <param name="authenService">Authentication service.</param>
-        public ValuesController(IServiceProvider provider, IAuthenticationService authenService)
-            : base(provider)
+        /// <param name="provider">Service provider.</param>
+        public ValuesController(IServiceProvider provider)
+           : base(provider)
         {
-            this.authenService = authenService;
         }
 
         /// <summary>
@@ -33,10 +27,9 @@
         /// </summary>
         /// <returns>string[].</returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            var response = await this.authenService.Login(new Core.Common.Models.LoginModel() { UserName = "an", Password = "Long" }).ConfigureAwait(false);
-            return Ok(response);
+            return Ok("Hello world");
         }
     }
 }

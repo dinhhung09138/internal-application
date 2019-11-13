@@ -14,6 +14,8 @@
     /// <summary>
     /// Base controller.
     /// </summary>
+    [ApiController]
+    [Route("api")]
     public class BaseController : Controller
     {
         /// <summary>

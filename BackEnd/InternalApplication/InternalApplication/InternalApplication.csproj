@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.1.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
@@ -43,6 +44,7 @@
       </Content>
    </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\API\API.Authentication\API.Authentication.csproj" />
     <ProjectReference Include="..\API\API.Common\API.Common.csproj" />
     <ProjectReference Include="..\Core\Core.Common\Core.Common.csproj" />
     <ProjectReference Include="..\Core\DataAccess\Core.Data.SQL.Repository\Core.Data.SQL.Repository.csproj" />
