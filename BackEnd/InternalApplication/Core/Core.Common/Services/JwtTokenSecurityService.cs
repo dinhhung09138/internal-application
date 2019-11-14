@@ -2,6 +2,7 @@
 {
     using System;
     using System.IdentityModel.Tokens.Jwt;
+    using System.Reflection;
     using System.Security.Claims;
     using System.Text;
     using Core.Common.Models;
@@ -18,16 +19,16 @@
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        private readonly ILogger<JwtTokenSecurityService> _logger;
+        private readonly ILoggerService _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JwtTokenSecurityService"/> class.
+        /// Initializes a new instance of the class.
         /// Constructor.
         /// </summary>
         /// <param name="configuration">IConfiguration.</param>
         /// <param name="cache">IMemoryCache.</param>
         /// <param name="logger">ILogger.</param>
-        public JwtTokenSecurityService(IConfiguration configuration, IMemoryCache cache, ILogger<JwtTokenSecurityService> logger)
+        public JwtTokenSecurityService(IConfiguration configuration, IMemoryCache cache, ILoggerService logger)
         {
             this._configuration = configuration;
             this._cache = cache;
@@ -53,7 +54,7 @@
                 var token = new JwtTokenModel
                 {
                     AccessToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
-                    Expiration = jwtSecurityToken.ValidTo.Ticks,
+                    Expiration = jwtSecurityToken.ValidTo.ToLocalTime().Ticks,
                     RefreshToken = Guid.NewGuid().ToString("N"),
                     UserInfo = user,
                 };
@@ -64,14 +65,14 @@
                     UserId = user?.Id ?? default,
                 };
 
-                var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(jwtSecurityToken.ValidTo);
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(jwtSecurityToken.ValidTo.ToLocalTime());
                 this._cache.Set(token.RefreshToken, refreshTokenData, cacheEntryOptions);
 
                 return token;
             }
             catch (Exception ex)
             {
-                this._logger.LogError($"CreateToken {ex}");
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, user, ex);
                 return null;
             }
         }

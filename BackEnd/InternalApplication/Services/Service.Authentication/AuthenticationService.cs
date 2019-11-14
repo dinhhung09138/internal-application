@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
     using System.Text;
     using System.Threading.Tasks;
     using Core.Common.Helpers;
@@ -18,20 +19,27 @@
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IInternalUnitOfWork _context;
-        private readonly ILogger<AuthenticationService> _logger;
+        private readonly ILoggerService _logger;
         private readonly IJwtTokenSecurityService _tokenService;
+        private readonly ISessionLogService _sessionLogService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationService"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         /// <param name="context">data context.</param>
         /// <param name="logger">log service.</param>
         /// <param name="tokenService">Token service.</param>
-        public AuthenticationService(IInternalUnitOfWork context, ILogger<AuthenticationService> logger, IJwtTokenSecurityService tokenService)
+        /// <param name="sessionLogService">Session log service.</param>
+        public AuthenticationService(
+            IInternalUnitOfWork context,
+            ILoggerService logger,
+            IJwtTokenSecurityService tokenService,
+            ISessionLogService sessionLogService)
         {
-            this._context = context;
-            this._logger = logger;
-            this._tokenService = tokenService;
+            _context = context;
+            _logger = logger;
+            _tokenService = tokenService;
+            _sessionLogService = sessionLogService;
         }
 
         /// <summary>
@@ -52,7 +60,8 @@
                 }
 
                 string password = PasswordSecurityHelper.GetHashedPassword(model.Password);
-                var user = await this._context.UserRepository.FirstOrDefaultAsync(m => m.UserName == model.UserName && m.Password == model.Password).ConfigureAwait(false);
+
+                var user = await _context.UserRepository.FirstOrDefaultAsync(m => m.UserName == model.UserName && m.Password == password).ConfigureAwait(false);
                 if (user == null)
                 {
                     response.Errors.Add(Message.LoginIncorrect);
@@ -60,19 +69,28 @@
                     return response;
                 }
 
-                var userModel = new UserModel();
-                userModel.Id = user.Id;
-                userModel.UserName = user.UserName;
-                userModel.FullName = string.Empty;
-                userModel.Token = string.Empty;
+                var userModel = new UserModel
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    FullName = string.Empty,
+                    Token = string.Empty,
+                };
 
-                var token = this._tokenService.CreateToken(userModel);
+                var token = _tokenService.CreateToken(userModel);
+
+                response = await _sessionLogService.Add(token).ConfigureAwait(false);
+
+                if (response.ResponseStatus != Core.Common.Enums.ResponseStatus.Success)
+                {
+                    return response;
+                }
 
                 response.Result = token;
             }
             catch (Exception ex)
             {
-                this._logger.LogError($"Login {ex}");
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, model, ex);
                 response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
             }
 

@@ -12,12 +12,12 @@
         private readonly ConnectionMapping _connectionMapping;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NotificationServiceHub"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         /// <param name="connectionMapping">Connection mapping.</param>
         public NotificationServiceHub(ConnectionMapping connectionMapping)
         {
-            this._connectionMapping = connectionMapping;
+            _connectionMapping = connectionMapping;
         }
 
         /// <summary>
@@ -26,10 +26,10 @@
         /// <returns>Void.</returns>
         public override Task OnConnectedAsync()
         {
-            var httpContext = this.Context.GetHttpContext();
+            var httpContext = Context.GetHttpContext();
             if (httpContext != null)
             {
-                this._connectionMapping.Add(this.CurrentUserId(), this.Context.ConnectionId);
+                _connectionMapping.Add(CurrentUserId(), Context.ConnectionId);
             }
 
             return base.OnConnectedAsync();
@@ -42,10 +42,10 @@
         /// <returns>Void.</returns>
         public override Task OnDisconnectedAsync(Exception exception)
         {
-            var httpContext = this.Context.GetHttpContext();
+            var httpContext = Context.GetHttpContext();
             if (httpContext != null)
             {
-                this._connectionMapping.Remove(this.CurrentUserId(), this.Context.ConnectionId);
+                _connectionMapping.Remove(CurrentUserId(), Context.ConnectionId);
             }
 
             return base.OnDisconnectedAsync(exception);

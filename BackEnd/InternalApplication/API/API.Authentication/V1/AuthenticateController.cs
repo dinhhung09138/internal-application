@@ -13,13 +13,13 @@
     /// <summary>
     /// Authentication controller.
     /// </summary>
-    [Route("authentication")]
+    [Route("api/authentication")]
     public class AuthenticateController : BaseController
     {
         private readonly IAuthenticationService _authService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticateController"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         /// <param name="provider">Service provider interface.</param>
         /// <param name="authService">Authentication service interface.</param>

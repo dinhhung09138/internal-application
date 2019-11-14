@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.Common\Core.Common.csproj" />
     <ProjectReference Include="..\..\DataAccess\Internal.DataAccess\Internal.DataAccess.csproj" />
   </ItemGroup>

@@ -1,6 +1,5 @@
 ﻿namespace Service.Authentication.Constants
 {
-
     /// <summary>
     /// Message for authentication service.
     /// </summary>
