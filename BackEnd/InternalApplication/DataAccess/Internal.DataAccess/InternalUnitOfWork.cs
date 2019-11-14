@@ -4,6 +4,7 @@ namespace Internal.DataAccess
     using Core.Data.IRepository;
     using Core.Data.SQL.Repository;
     using Core.IUnitOfWork;
+    using Internal.DataAccess.Entity;
     using Microsoft.EntityFrameworkCore.Storage;
     using System;
     using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Internal.DataAccess
         private IDbContextTransaction _transaction;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InternalUnitOfWork"/> class.
+        /// Initializes a new instance of the class.
         /// Constructor.
         /// </summary>
         /// <param name="context">Internal context.</param>
@@ -42,6 +43,16 @@ namespace Internal.DataAccess
             get
             {
                 return this.userRepository = this.userRepository ?? new TableGenericRepository<User>(this._context);
+            }
+        }
+
+        private ITableGenericRepository<SessionLog> sessionLogRepository;
+
+        public ITableGenericRepository<SessionLog> SessionLogRepository
+        {
+            get
+            {
+                return this.sessionLogRepository = this.sessionLogRepository ?? new TableGenericRepository<SessionLog>(this._context);
             }
         }
 
