@@ -40,8 +40,8 @@
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             CreateUser(modelBuilder);
-
             CreateUserSessionLog(modelBuilder);
+            CreateRequestChangePassword(modelBuilder);
         }
 
         private void CreateUser(ModelBuilder builder)
@@ -222,6 +222,84 @@
                             .IsRequired(false);
 
                 entity.Property(e => e.RowVersion).IsRowVersion();
+            });
+        }
+
+        private void CreateRequestChangePassword(ModelBuilder builder)
+        {
+            builder.Entity<RequestChangePassword>(entity =>
+            {
+                entity.HasKey(e => e.Id).ForSqlServerIsClustered(true);
+
+                entity.Property(e => e.Id)
+                            .HasColumnName("Id")
+                            .HasColumnType("uniqueidentifier")
+                            .IsRequired(true);
+
+                entity.Property(e => e.UserName)
+                            .HasColumnName("UserName")
+                            .HasMaxLength(50)
+                            .IsRequired(true);
+
+                entity.Property(e => e.Token)
+                            .HasColumnName("Token")
+                            .HasMaxLength(50)
+                            .IsRequired(true);
+
+                entity.Property(e => e.RequestTime)
+                            .HasColumnName("RequestTime")
+                            .IsRequired(true);
+
+                entity.Property(e => e.ExpireTime)
+                            .HasColumnName("ExpireTime")
+                            .IsRequired(true);
+
+                entity.Property(e => e.IsActive)
+                            .HasColumnName("IsActive")
+                            .IsRequired(true)
+                            .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.CreateBy)
+                            .HasColumnName("CreateBy")
+                            .HasMaxLength(50)
+                            .IsRequired(true);
+
+                entity.Property(e => e.CreateDate)
+                            .HasColumnName("CreateDate")
+                            .HasColumnType("datetime")
+                            .IsRequired(true)
+                            .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.UpdateBy)
+                            .HasColumnName("UpdateBy")
+                            .HasMaxLength(50)
+                            .IsRequired(false);
+
+                entity.Property(e => e.UpdateDate)
+                            .HasColumnName("UpdateDate")
+                            .HasColumnType("datetime")
+                            .IsRequired(false)
+                            .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Deleted)
+                            .HasColumnName("Deleted")
+                            .IsRequired(true)
+                            .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.DeleteBy)
+                            .HasColumnName("DeleteBy")
+                            .HasColumnType("varchar(50)")
+                            .IsRequired(false);
+
+                entity.Property(e => e.DeleteDate)
+                            .HasColumnName("DeleteDate")
+                            .HasColumnType("datetime")
+                            .IsRequired(false);
+
+                entity.Property(e => e.RowVersion)
+                            .HasColumnName("RowVersion")
+                            .IsRequired()
+                            .IsRowVersion();
             });
         }
     }

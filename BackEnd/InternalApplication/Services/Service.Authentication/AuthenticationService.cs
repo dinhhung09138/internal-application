@@ -9,6 +9,7 @@
     using Core.Common.Models;
     using Core.Common.Services.Interfaces;
     using Internal.DataAccess;
+    using Internal.DataAccess.Entity;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Service.Authentication.Constants;
@@ -99,6 +100,66 @@
             catch (Exception ex)
             {
                 _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, model, ex);
+                response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
+            }
+
+            return response;
+        }
+
+        public async Task<ResponseModel> CreateRequestChangePassword(string accountName)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                DateTime now = DateTime.Now;
+                RequestChangePassword md = new RequestChangePassword()
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = accountName,
+                    Token = Guid.NewGuid().ToString(),
+                    RequestTime = now,
+                    ExpireTime = now.AddHours(2),
+                    IsActive = true,
+                };
+
+                string token = $"{accountName}:{md.Token}:{now.ToString(Core.Common.Constants.DateTime.FullTime)}";
+                token = Md5Helper.EncryptData(token);
+                response.Result = token;
+            }
+            catch (Exception ex)
+            {
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, accountName, ex);
+                response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
+            }
+
+            return response;
+        }
+
+        public async Task<ResponseModel> CheckRequestChangePassword(string token)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                string decryptData = Md5Helper.DecryptData(token);
+
+                //DateTime now = DateTime.Now;
+                //RequestChangePassword md = new RequestChangePassword()
+                //{
+                //    Id = Guid.NewGuid(),
+                //    UserName = accountName,
+                //    Token = Guid.NewGuid().ToString(),
+                //    RequestTime = now,
+                //    ExpireTime = now.AddHours(2),
+                //    IsActive = true,
+                //};
+
+               // string token = $"{accountName}:{md.Token}:{now.ToString(Core.Common.Constants.DateTime.FullTime)}";
+                //token = Md5Helper.EncryptData(token);
+                response.Result = token;
+            }
+            catch (Exception ex)
+            {
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, token, ex);
                 response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
             }
 
