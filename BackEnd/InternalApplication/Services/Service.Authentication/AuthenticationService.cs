@@ -9,6 +9,7 @@
     using Core.Common.Models;
     using Core.Common.Services.Interfaces;
     using Internal.DataAccess;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Service.Authentication.Constants;
     using Service.Authentication.Interfaces;
@@ -68,6 +69,13 @@
                     response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                     return response;
                 }
+
+                user.LastLogin = DateTime.Now;
+                user.UpdateBy = user.Id.ToString();
+                user.UpdateDate = DateTime.Now;
+
+                _context.UserRepository.Update(user);
+                await _context.SaveChangesAsync().ConfigureAwait(false);
 
                 var userModel = new UserModel
                 {

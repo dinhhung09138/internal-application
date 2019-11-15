@@ -134,6 +134,7 @@
         /// <returns>IServiceCollection.</returns>
         public static IServiceCollection InjectApplicationService(this IServiceCollection services)
         {
+            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IInternalUnitOfWork, InternalUnitOfWork>();
             services.AddScoped<IJwtTokenSecurityService, JwtTokenSecurityService>();
             services.AddScoped<ILoggerService, LoggerService>();

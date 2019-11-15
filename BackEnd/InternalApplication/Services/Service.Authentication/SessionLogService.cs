@@ -9,6 +9,7 @@
     using Core.Common.Services.Interfaces;
     using Internal.DataAccess;
     using Internal.DataAccess.Entity;
+    using Microsoft.AspNetCore.Http;
     using Service.Authentication.Interfaces;
     using Service.Authentication.Models;
 
@@ -17,17 +18,20 @@
     /// </summary>
     public class SessionLogService : ISessionLogService
     {
+        private readonly IHttpContextAccessor _accessor;
         private readonly IInternalUnitOfWork _context;
         private readonly ILoggerService _logger;
 
         /// <summary>
         /// Initializes a new instance of the class.
         /// </summary>
+        /// <param name="accessor">Http Accessor context.</param>
         /// <param name="context">data context.</param>
         /// <param name="logger">log service.</param>
         /// <param name="tokenService">Token service.</param>
-        public SessionLogService(IInternalUnitOfWork context, ILoggerService logger)
+        public SessionLogService(IHttpContextAccessor accessor, IInternalUnitOfWork context, ILoggerService logger)
         {
+            _accessor = accessor;
             _context = context;
             _logger = logger;
         }
@@ -47,17 +51,22 @@
                     throw new Exception(CommonMessage.PARAMS_INVALID);
                 }
 
-                SessionLog md = new SessionLog();
-                md.Id = Guid.NewGuid();
-                md.IsActive = true;
-                md.IsOnline = true;
-                md.LoginTime = model.LoginTime;
-                md.Token = model.Token;
-                md.ExpirationTime = model.ExpirationTime;
-                md.CreateBy = model.CreateBy;
-                md.CreateDate = model.CreateDate;
-                md.UpdateBy = model.UpdateBy;
-                md.UpdateDate = DateTime.Now;
+                string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+
+                SessionLog md = new SessionLog
+                {
+                    Id = Guid.NewGuid(),
+                    IsActive = true,
+                    IsOnline = true,
+                    LoginTime = model.LoginTime,
+                    Token = model.Token,
+                    ExpirationTime = model.ExpirationTime,
+                    IPAddress = clientIp,
+                    CreateBy = model.CreateBy,
+                    CreateDate = DateTime.Now,
+                    UpdateBy = model.UpdateBy,
+                    UpdateDate = DateTime.Now,
+                };
 
                 await _context.SessionLogRepository.AddAsync(md).ConfigureAwait(false);
                 await _context.SaveChangesAsync().ConfigureAwait(false);
@@ -86,6 +95,8 @@
                     throw new Exception(CommonMessage.PARAMS_INVALID);
                 }
 
+                string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+
                 SessionLog md = new SessionLog
                 {
                     Id = Guid.NewGuid(),
@@ -94,6 +105,7 @@
                     LoginTime = DateTime.Now,
                     Token = model.AccessToken,
                     ExpirationTime = new DateTime(model.Expiration),
+                    IPAddress = clientIp,
                     CreateBy = model.UserInfo.Id.ToString(),
                     CreateDate = DateTime.Now,
                     UpdateBy = model.UserInfo.Id.ToString(),
