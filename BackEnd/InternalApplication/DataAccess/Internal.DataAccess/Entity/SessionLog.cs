@@ -10,6 +10,10 @@
         public DateTime? LogoutTime { get; set; }
         public DateTime ExpirationTime { get; set; }
         public bool IsOnline { get; set; }
+        public string IPAddress { get; set; }
+        public string Platform { get; set; }
+        public string Browser { get; set; }
+        public string OSName { get; set; }
         public bool IsActive { get; set; }
         public string CreateBy { get; set; }
         public DateTime CreateDate { get; set; }

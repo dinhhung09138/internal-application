@@ -41,7 +41,7 @@
 
             CreateUser(modelBuilder);
 
-            UserSessionLog(modelBuilder);
+            CreateUserSessionLog(modelBuilder);
         }
 
         private void CreateUser(ModelBuilder builder)
@@ -125,7 +125,7 @@
             });
         }
 
-        private void UserSessionLog(ModelBuilder builder)
+        private void CreateUserSessionLog(ModelBuilder builder)
         {
             builder.Entity<SessionLog>(entity =>
             {
@@ -162,6 +162,22 @@
                             .HasColumnName("IsOnline")
                             .IsRequired(true)
                             .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.IPAddress)
+                            .HasColumnName("IPAddress")
+                            .HasMaxLength(50);
+
+                entity.Property(e => e.Platform)
+                            .HasColumnName("Platform")
+                            .HasMaxLength(100);
+
+                entity.Property(e => e.Browser)
+                            .HasColumnName("Browser")
+                            .HasMaxLength(100);
+
+                entity.Property(e => e.OSName)
+                            .HasColumnName("OSName")
+                            .HasMaxLength(100);
 
                 entity.Property(e => e.IsActive)
                             .HasColumnName("IsActive")
