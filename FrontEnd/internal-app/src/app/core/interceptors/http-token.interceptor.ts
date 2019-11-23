@@ -1,5 +1,3 @@
-import { TokenContext } from './../context/token.context';
-import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {
   HttpInterceptor,
@@ -8,7 +6,11 @@ import {
   HttpEvent,
   HttpHeaders
 } from '@angular/common/http';
+
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { TokenContext } from './../context/token.context';
 
 @Injectable()
 export class HttptokenInterceptor implements HttpInterceptor {
@@ -20,28 +22,24 @@ export class HttptokenInterceptor implements HttpInterceptor {
   setHeaders(request, token) {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', token);
-    if (request.url.includes('/file')) {
-    } else {
-        headers = headers.append('Content-Type', 'application/json');
-        headers = headers.append('Cache-Control', 'no-cache');
-        headers = headers.append('Pragma', 'no-cache');
-    }
+
     return request.clone({ headers });
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (request.url.includes('/authentication') ||
-        request.url.includes('/appconfig.json')) {
-        return next.handle(request);
+    if (req.url.includes('/authentication') ||
+        req.url.includes('/appconfig.json') ||
+        req.url.includes('/file')) {
+        return next.handle(req);
     }
 
     const token = this.context.getToken();
-    const authReq = this.setHeaders(request, this.jwtToken(token));
+    const authReq = this.setHeaders(req, this.jwtToken(token));
 
     return next.handle(authReq).pipe(catchError(err => {
         if ([401, 403].indexOf(err.status) !== -1) {
-            // this.authenticationService.resetLocal();
+            // this.authenticationService.resetLocal(); TODO
         } else {
             const error = err.error.message || err.statusText;
             return throwError(error);

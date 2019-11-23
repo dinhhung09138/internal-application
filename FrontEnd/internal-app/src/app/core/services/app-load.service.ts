@@ -1,7 +1,8 @@
-import { AppSetting } from './../app-setting';
-import { ISetting } from './../interfaces/setting.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import { ApiSetting } from './../api-setting';
+import { ISetting } from './../interfaces/setting.interface';
 
 @Injectable()
 export class AppLoadService {
@@ -11,7 +12,8 @@ export class AppLoadService {
 
   getSetting(): Promise<any> {
     return this.http.get<ISetting>('assets/config/appconfig.json').toPromise().then(response => {
-      AppSetting.apiRoot = response.apiRoot;
+      ApiSetting.apiRoot = response.apiRoot + '/api/';
+      ApiSetting.hubUrl = response.apiRoot + response.hubUrl;
     });
   }
 

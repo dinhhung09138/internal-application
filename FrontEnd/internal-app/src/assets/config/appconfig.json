@@ -1,3 +1,4 @@
 {
-  "apiRoot": "https://localhost:44345/api/"
+  "apiRoot": "https://localhost:44345",
+  "hubUrl": "/hubs/notificationservice/"
 }

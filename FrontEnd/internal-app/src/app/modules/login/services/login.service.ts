@@ -1,3 +1,4 @@
+import { ApiSetting } from './../../../core/api-setting';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -9,7 +10,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { ResponseModel } from 'src/app/core/models/response.model';
 
 import { LoginModel } from './../models/login.model';
-import { AppSetting } from './../../../core/app-setting';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class LoginService {
   deviceInfo = null;
 
   url = {
-    login: AppSetting.apiRoot + 'authentication/login',
+    login: ApiSetting.apiRoot + 'authentication/login',
   };
 
   constructor(

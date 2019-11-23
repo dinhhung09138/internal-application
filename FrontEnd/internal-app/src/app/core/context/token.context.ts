@@ -9,6 +9,11 @@ export class TokenContext {
 
   }
 
+  removeAll() {
+    sessionStorage.removeItem('tokenContext');
+    sessionStorage.removeItem('userContext');
+  }
+
   saveToken(token: TokenModel) {
     sessionStorage.removeItem('tokenContext');
     sessionStorage.setItem('tokenContext', JSON.stringify({ token }));

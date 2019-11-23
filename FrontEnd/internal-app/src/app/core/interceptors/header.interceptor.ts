@@ -22,8 +22,9 @@ export class HeaderInterceptor implements HttpInterceptor {
 
 
   intercept( req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url.includes('/token') ||
-      req.url.includes('/appconfig.json')) {
+    if (req.url.includes('/authentication') ||
+        req.url.includes('/appconfig.json') ||
+        req.url.includes('/file')) {
       return next.handle(req);
     }
     const modified = this.setHeaders(req);
