@@ -88,7 +88,7 @@
 
                 var token = _tokenService.CreateToken(userModel);
 
-                response = await _sessionLogService.Add(token).ConfigureAwait(false);
+                response = await _sessionLogService.Add(token, model).ConfigureAwait(false);
 
                 if (response.ResponseStatus != Core.Common.Enums.ResponseStatus.Success)
                 {
