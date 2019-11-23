@@ -20,7 +20,6 @@ export class LoginService {
 
   url = {
     login: AppSetting.apiRoot + 'authentication/login',
-    values: AppSetting.apiRoot + 'values',
   };
 
   constructor(
