@@ -43,3 +43,4 @@ Review/
 deploy/
 BackEnd/InternalApplication/Core/Models/Core.CommonModels/obj/
 BackEnd/InternalApplication/Core/Core.Common/obj/
+BackEnd/InternalApplication/API/API.Authentication/obj/
