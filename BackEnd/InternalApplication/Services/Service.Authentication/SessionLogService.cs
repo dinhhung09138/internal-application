@@ -165,7 +165,7 @@
             }
             catch (Exception ex)
             {
-                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, model, ex);
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, loginModel, ex);
                 response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
             }
 
