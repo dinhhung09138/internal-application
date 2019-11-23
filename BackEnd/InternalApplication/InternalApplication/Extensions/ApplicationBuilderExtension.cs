@@ -23,6 +23,11 @@
         /// <returns>IApplicationBuilder.</returns>
         public static IApplicationBuilder CustomizeMvc(this IApplicationBuilder app)
         {
+            app.UseCors("InternalApplicationPolicy");
+
+            // app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -68,8 +73,6 @@
             }
 
             loggerFactory.AddSerilog();
-
-            app.UseCors("InternalApplicationPolicy");
 
             return app;
         }

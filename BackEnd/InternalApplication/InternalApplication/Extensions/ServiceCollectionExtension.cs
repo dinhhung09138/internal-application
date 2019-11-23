@@ -28,15 +28,16 @@
         /// Common configuration method.
         /// </summary>
         /// <param name="services">IServiceCollection object.</param>
+        /// <param name="config">Configuration object.</param>
         /// <returns>IServiceCollection.</returns>
-        public static IServiceCollection CommonConfiguration(this IServiceCollection services)
+        public static IServiceCollection CommonConfiguration(this IServiceCollection services, IConfiguration config)
         {
+            // services.AddCors();
             services.AddCors(o => o.AddPolicy("InternalApplicationPolicy", builder =>
             {
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials();
+                builder.WithOrigins(config["CORS"])
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
             }));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
