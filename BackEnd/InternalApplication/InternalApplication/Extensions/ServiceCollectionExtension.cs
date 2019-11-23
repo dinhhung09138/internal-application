@@ -93,7 +93,7 @@
                 {
                     OnMessageReceived = context =>
                     {
-                        if (context.Request.Path.ToString().StartsWith("/hubs/"))
+                        if (context.Request.Path.ToString().StartsWith("/hubs/notification"))
                         {
                             context.Token = context.Request.Query["token"];
                         }
