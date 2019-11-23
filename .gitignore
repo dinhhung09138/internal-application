@@ -31,7 +31,6 @@ BackEnd/InternalApplication/DataAccess/Modules/Internal.Data.Security/bin/
 BackEnd/InternalApplication/DataAccess/Internal.IUnitOfWork/bin/
 BackEnd/InternalApplication/Tools/BuildEntityModel/bin/
 BackEnd/InternalApplication/Tools/BuildEntityModel/obj/
-*.json
 BackEnd/InternalApplication/API/API.Common/obj/
 BackEnd/InternalApplication/Core/DataAccess/Core.Data.SQL.Repository/obj/
 BackEnd/InternalApplication/Core/DataAccess/Core.Data.IRepository/obj/
@@ -52,3 +51,19 @@ BackEnd/InternalApplication/API/API.Warehouse/obj/
 BackEnd/InternalApplication/Services/Service.PO/obj/
 BackEnd/InternalApplication/Services/Service.Warehouse/obj/
 BackEnd/InternalApplication/Services/Service.Partner/obj/
+BackEnd/InternalApplication/API.Admin/bin/
+BackEnd/InternalApplication/API/API.Authentication/bin/
+BackEnd/InternalApplication/API/API.PO/bin/
+BackEnd/InternalApplication/API/API.Warehouse/bin/
+BackEnd/InternalApplication/Business/Internal.Authentication/bin/
+BackEnd/InternalApplication/API/API.Partner/bin/
+BackEnd/InternalApplication/Core/DataAccess/Core.Data.SQL.Repository/bin/
+BackEnd/InternalApplication/Core/DataAccess/Core.IUnitOfWork/bin/
+BackEnd/InternalApplication/Core/DataAccess/Core.UnitOfWork/bin/
+BackEnd/InternalApplication/Services/Service.Admin/bin/
+BackEnd/InternalApplication/Services/Service.Authentication/bin/
+BackEnd/InternalApplication/Services/Service.Partner/bin/
+BackEnd/InternalApplication/Services/Service.PO/bin/
+BackEnd/InternalApplication/Services/Service.Warehouse/bin/
+BackEnd/InternalApplication/Core/DataAccess/Core.Data.IRepository/bin/
+BackEnd/InternalApplication/Core/Core.Common/bin/
