@@ -1,8 +1,0 @@
-<div class="row">
-    <div class="col-12">
-        <div class="inner-addon right-addon">
-            <i class="fa fa-sm" [ngClass]="{'fa-spinner fa-spin' : isLoading, 'fa-search' : !isLoading}"></i>
-            <input type="text" class="form-control input-sm" (keyup)="onTextChange($event.target.value)" value="{{ value }}" />
-        </div>
-    </div>
-</div>
