@@ -44,3 +44,11 @@ deploy/
 BackEnd/InternalApplication/Core/Models/Core.CommonModels/obj/
 BackEnd/InternalApplication/Core/Core.Common/obj/
 BackEnd/InternalApplication/API/API.Authentication/obj/
+BackEnd/InternalApplication/API.Admin/obj/
+BackEnd/InternalApplication/API/API.Partner/obj/
+BackEnd/InternalApplication/API/API.PO/obj/
+BackEnd/InternalApplication/Services/Service.Admin/obj/
+BackEnd/InternalApplication/API/API.Warehouse/obj/
+BackEnd/InternalApplication/Services/Service.PO/obj/
+BackEnd/InternalApplication/Services/Service.Warehouse/obj/
+BackEnd/InternalApplication/Services/Service.Partner/obj/

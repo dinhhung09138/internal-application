@@ -44,12 +44,20 @@
       </Content>
    </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\API.Admin\API.Admin.csproj" />
     <ProjectReference Include="..\API\API.Authentication\API.Authentication.csproj" />
     <ProjectReference Include="..\API\API.Common\API.Common.csproj" />
+    <ProjectReference Include="..\API\API.Partner\API.Partner.csproj" />
+    <ProjectReference Include="..\API\API.PO\API.PO.csproj" />
+    <ProjectReference Include="..\API\API.Warehouse\API.Warehouse.csproj" />
     <ProjectReference Include="..\Core\Core.Common\Core.Common.csproj" />
     <ProjectReference Include="..\Core\DataAccess\Core.Data.SQL.Repository\Core.Data.SQL.Repository.csproj" />
     <ProjectReference Include="..\DataAccess\Internal.DataAccess\Internal.DataAccess.csproj" />
+    <ProjectReference Include="..\Services\Service.Admin\Service.Admin.csproj" />
     <ProjectReference Include="..\Services\Service.Authentication\Service.Authentication.csproj" />
+    <ProjectReference Include="..\Services\Service.Partner\Service.Partner.csproj" />
+    <ProjectReference Include="..\Services\Service.PO\Service.PO.csproj" />
+    <ProjectReference Include="..\Services\Service.Warehouse\Service.Warehouse.csproj" />
   </ItemGroup>
 
 </Project>
