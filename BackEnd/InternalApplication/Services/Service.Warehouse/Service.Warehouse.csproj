@@ -29,4 +29,10 @@
     <ProjectReference Include="..\..\DataAccess\Internal.DataAccess\Internal.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Goods\Constants\" />
+    <Folder Include="Goods\Interfaces\" />
+    <Folder Include="Goods\Models\" />
+  </ItemGroup>
+
 </Project>

@@ -21,5 +21,10 @@
         /// Session log table repository.
         /// </summary>
         ITableGenericRepository<SessionLog> SessionLogRepository { get; }
+
+        /// <summary>
+        /// Goods table repository
+        /// </summary>
+        ITableGenericRepository<Goods> GoodsRepository { get; }
     }
 }

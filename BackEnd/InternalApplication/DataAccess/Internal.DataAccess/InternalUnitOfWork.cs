@@ -56,6 +56,16 @@ namespace Internal.DataAccess
             }
         }
 
+        private ITableGenericRepository<Goods> goodsRepository;
+
+        public ITableGenericRepository<Goods> GoodsRepository
+        {
+            get
+            {
+                return this.goodsRepository = this.goodsRepository ?? new TableGenericRepository<Goods>(this._context);
+            }
+        }
+
         public void BeginTransaction()
         {
             this._transaction = _context.Database.BeginTransaction();

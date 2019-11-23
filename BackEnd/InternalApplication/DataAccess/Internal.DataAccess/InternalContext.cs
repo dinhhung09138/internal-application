@@ -32,6 +32,11 @@
         public virtual DbSet<SessionLog> SessionLog { get; set; }
 
         /// <summary>
+        /// Goods Table
+        /// </summary>
+        public virtual DbSet<Goods> Goods { get; set; }
+
+        /// <summary>
         /// Model creating.
         /// </summary>
         /// <param name="modelBuilder">ModelBuilder.</param>
@@ -302,5 +307,112 @@
                             .IsRowVersion();
             });
         }
+
+        #region Goods
+        private void CreateGoods(ModelBuilder builder)
+        {
+            builder.Entity<Goods>(entity =>
+            {
+                entity.HasKey(e => e.Id).ForSqlServerIsClustered(true);
+
+                entity.Property(e => e.Id)
+                            .HasColumnName("Id")
+                            .HasColumnType("uniqueidentifier")
+                            .IsRequired(true);
+
+                entity.Property(e => e.Code)
+                            .HasColumnName("Code")
+                            .HasColumnType("varchar(50)")
+                            .IsRequired(true);
+
+                entity.Property(e => e.Name)
+                            .HasColumnName("Name")
+                            .HasColumnType("varchar(200)")
+                            .IsRequired(true);
+
+                entity.Property(e => e.Brand)
+                            .HasColumnName("Brand")
+                            .HasColumnType("varchar(200)")
+                            .IsRequired(false);
+
+                entity.Property(e => e.Color)
+                           .HasColumnName("Color")
+                           .HasColumnType("varchar(200)")
+                           .IsRequired(false);
+
+                entity.Property(e => e.Size)
+                           .HasColumnName("Size")
+                           .HasColumnType("varchar(200)")
+                           .IsRequired(false);
+
+                entity.Property(e => e.FileId)
+                           .HasColumnName("FileId")
+                           .HasColumnType("uniqueidentifier")
+                           .IsRequired(false);
+
+                entity.Property(e => e.Description)
+                          .HasColumnName("Description")
+                          .HasColumnType("varchar(500)")
+                          .IsRequired(false);
+
+                entity.Property(e => e.UnitId)
+                          .HasColumnName("UnitId")
+                          .HasColumnType("uniqueidentifier")
+                          .IsRequired(true);
+
+                entity.Property(e => e.GoodsCategoryId)
+                          .HasColumnName("GoodsCategoryId")
+                          .HasColumnType("uniqueidentifier")
+                          .IsRequired(true);
+
+                entity.Property(e => e.IsActive)
+                            .HasColumnName("IsActive")
+                            .IsRequired(true)
+                            .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.CreateBy)
+                            .HasColumnName("CreateBy")
+                            .HasMaxLength(50)
+                            .IsRequired(true);
+
+                entity.Property(e => e.CreateDate)
+                            .HasColumnName("CreateDate")
+                            .HasColumnType("datetime")
+                            .IsRequired(true)
+                            .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.UpdateBy)
+                            .HasColumnName("UpdateBy")
+                            .HasMaxLength(50)
+                            .IsRequired(false);
+
+                entity.Property(e => e.UpdateDate)
+                            .HasColumnName("UpdateDate")
+                            .HasColumnType("datetime")
+                            .IsRequired(false)
+                            .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Deleted)
+                            .HasColumnName("Deleted")
+                            .IsRequired(true)
+                            .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.DeleteBy)
+                            .HasColumnName("DeleteBy")
+                            .HasColumnType("varchar(50)")
+                            .IsRequired(false);
+
+                entity.Property(e => e.DeleteDate)
+                            .HasColumnName("DeleteDate")
+                            .HasColumnType("datetime")
+                            .IsRequired(false);
+
+                entity.Property(e => e.RowVersion)
+                            .HasColumnName("RowVersion")
+                            .IsRequired()
+                            .IsRowVersion();
+            });
+        }
+        #endregion
     }
 }
