@@ -2,10 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
     using API.Common.Hubs;
+    using Core.Common.Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.SignalR;
     using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,7 @@
     /// <summary>
     /// Base controller.
     /// </summary>
+    [ApiController]
     public class BaseController : Controller
     {
         /// <summary>
@@ -24,7 +27,7 @@
         /// <summary>
         /// Logger service.
         /// </summary>
-        private readonly ILogger<BaseController> _logger;
+        private readonly ILoggerService _logger;
 
         /// <summary>
         /// Hub context.
@@ -37,7 +40,7 @@
         /// <param name="provider">Service provider.</param>
         public BaseController(IServiceProvider provider)
         {
-            this._logger = provider.GetService<ILogger<BaseController>>();
+            this._logger = provider.GetService<ILoggerService>();
             this._hubContext = provider.GetService<IHubContext<NotificationServiceHub>>();
             this._connectionMapping = provider.GetService<ConnectionMapping>();
         }
@@ -77,7 +80,7 @@
             }
             catch (Exception ex)
             {
-                this._logger.LogError($"NotifyExceptCurrentUser {ex}");
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex);
             }
         }
 
@@ -95,7 +98,7 @@
             }
             catch (Exception ex)
             {
-                this._logger.LogError($"NotifyToAll {ex}");
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex);
             }
         }
 
@@ -115,7 +118,7 @@
             }
             catch (Exception ex)
             {
-                this._logger.LogError("NotifyToSingleUser=" + ex);
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex);
             }
         }
     }

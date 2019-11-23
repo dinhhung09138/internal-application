@@ -21,7 +21,7 @@
         /// <returns>integer.</returns>
         public int Count(Func<KeyValuePair<string, HashSet<string>>, bool> where = null)
         {
-            return @where != null ? this._connections.Count(@where) : this._connections.Count;
+            return @where != null ? _connections.Count(@where) : _connections.Count;
         }
 
         /// <summary>
@@ -31,12 +31,12 @@
         /// <param name="connectionId">Connection id.</param>
         public void Add(string key, string connectionId)
         {
-            lock (this._connections)
+            lock (_connections)
             {
-                if (!this._connections.TryGetValue(key, out var connections))
+                if (!_connections.TryGetValue(key, out var connections))
                 {
                     connections = new HashSet<string>();
-                    this._connections.Add(key, connections);
+                    _connections.Add(key, connections);
                 }
 
                 lock (connections)
@@ -53,7 +53,7 @@
         /// <returns>IReadOnlyList of string.</returns>
         public IReadOnlyList<string> GetConnections(string key)
         {
-            if (this._connections.TryGetValue(key, out var connections))
+            if (_connections.TryGetValue(key, out var connections))
             {
                 return connections.ToList();
             }
@@ -67,7 +67,7 @@
         /// <returns>IReadOnlyCollection.<string></returns>
         public IReadOnlyCollection<string> GetAllConnections()
         {
-            return this._connections.Select(c => c.Key).ToList();
+            return _connections.Select(c => c.Key).ToList();
         }
 
         /// <summary>
@@ -77,9 +77,9 @@
         /// <param name="connectionId">Connection id.</param>
         public void Remove(string key, string connectionId)
         {
-            lock (this._connections)
+            lock (_connections)
             {
-                if (!this._connections.TryGetValue(key, out var connections))
+                if (!_connections.TryGetValue(key, out var connections))
                 {
                     return;
                 }
@@ -90,7 +90,7 @@
 
                     if (connections.Count == 0)
                     {
-                        this._connections.Remove(key);
+                        _connections.Remove(key);
                     }
                 }
             }

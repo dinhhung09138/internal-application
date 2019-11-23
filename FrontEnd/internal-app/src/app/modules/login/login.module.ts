@@ -1,24 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+
+import { LoginComponent } from './components/login.component';
+
+const routes: Routes = [
+  { path: '', component: LoginComponent, pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
     LoginComponent
   ],
   imports: [
-    CommonModule,           // For load child module
-    RouterModule.forChild([
-      {
-        path: '',
-        component: LoginComponent,
-        data: { title: 'Login' }
-      }
-    ])
+    CommonModule,
+    RouterModule.forChild(routes),
   ]
 })
-
-export class LoginModule {
-
-}
+export class LoginModule { }

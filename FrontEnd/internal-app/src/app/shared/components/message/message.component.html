@@ -1,5 +1,0 @@
-<ngb-toast *ngFor="let msg of messageService.toasts" [class]="msg.className" [autohide]="true" [delay]="msg.delay || 3000" (hide)="messageService.remove(msg)">
-    <i class="fa fa-check-circle" aria-hidden="true" *ngIf="msg.messageType === 'success'"></i>
-    <i class="fa fa-exclamation-triangle" aria-hidden="true" *ngIf="msg.messageType === 'warning'"></i>
-    <i class="fa fa-times" aria-hidden="true" *ngIf="msg.messageType === 'error'"></i> {{ msg.textOrTpl }}
-</ngb-toast>
