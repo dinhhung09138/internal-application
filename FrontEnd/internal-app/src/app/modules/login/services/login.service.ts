@@ -1,3 +1,4 @@
+import { ApiSetting } from './../../../core/api-setting';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,8 +7,9 @@ import { map } from 'rxjs/operators';
 
 import { DeviceDetectorService } from 'ngx-device-detector';
 
-import { LoginModel } from './../models/login.model';
 import { ResponseModel } from 'src/app/core/models/response.model';
+
+import { LoginModel } from './../models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,10 @@ import { ResponseModel } from 'src/app/core/models/response.model';
 export class LoginService {
 
   deviceInfo = null;
+
+  url = {
+    login: ApiSetting.apiRoot + 'authentication/login',
+  };
 
   constructor(
     private http: HttpClient,
@@ -34,9 +40,8 @@ export class LoginService {
     model.browser = this.deviceInfo.browser + '/' + this.deviceInfo.browser_version;
     model.osName = this.deviceInfo.os;
     model.platform = platform;
-    console.log(model);
 
-    return this.http.post<any>('', model).pipe(map((data) => {
+    return this.http.post<ResponseModel>(this.url.login, model).pipe(map((data) => {
       return data;
     }));
   }

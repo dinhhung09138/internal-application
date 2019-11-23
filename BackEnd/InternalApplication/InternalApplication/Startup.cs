@@ -36,14 +36,11 @@ namespace InternalApplication
         /// <param name="services">IServiceCollection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.CommonConfiguration(this.Configuration);
             services.ConfigApiVersion();
             services.DatabaseConfiguration(this.Configuration);
-
             services.InjectApplicationService();
-
             services.AuthenticationConfiguration(this.Configuration);
-
-            services.CommonConfiguration();
         }
 
         /// <summary>
