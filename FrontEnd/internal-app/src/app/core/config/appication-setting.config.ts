@@ -1,4 +1,4 @@
-export class AppSetting {
+export class AppLicationSetting {
 
   /** Table page size */
   static readonly table = {

@@ -1,3 +1,6 @@
+import { ApplicationInterceptor } from './core/interceptors/interceptor';
+import { AppLoadModule } from './core/app-load.module';
+import { TokenContext } from './core/context/token.context';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,8 +26,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    AppLoadModule,
   ],
-  providers: [],
+  providers: [
+    TokenContext,
+    ApplicationInterceptor,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
