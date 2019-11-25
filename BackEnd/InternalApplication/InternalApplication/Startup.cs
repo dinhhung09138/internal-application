@@ -6,6 +6,8 @@ namespace InternalApplication
     using InternalApplication.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc.Infrastructure;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
@@ -42,6 +44,11 @@ namespace InternalApplication
             services.ConfigSignalR();
             services.InjectApplicationService();
             services.AuthenticationConfiguration(this.Configuration);
+            services.CommonConfiguration();
+
+            //services.TryAddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
         }
 
         /// <summary>
