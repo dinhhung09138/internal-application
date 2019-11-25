@@ -35,10 +35,10 @@ export class LoginComponent implements OnInit {
       rememberMe: [localStorage.getItem('rememberMe') ? localStorage.getItem('rememberMe') : false],
     });
 
-    if (this.context.isAuthenticated()) {
-        this.router.navigate(['/demo/datatable'], {});
-        return;
-    }
+    // if (this.context.isAuthenticated()) {
+    //     this.router.navigate(['/demo/datatable'], {});
+    //     return;
+    // }
   }
 
   get f() { return this.loginForm.controls; }

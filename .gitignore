@@ -67,3 +67,4 @@ BackEnd/InternalApplication/Services/Service.PO/bin/
 BackEnd/InternalApplication/Services/Service.Warehouse/bin/
 BackEnd/InternalApplication/Core/DataAccess/Core.Data.IRepository/bin/
 BackEnd/InternalApplication/Core/Core.Common/bin/
+BackEnd/InternalApplication/API/API.Common/bin/
