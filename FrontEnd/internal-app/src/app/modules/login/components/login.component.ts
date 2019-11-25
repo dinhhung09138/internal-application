@@ -29,19 +29,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = this.activeRoute.snapshot.queryParams.returnUrl;
-    if (this.context.isAuthenticated()) {
-        this.router.navigate(['/demo/datatable'], {});
-        return;
-    }
-    this.initForm();
-  }
-
-  initForm() {
     this.loginForm = this.fb.group({
       userName: [localStorage.getItem('username'), [Validators.required, Validators.maxLength(50)]],
       password: [localStorage.getItem('password'), [Validators.required, Validators.maxLength(50)]],
       rememberMe: [localStorage.getItem('rememberMe') ? localStorage.getItem('rememberMe') : false],
     });
+
+    if (this.context.isAuthenticated()) {
+        this.router.navigate(['/demo/datatable'], {});
+        return;
+    }
   }
 
   get f() { return this.loginForm.controls; }
