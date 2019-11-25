@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthenticationGuard } from './core/guards/authentication.guard';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [
     TokenContext,
     ApplicationInterceptor,
+    AuthenticationGuard,
   ],
   bootstrap: [AppComponent]
 })
