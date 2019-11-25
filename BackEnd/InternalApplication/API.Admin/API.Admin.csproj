@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\API\API.Common\API.Common.csproj" />
+    <ProjectReference Include="..\Services\Service.Admin\Service.Admin.csproj" />
   </ItemGroup>
 
 </Project>

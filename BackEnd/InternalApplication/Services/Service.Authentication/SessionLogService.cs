@@ -123,5 +123,53 @@
 
             return response;
         }
+
+        /// <summary>
+        /// Add new session log.
+        /// </summary>
+        /// <param name="tokenModel">token model.</param>
+        /// <param name="loginModel">Login model.</param>
+        /// <returns>ResponseModel object.</returns>
+        public async Task<ResponseModel> Add(JwtTokenModel tokenModel, LoginModel loginModel)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                if (tokenModel == null || loginModel == null)
+                {
+                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                }
+
+                string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+
+                SessionLog md = new SessionLog
+                {
+                    Id = Guid.NewGuid(),
+                    IsActive = true,
+                    IsOnline = true,
+                    LoginTime = DateTime.Now,
+                    Token = tokenModel.AccessToken,
+                    ExpirationTime = new DateTime(tokenModel.Expiration),
+                    IPAddress = clientIp,
+                    Browser = loginModel.Browser,
+                    OSName = loginModel.OSName,
+                    Platform = loginModel.Platform,
+                    CreateBy = tokenModel.UserInfo.Id.ToString(),
+                    CreateDate = DateTime.Now,
+                    UpdateBy = tokenModel.UserInfo.Id.ToString(),
+                    UpdateDate = DateTime.Now,
+                };
+
+                await _context.SessionLogRepository.AddAsync(md).ConfigureAwait(false);
+                await _context.SaveChangesAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, loginModel, ex);
+                response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
+            }
+
+            return response;
+        }
     }
 }

@@ -6,11 +6,8 @@ namespace InternalApplication
     using InternalApplication.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc.Infrastructure;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.DependencyInjection.Extensions;
     using Microsoft.Extensions.Logging;
     using Serilog;
 
@@ -39,18 +36,12 @@ namespace InternalApplication
         /// <param name="services">IServiceCollection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.CommonConfiguration(this.Configuration);
             services.ConfigApiVersion();
             services.DatabaseConfiguration(this.Configuration);
-
+            services.ConfigSignalR();
             services.InjectApplicationService();
-
             services.AuthenticationConfiguration(this.Configuration);
-
-            services.CommonConfiguration();
-
-            //services.TryAddScoped<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
         }
 
         /// <summary>
@@ -62,9 +53,7 @@ namespace InternalApplication
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.CustomizeMvc();
-
             loggerFactory.AddSerilog();
-
             app.SetupEnvironment(env, loggerFactory);
         }
     }
