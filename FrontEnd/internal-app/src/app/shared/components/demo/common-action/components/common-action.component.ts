@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'src/app/core/services/confirmation.service';
+import { ShowMessageService } from 'src/app/core/services/show-message.service';
 
 @Component({
   selector: 'app-common-action',
@@ -10,6 +11,7 @@ export class CommonActionComponent implements OnInit {
 
   constructor(
     private confirmService: ConfirmationService,
+    private showMessageService: ShowMessageService,
   ) { }
 
   ngOnInit() {
@@ -25,4 +27,15 @@ export class CommonActionComponent implements OnInit {
     });
   }
 
+  onShowSuccessMessageButtonClick() {
+    this.showMessageService.showSuccess('Title', 'Message content');
+  }
+
+  onWarningMessageButtonClick() {
+    this.showMessageService.showWarning('Title', 'Message content');
+  }
+
+  onShowErrorMessageButtonClick() {
+    this.showMessageService.showError('Title', 'Message content');
+  }
 }

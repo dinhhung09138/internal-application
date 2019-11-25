@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PushNotificationService } from 'src/app/core/services/push-notification.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pushNotificationService: PushNotificationService) { }
 
   ngOnInit() {
+    console.log('init layout');
+    this.pushNotificationService.init();
   }
 
 }

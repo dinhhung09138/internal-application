@@ -12,6 +12,9 @@ import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 import { PushNotificationService } from 'src/app/core/services/push-notification.service';
 
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ShowMessageService } from 'src/app/core/services/show-message.service';
 
 
 @NgModule({
@@ -28,10 +31,13 @@ import { PushNotificationService } from 'src/app/core/services/push-notification
   ],
   providers: [
     PushNotificationService,
+    MessageService,
+    ShowMessageService,
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    ToastModule,
   ]
 })
 export class LayoutModule { }
