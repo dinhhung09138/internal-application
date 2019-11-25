@@ -6,6 +6,7 @@ import { LoginService } from './../services/login.service';
 import { ResponseModel } from 'src/app/core/models/response.model';
 import { ResponseStatus } from 'src/app/core/enums/response.enum';
 import { Router } from '@angular/router';
+import { TokenContext } from 'src/app/core/context/token.context';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +20,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private route: Router,
+    private router: Router,
     private loginService: LoginService,
+    private context: TokenContext,
   ) { }
 
   ngOnInit() {
@@ -40,11 +42,14 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.loginService.login(this.loginForm.value).subscribe((res: ResponseModel) => {
       if (res.responseStatus === ResponseStatus.warning) {
-        window.alert(res.errors.join(','));
+        console.log(res.errors.join(','));
       } else if (res.responseStatus === ResponseStatus.error) {
-        window.alert(res.errors.join(','));
+        console.log(res.errors.join(','));
       } else if (res.responseStatus === ResponseStatus.success) {
-        this.route.navigate(['/']);
+        console.log(res.result);
+        this.context.saveToken(res.result);
+        console.log('login success');
+        this.router.navigate(['/demo/datatable']);
       }
       this.isLoading = false;
     }, err => {
