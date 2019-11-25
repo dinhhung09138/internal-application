@@ -2,7 +2,7 @@ import { AppLoadService } from './services/app-load.service';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-export function get_settings(appLoadService: AppLoadService) {
+export function getSettings(appLoadService: AppLoadService) {
   return () => appLoadService.getSetting();
 }
 
@@ -14,7 +14,7 @@ export function get_settings(appLoadService: AppLoadService) {
     AppLoadService,
     {
       provide: APP_INITIALIZER,
-      useFactory: get_settings,
+      useFactory: getSettings,
       deps: [AppLoadService],
       multi: true
     }
