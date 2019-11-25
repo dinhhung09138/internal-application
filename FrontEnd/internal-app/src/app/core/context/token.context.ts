@@ -16,7 +16,11 @@ export class TokenContext {
 
   saveToken(token: TokenModel) {
     sessionStorage.removeItem('tokenContext');
-    sessionStorage.setItem('tokenContext', JSON.stringify({ token }));
+    sessionStorage.setItem('tokenContext', JSON.stringify({
+      accessToken: token.accessToken,
+      expiration: token.expiration,
+      refreshToken: token.refreshToken,
+     }));
     this.saveUser(token.userInfo);
   }
 
@@ -41,7 +45,7 @@ export class TokenContext {
   }
 
   getToken(): string {
-      const workcontext = JSON.parse(sessionStorage.getItem('workcontext'));
+      const workcontext = JSON.parse(sessionStorage.getItem('tokenContext'));
       if (workcontext != null) {
           return workcontext.accessToken;
       }
@@ -57,11 +61,11 @@ export class TokenContext {
   }
 
   isTokenExpired(needToLogout: boolean): boolean {
-    const workcontext = JSON.parse(sessionStorage.getItem('tokenContext'));
-    if (workcontext) {
+    const tokenContext = JSON.parse(sessionStorage.getItem('tokenContext'));
+    if (tokenContext) {
         const t = Math.round((new Date()).getTime() / 1000);
         // tslint:disable-next-line: radix
-        const expiredDate = parseInt(workcontext.expiration);
+        const expiredDate = parseInt(tokenContext.expiration);
         if (needToLogout) {
             if (t >= expiredDate) {
                 return true;

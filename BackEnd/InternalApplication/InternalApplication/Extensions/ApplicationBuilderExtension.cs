@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using API.Common.Hubs;
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -26,7 +27,6 @@
             app.UseCors("InternalApplicationPolicy");
 
             // app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-
 
             app.UseMvc(routes =>
             {
@@ -71,6 +71,11 @@
                 // see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<NotificationServiceHub>("/hubs/notification");
+            });
 
             loggerFactory.AddSerilog();
 

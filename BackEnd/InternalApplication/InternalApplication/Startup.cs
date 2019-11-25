@@ -39,6 +39,7 @@ namespace InternalApplication
             services.CommonConfiguration(this.Configuration);
             services.ConfigApiVersion();
             services.DatabaseConfiguration(this.Configuration);
+            services.ConfigSignalR();
             services.InjectApplicationService();
             services.AuthenticationConfiguration(this.Configuration);
         }
@@ -52,9 +53,7 @@ namespace InternalApplication
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.CustomizeMvc();
-
             loggerFactory.AddSerilog();
-
             app.SetupEnvironment(env, loggerFactory);
         }
     }

@@ -16,7 +16,7 @@ export class PushNotificationService {
   constructor(private context: TokenContext, private router: Router) {}
 
   public init() {
-    if (this.hubConnection) {
+    if (!this.hubConnection) {
       const url = ApiSetting.hubUrl + '?token=' + this.context.getToken();
       this.hubConnection = new HubConnectionBuilder().withUrl(url, {
         skipNegotiation: true,

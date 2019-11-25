@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using API.Common;
     using Core.Common.Services;
     using Core.Common.Services.Interfaces;
     using Internal.DataAccess;
@@ -129,12 +130,30 @@
         }
 
         /// <summary>
+        /// signalR configuration.
+        /// </summary>
+        /// <param name="services">IServiceCollection object.</param>
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection ConfigSignalR(this IServiceCollection services)
+        {
+            services.AddSignalR(hubOptions =>
+            {
+                hubOptions.KeepAliveInterval = TimeSpan.FromSeconds(10);
+                hubOptions.EnableDetailedErrors = true;
+            });
+
+            return services;
+        }
+
+        /// <summary>
         /// Inject application method.
         /// </summary>
         /// <param name="services">IServiceCollection object.</param>
         /// <returns>IServiceCollection.</returns>
         public static IServiceCollection InjectApplicationService(this IServiceCollection services)
         {
+            services.AddSingleton<ConnectionMapping, ConnectionMapping>();
+
             services.AddScoped<IInternalUnitOfWork, InternalUnitOfWork>();
             services.AddScoped<IJwtTokenSecurityService, JwtTokenSecurityService>();
             services.AddScoped<ILoggerService, LoggerService>();
