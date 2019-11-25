@@ -10,6 +10,7 @@ import { TaskComponent } from './navigation/task/task.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
+import { PushNotificationService } from 'src/app/core/services/push-notification.service';
 
 
 
@@ -24,6 +25,9 @@ import { ContentComponent } from './content/content.component';
     LeftSidebarComponent,
     FooterComponent,
     ContentComponent,
+  ],
+  providers: [
+    PushNotificationService,
   ],
   imports: [
     CommonModule,

@@ -31,6 +31,9 @@ export class PushNotificationService {
     if (!this.isConnected) {
         this.hubConnection.start().then(() => {
             this.isConnected = true;
+            console.log('Connection start');
+        }).catch(err => {
+          console.log(err);
         });
     }
   }
@@ -53,10 +56,12 @@ export class PushNotificationService {
   private reconnect(i: number) {
     this.hubConnection.start().then(() => {
         this.isConnected = true;
-    }).catch(() => {
+        console.log('Reconnect');
+    }).catch(err => {
         if (i === this.reconnectCount) {
             this.logout();
         }
+        console.log(err);
     });
   }
 
@@ -72,6 +77,7 @@ export class PushNotificationService {
     this.isConnected = false;
     if (this.hubConnection) {
       this.hubConnection.stop();
+      console.log('Disconnect');
     }
   }
 }
