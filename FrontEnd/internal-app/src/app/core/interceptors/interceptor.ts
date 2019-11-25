@@ -10,7 +10,7 @@ export const ApplicationInterceptor = [
     multi: true
   },
   {
-    provider: HTTP_INTERCEPTORS,
+    provide: HTTP_INTERCEPTORS,
     useClass: HttptokenInterceptor,
     multi: true
   }
