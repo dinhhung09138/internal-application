@@ -17,7 +17,7 @@
                       </div>
                       <div class="form-group">
                           <label for="remember-me" class="text-info"><span>Remember me</span> 
-                          <span><input id="remember-me" name="remember-me" type="checkbox" tabindex="3"></span></label><br>
+                          <span><input formControlName="rememberMe" type="checkbox" tabindex="3"></span></label><br>
                           <button type="submit" name="submit" class="btn btn-info btn-md" tabindex="4">
                             Submit
                             <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
