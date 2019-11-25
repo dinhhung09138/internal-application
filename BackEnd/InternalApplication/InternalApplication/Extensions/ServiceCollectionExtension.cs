@@ -17,6 +17,8 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
+    using Service.Admin;
+    using Service.Admin.Interfaces;
     using Service.Authentication;
     using Service.Authentication.Interfaces;
 
@@ -159,6 +161,7 @@
             services.AddScoped<ILoggerService, LoggerService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ISessionLogService, SessionLogService>();
+            services.AddScoped<IUserService, UserService>();
             return services;
         }
     }
