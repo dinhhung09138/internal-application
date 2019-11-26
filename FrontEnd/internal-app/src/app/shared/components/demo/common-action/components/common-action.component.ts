@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'src/app/core/services/confirmation.service';
 import { ShowMessageService } from 'src/app/core/services/show-message.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'app-common-action',
@@ -12,6 +13,7 @@ export class CommonActionComponent implements OnInit {
   constructor(
     private confirmService: ConfirmationService,
     private showMessageService: ShowMessageService,
+    private loading: LoadingService,
   ) { }
 
   ngOnInit() {
@@ -37,5 +39,11 @@ export class CommonActionComponent implements OnInit {
 
   onShowErrorMessageButtonClick() {
     this.showMessageService.showError('Title', 'Message content');
+  }
+  onShowLoadingButtonClick(){
+    this.loading.showLoading(true);
+    setTimeout(() => {
+      this.loading.showLoading(false);
+    }, 2000);
   }
 }
