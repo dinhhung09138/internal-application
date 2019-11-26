@@ -40,6 +40,10 @@
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var response = await this._authService.Login(model).ConfigureAwait(false);
+            if (response.ResponseStatus == Core.Common.Enums.ResponseStatus.Success)
+            {
+                await NotifyToAll("loginSuccess", null).ConfigureAwait(false);
+            }
 
             return Ok(response);
         }

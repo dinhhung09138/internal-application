@@ -56,6 +56,48 @@ namespace Internal.DataAccess
             }
         }
 
+        private ITableGenericRepository<Country> countryRepository;
+
+        public ITableGenericRepository<Country> CountryRepository
+        {
+            get
+            {
+                return this.countryRepository = this.countryRepository ?? new TableGenericRepository<Country>(this._context);
+            }
+        }
+
+        private ITableGenericRepository<City> cityRepository;
+
+        public ITableGenericRepository<City> CityRepository
+        {
+            get
+            {
+                return this.cityRepository = this.cityRepository ?? new TableGenericRepository<City>(this._context);
+            }
+        }
+
+
+        private ITableGenericRepository<Partner> partnerRepository;
+
+        public ITableGenericRepository<Partner> PartnerRepository
+        {
+            get
+            {
+                return this.partnerRepository = this.partnerRepository ?? new TableGenericRepository<Partner>(this._context);
+            }
+        }
+
+
+        private ITableGenericRepository<Employee> employeeRepository;
+
+        public ITableGenericRepository<Employee> EmployeeRepository
+        {
+            get
+            {
+                return this.employeeRepository = this.employeeRepository ?? new TableGenericRepository<Employee>(this._context);
+            }
+        }
+
         public void BeginTransaction()
         {
             this._transaction = _context.Database.BeginTransaction();

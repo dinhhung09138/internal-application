@@ -25,5 +25,13 @@
         /// <param name="model">token model.</param>
         /// <returns>ResponseModel object.</returns>
         Task<ResponseModel> Add(JwtTokenModel model);
+
+        /// <summary>
+        /// Add new session log.
+        /// </summary>
+        /// <param name="tokenModel">token model.</param>
+        /// <param name="loginModel">Login model.</param>
+        /// <returns>ResponseModel object.</returns>
+        Task<ResponseModel> Add(JwtTokenModel tokenModel, LoginModel loginModel);
     }
 }

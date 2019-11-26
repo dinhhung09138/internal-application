@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using API.Common;
     using Core.Common.Services;
     using Core.Common.Services.Interfaces;
     using Internal.DataAccess;
@@ -16,6 +17,8 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
+    using Service.Admin;
+    using Service.Admin.Interfaces;
     using Service.Authentication;
     using Service.Authentication.Interfaces;
 
@@ -28,15 +31,16 @@
         /// Common configuration method.
         /// </summary>
         /// <param name="services">IServiceCollection object.</param>
+        /// <param name="config">Configuration object.</param>
         /// <returns>IServiceCollection.</returns>
-        public static IServiceCollection CommonConfiguration(this IServiceCollection services)
+        public static IServiceCollection CommonConfiguration(this IServiceCollection services, IConfiguration config)
         {
+            // services.AddCors();
             services.AddCors(o => o.AddPolicy("InternalApplicationPolicy", builder =>
             {
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials();
+                builder.WithOrigins(config["CORS"])
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
             }));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -92,7 +96,7 @@
                 {
                     OnMessageReceived = context =>
                     {
-                        if (context.Request.Path.ToString().StartsWith("/hubs/"))
+                        if (context.Request.Path.ToString().StartsWith("/hubs/notification"))
                         {
                             context.Token = context.Request.Query["token"];
                         }
@@ -128,18 +132,36 @@
         }
 
         /// <summary>
+        /// signalR configuration.
+        /// </summary>
+        /// <param name="services">IServiceCollection object.</param>
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection ConfigSignalR(this IServiceCollection services)
+        {
+            services.AddSignalR(hubOptions =>
+            {
+                hubOptions.KeepAliveInterval = TimeSpan.FromSeconds(10);
+                hubOptions.EnableDetailedErrors = true;
+            });
+
+            return services;
+        }
+
+        /// <summary>
         /// Inject application method.
         /// </summary>
         /// <param name="services">IServiceCollection object.</param>
         /// <returns>IServiceCollection.</returns>
         public static IServiceCollection InjectApplicationService(this IServiceCollection services)
         {
-            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<ConnectionMapping, ConnectionMapping>();
+
             services.AddScoped<IInternalUnitOfWork, InternalUnitOfWork>();
             services.AddScoped<IJwtTokenSecurityService, JwtTokenSecurityService>();
             services.AddScoped<ILoggerService, LoggerService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ISessionLogService, SessionLogService>();
+            services.AddScoped<IUserService, UserService>();
             return services;
         }
     }
