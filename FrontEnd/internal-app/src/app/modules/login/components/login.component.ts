@@ -7,6 +7,8 @@ import { ResponseModel } from 'src/app/core/models/response.model';
 import { ResponseStatus } from 'src/app/core/enums/response.enum';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TokenContext } from 'src/app/core/context/token.context';
+import { MessageService } from 'primeng/api';
+import { LoginResource } from '../login.message';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,9 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   loginForm: FormGroup;
   returnUrl: string;
+  submitted = false;
+  warningMessage: any[];
+  formMessage = LoginResource.loginForm;
 
   constructor(
     private fb: FormBuilder,
@@ -25,6 +30,7 @@ export class LoginComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private loginService: LoginService,
     private context: TokenContext,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -44,10 +50,16 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmitForm() {
+    this.warningMessage = [];
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     this.isLoading = true;
     this.loginService.login(this.loginForm.value).subscribe((res: ResponseModel) => {
       if (res.responseStatus === ResponseStatus.warning) {
-        console.log(res.errors.join(','));
+        this.warningMessage.push({severity: 'warn', summary: 'Warning', detail: res.errors.join(',')});
       } else if (res.responseStatus === ResponseStatus.error) {
         console.log(res.errors.join(','));
       } else if (res.responseStatus === ResponseStatus.success) {
