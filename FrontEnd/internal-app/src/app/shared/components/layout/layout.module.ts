@@ -15,6 +15,8 @@ import { PushNotificationService } from 'src/app/core/services/push-notification
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ShowMessageService } from 'src/app/core/services/show-message.service';
+import { LoadingComponent } from './loading/loading.component';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 
 @NgModule({
@@ -28,11 +30,13 @@ import { ShowMessageService } from 'src/app/core/services/show-message.service';
     LeftSidebarComponent,
     FooterComponent,
     ContentComponent,
+    LoadingComponent,
   ],
   providers: [
     PushNotificationService,
     MessageService,
     ShowMessageService,
+    LoadingService,
   ],
   imports: [
     CommonModule,
