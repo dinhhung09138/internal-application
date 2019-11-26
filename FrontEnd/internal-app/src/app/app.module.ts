@@ -12,11 +12,13 @@ import { AppComponent } from './app.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationGuard } from './core/guards/authentication.guard';
+import { PageNotfoundComponent } from './shared/components/page-notfound/page-notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
+    PageNotfoundComponent,
   ],
   entryComponents: [
     ConfirmDialogComponent,
