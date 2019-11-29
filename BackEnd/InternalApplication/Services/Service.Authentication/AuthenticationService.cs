@@ -20,9 +20,24 @@
     /// </summary>
     public class AuthenticationService : IAuthenticationService
     {
+        /// <summary>
+        /// Data context.
+        /// </summary>
         private readonly IInternalUnitOfWork _context;
+
+        /// <summary>
+        /// Log service.
+        /// </summary>
         private readonly ILoggerService _logger;
+
+        /// <summary>
+        /// JWT Token service.
+        /// </summary>
         private readonly IJwtTokenSecurityService _tokenService;
+
+        /// <summary>
+        /// Session log service.
+        /// </summary>
         private readonly ISessionLogService _sessionLogService;
 
         /// <summary>
@@ -48,7 +63,7 @@
         /// Login function.
         /// </summary>
         /// <param name="model">login info model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> Login(LoginModel model)
         {
             var response = new ResponseModel();

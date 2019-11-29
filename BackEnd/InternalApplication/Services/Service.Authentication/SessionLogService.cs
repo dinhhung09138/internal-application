@@ -1,25 +1,35 @@
-﻿namespace Service.Authentication
-{
-    using System;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Core.Common.Messages;
-    using Core.Common.Models;
-    using Core.Common.Services.Interfaces;
-    using Internal.DataAccess;
-    using Internal.DataAccess.Entity;
-    using Microsoft.AspNetCore.Http;
-    using Service.Authentication.Interfaces;
-    using Service.Authentication.Models;
+﻿using System;
+using System.Reflection;
+using System.Threading.Tasks;
+using Core.Common.Messages;
+using Core.Common.Models;
+using Core.Common.Services.Interfaces;
+using Internal.DataAccess;
+using Internal.DataAccess.Entity;
+using Microsoft.AspNetCore.Http;
+using Service.Authentication.Interfaces;
+using Service.Authentication.Models;
 
+namespace Service.Authentication
+{
     /// <summary>
     /// Session log service.
     /// </summary>
     public class SessionLogService : ISessionLogService
     {
+        /// <summary>
+        /// Http context.
+        /// </summary>
         private readonly IHttpContextAccessor _accessor;
+
+        /// <summary>
+        /// Data context.
+        /// </summary>
         private readonly IInternalUnitOfWork _context;
+
+        /// <summary>
+        /// Log service.
+        /// </summary>
         private readonly ILoggerService _logger;
 
         /// <summary>
