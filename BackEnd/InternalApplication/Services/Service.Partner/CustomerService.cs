@@ -8,19 +8,18 @@ using Core.Common.Extensions;
 using Core.Common.Messages;
 using Core.Common.Models;
 using Core.Common.Services.Interfaces;
-using Service.Warehouse.Constants;
-using Service.Warehouse.Interfaces;
-using Service.Warehouse.Models;
+using Service.Partner.Interfaces;
+using Service.Partner.Models;
 using Warehouse.DataAccess;
 using Warehouse.DataAccess.Entities;
 using Z.EntityFramework.Plus;
 
-namespace Service.Warehouse
+namespace Service.Partner
 {
     /// <summary>
-    /// Goods category service.
+    /// Customer service.
     /// </summary>
-    public class GoodsCategoryService
+    public class CustomerService : ICustomerService
     {
         /// <summary>
         /// Data context.
@@ -37,16 +36,16 @@ namespace Service.Warehouse
         /// </summary>
         /// <param name="context">data context.</param>
         /// <param name="logger">log service.</param>
-        public GoodsCategoryService(IWareHouseUnitOfWork context, ILoggerService logger)
+        public CustomerService(IWareHouseUnitOfWork context, ILoggerService logger)
         {
             _context = context;
             _logger = logger;
         }
 
         /// <summary>
-        /// Get list of goods category data.
+        /// Get list of customer data.
         /// </summary>
-        /// <param name="filter">Filter model</param>
+        /// <param name="filter">Filter model.</param>
         /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> List(FilterModel filter)
         {
@@ -58,20 +57,27 @@ namespace Service.Warehouse
                     throw new Exception(CommonMessage.PARAMS_INVALID);
                 }
 
-                var query = _context.GoodsCategoryRepository.Query()
+                var query = _context.CustomerRepository.Query()
                                                    .Where(m => m.Deleted == false)
-                                                   .Select(m => new GoodsCategoryModel
+                                                   .Select(m => new CustomerModel
                                                    {
                                                        Id = m.Id,
-                                                       Description = m.Description,
+                                                       LogoFileId = m.LogoFileId,
                                                        Name = m.Name,
+                                                       PrimaryPhone = m.PrimaryPhone,
+                                                       Website = m.Website,
+                                                       IsCompany = m.IsCompany,
+                                                       StartOn = m.StartOn,
                                                        IsActive = m.IsActive,
                                                        RowVersion = m.RowVersion,
                                                    });
 
                 if (filter.Text.Length > 0)
                 {
-                    query = query.Where(m => m.Description.ToLower().Contains(filter.Text)
+                    query = query.Where(m => m.Name.ToLower().Contains(filter.Text)
+                                            || m.PrimaryPhone.ToLower().Contains(filter.Text)
+                                            || m.Website.ToLower().Contains(filter.Text)
+                                            || m.Name.ToLower().Contains(filter.Text)
                                             || m.Name.ToLower().Contains(filter.Text));
                 }
 
@@ -96,17 +102,17 @@ namespace Service.Warehouse
         }
 
         /// <summary>
-        /// Get goods category detail.
+        /// Get customer detail.
         /// </summary>
-        /// <param name="id">Goods category's id.</param>
+        /// <param name="id">Customer's id.</param>
         /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> Detail(Guid id)
         {
             var response = new ResponseModel();
             try
             {
-                var item = await _context.GoodsCategoryRepository.FirstOrDefaultAsync(m => m.Deleted == false
-                                                                                           && m.Id == id)
+                var item = await _context.CustomerRepository.FirstOrDefaultAsync(m => m.Deleted == false
+                                                                                      && m.Id == id)
                                                             .ConfigureAwait(false);
 
                 if (item == null)
@@ -114,10 +120,23 @@ namespace Service.Warehouse
                     throw new Exception(CommonMessage.ID_NOT_FOUND);
                 }
 
-                GoodsCategoryModel md = new GoodsCategoryModel();
+                CustomerModel md = new CustomerModel();
                 md.Id = item.Id;
                 md.Name = item.Name;
+                md.LogoFileId = item.LogoFileId;
+                md.PrimaryPhone = item.PrimaryPhone;
+                md.SecondaryPhone = item.SecondaryPhone;
+                md.Fax = item.Fax;
+                md.Website = item.Website;
+                md.TaxCode = item.TaxCode;
+                md.IsCompany = item.IsCompany;
+                md.StartOn = item.StartOn;
                 md.Description = item.Description;
+                md.Address = item.Address;
+                md.CitiId = item.CitiId;
+                md.CountryId = item.CountryId;
+                md.Longtitue = item.Longtitue;
+                md.Latitude = item.Latitude;
                 md.IsActive = item.IsActive;
                 md.RowVersion = item.RowVersion;
 
@@ -133,11 +152,11 @@ namespace Service.Warehouse
         }
 
         /// <summary>
-        /// Save a goods category function.
+        /// Save a customer function.
         /// </summary>
-        /// <param name="model">Goods category model.</param>
+        /// <param name="model">Customer model.</param>
         /// <returns>ResponseModel object.</returns>
-        public async Task<ResponseModel> Save(GoodsCategoryModel model)
+        public async Task<ResponseModel> Save(CustomerModel model)
         {
             var response = new ResponseModel();
             try
@@ -149,7 +168,7 @@ namespace Service.Warehouse
 
                 if (model.IsEdit)
                 {
-                    var checkExists = await _context.GoodsCategoryRepository
+                    var checkExists = await _context.CustomerRepository
                                                         .AnyAsync(m => m.Id == model.Id)
                                                         .ConfigureAwait(false);
 
@@ -160,7 +179,7 @@ namespace Service.Warehouse
                         return response;
                     }
 
-                    var checkCurrent = await _context.GoodsCategoryRepository
+                    var checkCurrent = await _context.CustomerRepository
                                                         .AnyAsync(m => m.Id == model.Id
                                                                        && m.RowVersion == model.RowVersion)
                                                         .ConfigureAwait(false);
@@ -172,24 +191,49 @@ namespace Service.Warehouse
                         return response;
                     }
 
-                    await _context.GoodsCategoryRepository.Query()
-                        .Where(m => m.Id == model.Id)
-                        .UpdateAsync(m => new GoodsCategory()
-                        {
-                            Name = model.Name,
-                            Description = model.Description,
-                            IsActive = model.IsActive,
-                            UpdateBy = model.CurrentUserId,
-                            UpdateDate = DateTime.Now,
-                        }).ConfigureAwait(true);
+                    await _context.CustomerRepository.Query()
+                                                     .Where(m => m.Id == model.Id)
+                                                     .UpdateAsync(m => new Customer()
+                                                     {
+                                                         Name = model.Name,
+                                                         LogoFileId = model.LogoFileId,
+                                                         PrimaryPhone = model.PrimaryPhone,
+                                                         SecondaryPhone = model.SecondaryPhone,
+                                                         Fax = model.Fax,
+                                                         Website = model.Website,
+                                                         TaxCode = model.TaxCode,
+                                                         IsCompany = model.IsCompany,
+                                                         StartOn = model.StartOn,
+                                                         Description = model.Description,
+                                                         Address = model.Address,
+                                                         CitiId = model.CitiId,
+                                                         CountryId = model.CountryId,
+                                                         Longtitue = model.Longtitue,
+                                                         Latitude = model.Latitude,
+                                                         IsActive = model.IsActive,
+                                                         UpdateBy = model.CurrentUserId,
+                                                         UpdateDate = DateTime.Now,
+                                                     }).ConfigureAwait(true);
                 }
                 else
                 {
-                    await _context.GoodsCategoryRepository.AddAsync(new GoodsCategory()
+                    await _context.CustomerRepository.AddAsync(new Customer()
                     {
                         Id = Guid.NewGuid(),
-                        Name = model.Name,
+                        LogoFileId = model.LogoFileId,
+                        PrimaryPhone = model.PrimaryPhone,
+                        SecondaryPhone = model.SecondaryPhone,
+                        Fax = model.Fax,
+                        Website = model.Website,
+                        TaxCode = model.TaxCode,
+                        IsCompany = model.IsCompany,
+                        StartOn = model.StartOn,
                         Description = model.Description,
+                        Address = model.Address,
+                        CitiId = model.CitiId,
+                        CountryId = model.CountryId,
+                        Longtitue = model.Longtitue,
+                        Latitude = model.Latitude,
                         IsActive = model.IsActive,
                         CreateBy = model.CurrentUserId,
                         CreateDate = DateTime.Now,
@@ -209,11 +253,11 @@ namespace Service.Warehouse
         }
 
         /// <summary>
-        /// Update goods category status function.
+        /// Update customer status function.
         /// </summary>
-        /// <param name="model">Goods category model.</param>
+        /// <param name="model">Customer model.</param>
         /// <returns>ResponseModel object.</returns>
-        public async Task<ResponseModel> UpdateActiveStatus(GoodsCategoryModel model)
+        public async Task<ResponseModel> UpdateActiveStatus(CustomerModel model)
         {
             var response = new ResponseModel();
             try
@@ -223,7 +267,7 @@ namespace Service.Warehouse
                     throw new Exception(CommonMessage.PARAMS_INVALID);
                 }
 
-                var checkExistsAccount = await _context.GoodsCategoryRepository
+                var checkExistsAccount = await _context.CustomerRepository
                                                             .AnyAsync(m => m.Id == model.Id)
                                                             .ConfigureAwait(true);
 
@@ -235,8 +279,8 @@ namespace Service.Warehouse
                 }
                 else
                 {
-                    await _context.GoodsCategoryRepository.Query().Where(m => m.Id == model.Id)
-                                                         .UpdateAsync(m => new GoodsCategory()
+                    await _context.CustomerRepository.Query().Where(m => m.Id == model.Id)
+                                                         .UpdateAsync(m => new Customer()
                                                          {
                                                              IsActive = model.IsActive,
                                                              UpdateBy = model.CurrentUserId,
@@ -256,11 +300,11 @@ namespace Service.Warehouse
         }
 
         /// <summary>
-        /// Delete goods category function.
+        /// Delete customer function.
         /// </summary>
-        /// <param name="model">Goods category model.</param>
+        /// <param name="model">Customer model.</param>
         /// <returns>ResponseModel object.</returns>
-        public async Task<ResponseModel> Delete(GoodsCategoryModel model)
+        public async Task<ResponseModel> Delete(CustomerModel model)
         {
             var response = new ResponseModel();
             try
@@ -282,9 +326,9 @@ namespace Service.Warehouse
                 }
                 else
                 {
-                    await _context.GoodsCategoryRepository.Query()
+                    await _context.CustomerRepository.Query()
                                                         .Where(m => m.Id == model.Id)
-                                                        .UpdateAsync(m => new GoodsCategory()
+                                                        .UpdateAsync(m => new Customer()
                                                         {
                                                             Deleted = true,
                                                             UpdateBy = model.CurrentUserId,

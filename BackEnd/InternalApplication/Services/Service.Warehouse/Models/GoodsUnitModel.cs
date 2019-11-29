@@ -20,6 +20,7 @@ namespace Service.Warehouse.Models
         public byte[] RowVersion { get; set; }
 
         public string CurrentUserId { get; set; }
+
         public bool IsEdit { get; set; } = false;
     }
 }

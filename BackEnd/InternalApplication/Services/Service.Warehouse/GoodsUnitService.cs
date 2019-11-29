@@ -46,7 +46,7 @@ namespace Service.Warehouse
         /// <summary>
         /// Get list of goods unit data.
         /// </summary>
-        /// <param name="filter">Filter model</param>
+        /// <param name="filter">Filter model.</param>
         /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> List(FilterModel filter)
         {
@@ -89,6 +89,43 @@ namespace Service.Warehouse
             catch (Exception ex)
             {
                 _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, filter, ex);
+                response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// Get goods unit detail.
+        /// </summary>
+        /// <param name="id">Goods unit's id.</param>
+        /// <returns>ResponseModel object.</returns>
+        public async Task<ResponseModel> Detail(Guid id)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var item = await _context.GoodsUnitRepository.FirstOrDefaultAsync(m => m.Deleted == false
+                                                                                      && m.Id == id)
+                                                            .ConfigureAwait(false);
+
+                if (item == null)
+                {
+                    throw new Exception(CommonMessage.ID_NOT_FOUND);
+                }
+
+                GoodsUnitModel md = new GoodsUnitModel();
+                md.Id = item.Id;
+                md.Name = item.Name;
+                md.Code = item.Code;
+                md.IsActive = item.IsActive;
+                md.RowVersion = item.RowVersion;
+
+                response.Result = md;
+            }
+            catch (Exception ex)
+            {
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, id, ex);
                 response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
             }
 

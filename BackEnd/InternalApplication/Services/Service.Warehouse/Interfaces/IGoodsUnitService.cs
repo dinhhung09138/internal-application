@@ -20,6 +20,13 @@ namespace Service.Warehouse.Interfaces
         Task<ResponseModel> List(FilterModel filter);
 
         /// <summary>
+        /// Get goods unit detail.
+        /// </summary>
+        /// <param name="id">Goods unit's id.</param>
+        /// <returns>ResponseModel object.</returns>
+        Task<ResponseModel> Detail(Guid id);
+
+        /// <summary>
         /// Save a goods unit function.
         /// </summary>
         /// <param name="model">Goods unit model.</param>
