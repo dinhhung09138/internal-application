@@ -53,7 +53,7 @@ namespace Service.Admin
             {
                 if (filter == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var query = _context.UserRepository.Query()
@@ -105,7 +105,7 @@ namespace Service.Admin
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var checkExistsAccount = await _context.UserRepository.AnyAsync(m => m.EmployeeId == model.EmployeeId)
@@ -154,7 +154,7 @@ namespace Service.Admin
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var checkExistsAccount = await _context.UserRepository.AnyAsync(m => m.Id == model.Id)
@@ -202,7 +202,7 @@ namespace Service.Admin
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var checkExistsAccount = await _context.UserRepository

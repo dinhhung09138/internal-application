@@ -21,7 +21,7 @@
         {
             if (context == null)
             {
-                throw new Exception(Core.Common.Messages.CommonMessage.CONTEXT_INVALID);
+                throw new Exception(Core.Common.Messages.CommonMessage.ContextInvalid);
             }
 
             if (!context.ModelState.IsValid)

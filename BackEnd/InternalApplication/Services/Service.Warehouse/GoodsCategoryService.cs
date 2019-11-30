@@ -55,7 +55,7 @@ namespace Service.Warehouse
             {
                 if (filter == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var query = _context.GoodsCategoryRepository.Query()
@@ -111,7 +111,7 @@ namespace Service.Warehouse
 
                 if (item == null)
                 {
-                    throw new Exception(CommonMessage.ID_NOT_FOUND);
+                    throw new Exception(CommonMessage.IdNotFound);
                 }
 
                 GoodsCategoryModel md = new GoodsCategoryModel();
@@ -144,7 +144,7 @@ namespace Service.Warehouse
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 if (model.IsEdit)
@@ -155,7 +155,7 @@ namespace Service.Warehouse
 
                     if (!checkExists)
                     {
-                        response.Errors.Add(CommonMessage.ID_NOT_FOUND);
+                        response.Errors.Add(CommonMessage.IdNotFound);
                         response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                         return response;
                     }
@@ -167,7 +167,7 @@ namespace Service.Warehouse
 
                     if (!checkCurrent)
                     {
-                        response.Errors.Add(CommonMessage.DATA_UPDATED_BY_OTHERS);
+                        response.Errors.Add(CommonMessage.DataUpdatedByOtherUser);
                         response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                         return response;
                     }
@@ -220,7 +220,7 @@ namespace Service.Warehouse
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var checkExistsAccount = await _context.GoodsCategoryRepository
@@ -229,7 +229,7 @@ namespace Service.Warehouse
 
                 if (!checkExistsAccount)
                 {
-                    response.Errors.Add(CommonMessage.ID_NOT_FOUND);
+                    response.Errors.Add(CommonMessage.IdNotFound);
                     response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                     return response;
                 }
@@ -267,7 +267,7 @@ namespace Service.Warehouse
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var checkExistsAccount = await _context.UserRepository
@@ -276,7 +276,7 @@ namespace Service.Warehouse
 
                 if (!checkExistsAccount)
                 {
-                    response.Errors.Add(CommonMessage.ID_NOT_FOUND);
+                    response.Errors.Add(CommonMessage.ParameterInvalid);
                     response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                     return response;
                 }

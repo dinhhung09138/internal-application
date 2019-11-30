@@ -58,7 +58,7 @@ namespace Service.Authentication
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
@@ -102,7 +102,7 @@ namespace Service.Authentication
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
@@ -147,7 +147,7 @@ namespace Service.Authentication
             {
                 if (tokenModel == null || loginModel == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();

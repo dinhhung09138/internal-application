@@ -54,7 +54,7 @@ namespace Service.Partner
             {
                 if (filter == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var query = _context.CustomerRepository.Query()
@@ -117,7 +117,7 @@ namespace Service.Partner
 
                 if (item == null)
                 {
-                    throw new Exception(CommonMessage.ID_NOT_FOUND);
+                    throw new Exception(CommonMessage.IdNotFound);
                 }
 
                 CustomerModel md = new CustomerModel();
@@ -163,7 +163,7 @@ namespace Service.Partner
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 if (model.IsEdit)
@@ -174,7 +174,7 @@ namespace Service.Partner
 
                     if (!checkExists)
                     {
-                        response.Errors.Add(CommonMessage.ID_NOT_FOUND);
+                        response.Errors.Add(CommonMessage.IdNotFound);
                         response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                         return response;
                     }
@@ -186,7 +186,7 @@ namespace Service.Partner
 
                     if (!checkCurrent)
                     {
-                        response.Errors.Add(CommonMessage.DATA_UPDATED_BY_OTHERS);
+                        response.Errors.Add(CommonMessage.DataUpdatedByOtherUser);
                         response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                         return response;
                     }
@@ -264,7 +264,7 @@ namespace Service.Partner
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var checkExistsAccount = await _context.CustomerRepository
@@ -273,7 +273,7 @@ namespace Service.Partner
 
                 if (!checkExistsAccount)
                 {
-                    response.Errors.Add(CommonMessage.ID_NOT_FOUND);
+                    response.Errors.Add(CommonMessage.IdNotFound);
                     response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                     return response;
                 }
@@ -311,7 +311,7 @@ namespace Service.Partner
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var checkExistsAccount = await _context.UserRepository
@@ -320,7 +320,7 @@ namespace Service.Partner
 
                 if (!checkExistsAccount)
                 {
-                    response.Errors.Add(CommonMessage.ID_NOT_FOUND);
+                    response.Errors.Add(CommonMessage.IdNotFound);
                     response.ResponseStatus = Core.Common.Enums.ResponseStatus.Warning;
                     return response;
                 }
