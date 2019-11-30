@@ -52,7 +52,7 @@
         {
             if (model != null)
             {
-                model.CurrentUser = CurrentUserId();
+                model.CurrentUserId = CurrentUserId();
             }
 
             var response = await _userService.Create(model).ConfigureAwait(false);
@@ -70,7 +70,7 @@
         {
             if (model != null)
             {
-                model.CurrentUser = CurrentUserId();
+                model.CurrentUserId = CurrentUserId();
             }
 
             var response = await _userService.UpdateActiveStatus(model).ConfigureAwait(false);
@@ -88,7 +88,7 @@
         {
             if (model != null)
             {
-                model.CurrentUser = CurrentUserId();
+                model.CurrentUserId = CurrentUserId();
             }
 
             var response = await _userService.Delete(model).ConfigureAwait(false);

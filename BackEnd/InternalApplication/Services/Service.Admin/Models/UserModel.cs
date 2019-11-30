@@ -43,11 +43,11 @@
         /// </summary>
         public bool IsActive { get; set; }
 
-
         /// <summary>
         /// Last login time.
         /// </summary>
         public DateTime? LastLogin { get; set; }
-        public string CurrentUser { get; set; }
+
+        public string CurrentUserId { get; set; }
     }
 }
