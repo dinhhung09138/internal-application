@@ -27,7 +27,7 @@
             var firstSort = sorts.FirstOrDefault(s => !s.IsMultiOrder);
             if (firstSort == null)
             {
-                throw new Exception(Messages.CommonMessage.PARAMS_INVALID);
+                throw new Exception(Messages.CommonMessage.ParameterInvalid);
             }
 
             result = SortBy(source, firstSort);

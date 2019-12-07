@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternalApplication", "InternalApplication\InternalApplication.csproj", "{7667CC3E-912F-480F-BADC-41714963E8D3}"
 EndProject
@@ -41,21 +41,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Authentication", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Authentication", "API\API.Authentication\API.Authentication.csproj", "{5AE66B36-57F3-4906-858A-510299A4FB55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Warehouse", "Services\Service.Warehouse\Service.Warehouse.csproj", "{64D9FF5D-1E82-44E2-BFF9-031F4A01CFF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Warehouse", "Services\Service.Warehouse\Service.Warehouse.csproj", "{64D9FF5D-1E82-44E2-BFF9-031F4A01CFF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.PO", "Services\Service.PO\Service.PO.csproj", "{E3247E4C-AB6D-4A01-91F2-EA99A1F485F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.PO", "Services\Service.PO\Service.PO.csproj", "{E3247E4C-AB6D-4A01-91F2-EA99A1F485F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Admin", "Services\Service.Admin\Service.Admin.csproj", "{0BEB20FB-EA46-436D-ABC3-726860CD8942}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Admin", "Services\Service.Admin\Service.Admin.csproj", "{0BEB20FB-EA46-436D-ABC3-726860CD8942}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Partner", "Services\Service.Partner\Service.Partner.csproj", "{47FF43CE-D6D7-4F4C-87C4-9B5752B9CCD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Partner", "Services\Service.Partner\Service.Partner.csproj", "{47FF43CE-D6D7-4F4C-87C4-9B5752B9CCD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Warehouse", "API\API.Warehouse\API.Warehouse.csproj", "{9272E718-3B3A-4B09-9F4F-B94826444DD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Warehouse", "API\API.Warehouse\API.Warehouse.csproj", "{9272E718-3B3A-4B09-9F4F-B94826444DD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.PO", "API\API.PO\API.PO.csproj", "{97763CE8-81E8-4137-8244-24D8A9115BB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.PO", "API\API.PO\API.PO.csproj", "{97763CE8-81E8-4137-8244-24D8A9115BB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Partner", "API\API.Partner\API.Partner.csproj", "{DCCF9B71-5D70-4739-BAFB-9AF0DDFB89C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Partner", "API\API.Partner\API.Partner.csproj", "{DCCF9B71-5D70-4739-BAFB-9AF0DDFB89C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Admin", "API.Admin\API.Admin.csproj", "{D8D6D3B3-DC41-4727-A481-F0F18AC1A3D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Admin", "API.Admin\API.Admin.csproj", "{D8D6D3B3-DC41-4727-A481-F0F18AC1A3D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.DataAccess", "DataAccess\Warehouse.DataAccess\Warehouse.DataAccess.csproj", "{20A7F9E5-DE81-43BC-8C77-EDC1A963C102}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{D8D6D3B3-DC41-4727-A481-F0F18AC1A3D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8D6D3B3-DC41-4727-A481-F0F18AC1A3D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8D6D3B3-DC41-4727-A481-F0F18AC1A3D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20A7F9E5-DE81-43BC-8C77-EDC1A963C102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20A7F9E5-DE81-43BC-8C77-EDC1A963C102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20A7F9E5-DE81-43BC-8C77-EDC1A963C102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20A7F9E5-DE81-43BC-8C77-EDC1A963C102}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,6 +166,7 @@ Global
 		{97763CE8-81E8-4137-8244-24D8A9115BB0} = {42B92036-B940-4FC2-B9B3-2A3BFD37D34A}
 		{DCCF9B71-5D70-4739-BAFB-9AF0DDFB89C4} = {42B92036-B940-4FC2-B9B3-2A3BFD37D34A}
 		{D8D6D3B3-DC41-4727-A481-F0F18AC1A3D0} = {42B92036-B940-4FC2-B9B3-2A3BFD37D34A}
+		{20A7F9E5-DE81-43BC-8C77-EDC1A963C102} = {97D869F7-0CF9-4B23-B5F7-DC12090BC137}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {505F2321-A92F-47D8-8C88-823B35CB4825}

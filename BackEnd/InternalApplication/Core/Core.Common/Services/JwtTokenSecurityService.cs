@@ -46,7 +46,7 @@
             {
                 if (user == null)
                 {
-                    throw new Exception(Messages.CommonMessage.PARAMS_INVALID);
+                    throw new Exception(Messages.CommonMessage.ParameterInvalid);
                 }
 
                 var jwtSecurityToken = this.GetJwtSecurityToken(user);
@@ -62,7 +62,7 @@
                 var refreshTokenData = new TokenModel
                 {
                     Token = token.RefreshToken,
-                    UserId = user?.Id ?? default,
+                    UserId = user?.Id ?? default(Guid),
                 };
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(jwtSecurityToken.ValidTo.ToLocalTime());

@@ -1,28 +1,33 @@
-﻿namespace Service.Admin
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using Core.Common.Extensions;
+using Core.Common.Helpers;
+using Core.Common.Messages;
+using Core.Common.Models;
+using Core.Common.Services.Interfaces;
+using Internal.DataAccess;
+using Service.Admin.Constants;
+using Service.Admin.Interfaces;
+using Z.EntityFramework.Plus;
+
+namespace Service.Admin
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Core.Common.Extensions;
-    using Core.Common.Helpers;
-    using Core.Common.Messages;
-    using Core.Common.Models;
-    using Core.Common.Services.Interfaces;
-    using Internal.DataAccess;
-    using Service.Admin.Constants;
-    using Service.Admin.Interfaces;
-    using Service.Admin.Models;
-    using Z.EntityFramework.Plus;
 
     /// <summary>
     /// User service.
     /// </summary>
     public class UserService : IUserService
     {
+        /// <summary>
+        /// Data context.
+        /// </summary>
         private readonly IInternalUnitOfWork _context;
+
+        /// <summary>
+        /// Log service.
+        /// </summary>
         private readonly ILoggerService _logger;
 
         /// <summary>
@@ -30,9 +35,7 @@
         /// </summary>
         /// <param name="context">data context.</param>
         /// <param name="logger">log service.</param>
-        public UserService(
-            IInternalUnitOfWork context,
-            ILoggerService logger)
+        public UserService(IInternalUnitOfWork context, ILoggerService logger)
         {
             _context = context;
             _logger = logger;
@@ -42,7 +45,7 @@
         /// Get list of user function.
         /// </summary>
         /// <param name="filter">Filter model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> List(FilterModel filter)
         {
             var response = new ResponseModel();
@@ -50,7 +53,7 @@
             {
                 if (filter == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 var query = _context.UserRepository.Query()
@@ -94,7 +97,7 @@
         /// Create new user account function.
         /// </summary>
         /// <param name="model">User model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> Create(Models.UserModel model)
         {
             var response = new ResponseModel();
@@ -102,10 +105,11 @@
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
-                var checkExistsAccount = await _context.UserRepository.AnyAsync(m => m.EmployeeId == model.EmployeeId).ConfigureAwait(true);
+                var checkExistsAccount = await _context.UserRepository.AnyAsync(m => m.EmployeeId == model.EmployeeId)
+                                                                      .ConfigureAwait(true);
 
                 if (checkExistsAccount)
                 {
@@ -123,7 +127,7 @@
                     UserName = model.UserName,
                     Password = password,
                     IsActive = true,
-                    CreateBy = model.CurrentUser,
+                    CreateBy = model.CurrentUserId,
                     CreateDate = DateTime.Now,
                 }).ConfigureAwait(true);
 
@@ -142,7 +146,7 @@
         /// Update user account status function.
         /// </summary>
         /// <param name="model">User model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> UpdateActiveStatus(Models.UserModel model)
         {
             var response = new ResponseModel();
@@ -150,10 +154,11 @@
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
-                var checkExistsAccount = await _context.UserRepository.AnyAsync(m => m.Id == model.Id).ConfigureAwait(true);
+                var checkExistsAccount = await _context.UserRepository.AnyAsync(m => m.Id == model.Id)
+                                                                      .ConfigureAwait(true);
 
                 if (!checkExistsAccount)
                 {
@@ -169,7 +174,7 @@
                                                          .UpdateAsync(m => new Internal.DataAccess.Entity.User()
                                                          {
                                                              IsActive = model.IsActive,
-                                                             UpdateBy = model.CurrentUser,
+                                                             UpdateBy = model.CurrentUserId,
                                                              UpdateDate = DateTime.Now,
                                                          }).ConfigureAwait(false);
 
@@ -186,10 +191,10 @@
         }
 
         /// <summary>
-        /// Delete user account status function.
+        /// Delete user account function.
         /// </summary>
         /// <param name="model">User model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         public async Task<ResponseModel> Delete(Models.UserModel model)
         {
             var response = new ResponseModel();
@@ -197,10 +202,12 @@
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
-                var checkExistsAccount = await _context.UserRepository.AnyAsync(m => m.Id == model.Id).ConfigureAwait(true);
+                var checkExistsAccount = await _context.UserRepository
+                                                        .AnyAsync(m => m.Id == model.Id)
+                                                        .ConfigureAwait(true);
 
                 if (!checkExistsAccount)
                 {
@@ -214,9 +221,9 @@
                                                          .UpdateAsync(m => new Internal.DataAccess.Entity.User()
                                                          {
                                                              Deleted = true,
-                                                             UpdateBy = model.CurrentUser,
+                                                             UpdateBy = model.CurrentUserId,
                                                              UpdateDate = DateTime.Now,
-                                                             DeleteBy = model.CurrentUser,
+                                                             DeleteBy = model.CurrentUserId,
                                                              DeleteDate = DateTime.Now,
                                                          }).ConfigureAwait(false);
 

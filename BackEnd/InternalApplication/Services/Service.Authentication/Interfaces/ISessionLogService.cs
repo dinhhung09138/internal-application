@@ -1,11 +1,9 @@
-﻿namespace Service.Authentication.Interfaces
+﻿using System.Threading.Tasks;
+using Core.Common.Models;
+using Service.Authentication.Models;
+
+namespace Service.Authentication.Interfaces
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Core.Common.Models;
-    using Service.Authentication.Models;
 
     /// <summary>
     /// Session log service interface.

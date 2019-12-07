@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\DataAccess\Core.Data.IRepository\Core.Data.IRepository.csproj" />
+    <ProjectReference Include="..\..\Core\DataAccess\Core.Data.SQL.Repository\Core.Data.SQL.Repository.csproj" />
+    <ProjectReference Include="..\..\Core\DataAccess\Core.IUnitOfWork\Core.IUnitOfWork.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,11 +1,11 @@
-﻿namespace Service.Admin.Interfaces
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Core.Common.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Core.Common.Models;
 
+namespace Service.Admin.Interfaces
+{
     /// <summary>
     /// User interface.
     /// </summary>
@@ -15,28 +15,28 @@
         /// Get list of user function.
         /// </summary>
         /// <param name="filter">Filter model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         Task<ResponseModel> List(FilterModel filter);
 
         /// <summary>
         /// Create new user account function.
         /// </summary>
         /// <param name="model">User model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         Task<ResponseModel> Create(Models.UserModel model);
 
         /// <summary>
         /// Update user account status function.
         /// </summary>
         /// <param name="model">User model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         Task<ResponseModel> UpdateActiveStatus(Models.UserModel model);
 
         /// <summary>
-        /// Delete user account status function.
+        /// Delete user account function.
         /// </summary>
         /// <param name="model">User model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         Task<ResponseModel> Delete(Models.UserModel model);
     }
 }
