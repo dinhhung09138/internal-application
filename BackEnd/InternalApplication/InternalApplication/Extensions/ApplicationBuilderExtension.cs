@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using API.Common.Hubs;
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,10 @@
         /// <returns>IApplicationBuilder.</returns>
         public static IApplicationBuilder CustomizeMvc(this IApplicationBuilder app)
         {
+            app.UseCors("InternalApplicationPolicy");
+
+            // app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -67,9 +72,12 @@
                 app.UseHsts();
             }
 
-            loggerFactory.AddSerilog();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<NotificationServiceHub>("/hubs/notification");
+            });
 
-            app.UseCors("InternalApplicationPolicy");
+            loggerFactory.AddSerilog();
 
             return app;
         }

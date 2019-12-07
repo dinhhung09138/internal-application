@@ -10,7 +10,13 @@ import { TaskComponent } from './navigation/task/task.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
+import { PushNotificationService } from 'src/app/core/services/push-notification.service';
 
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ShowMessageService } from 'src/app/core/services/show-message.service';
+import { LoadingComponent } from './loading/loading.component';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 
 @NgModule({
@@ -24,10 +30,18 @@ import { ContentComponent } from './content/content.component';
     LeftSidebarComponent,
     FooterComponent,
     ContentComponent,
+    LoadingComponent,
+  ],
+  providers: [
+    PushNotificationService,
+    MessageService,
+    ShowMessageService,
+    LoadingService,
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    ToastModule,
   ]
 })
 export class LayoutModule { }

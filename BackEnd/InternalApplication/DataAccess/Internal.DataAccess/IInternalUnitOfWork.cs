@@ -21,5 +21,25 @@
         /// Session log table repository.
         /// </summary>
         ITableGenericRepository<SessionLog> SessionLogRepository { get; }
+
+        /// <summary>
+        /// Country table repository.
+        /// </summary>
+        ITableGenericRepository<Country> CountryRepository { get; }
+
+        /// <summary>
+        /// City table repository.
+        /// </summary>
+        ITableGenericRepository<City> CityRepository { get; }
+
+        /// <summary>
+        /// Partner table repository.
+        /// </summary>
+        ITableGenericRepository<Partner> PartnerRepository { get; }
+
+        /// <summary>
+        /// Employee table repository.
+        /// </summary>
+        ITableGenericRepository<Employee> EmployeeRepository { get; }
     }
 }

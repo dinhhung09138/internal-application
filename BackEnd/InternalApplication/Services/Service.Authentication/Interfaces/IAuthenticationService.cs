@@ -1,11 +1,11 @@
-﻿namespace Service.Authentication.Interfaces
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Core.Common.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Core.Common.Models;
 
+namespace Service.Authentication.Interfaces
+{
     /// <summary>
     /// Authentication service interface.
     /// </summary>
@@ -15,7 +15,7 @@
         /// Login function.
         /// </summary>
         /// <param name="model">login model.</param>
-        /// <returns>ResponseModel.</returns>
+        /// <returns>ResponseModel object.</returns>
         Task<ResponseModel> Login(LoginModel model);
     }
 }

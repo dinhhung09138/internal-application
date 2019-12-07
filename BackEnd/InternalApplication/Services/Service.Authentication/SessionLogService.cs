@@ -1,25 +1,35 @@
-﻿namespace Service.Authentication
-{
-    using System;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Core.Common.Messages;
-    using Core.Common.Models;
-    using Core.Common.Services.Interfaces;
-    using Internal.DataAccess;
-    using Internal.DataAccess.Entity;
-    using Microsoft.AspNetCore.Http;
-    using Service.Authentication.Interfaces;
-    using Service.Authentication.Models;
+﻿using System;
+using System.Reflection;
+using System.Threading.Tasks;
+using Core.Common.Messages;
+using Core.Common.Models;
+using Core.Common.Services.Interfaces;
+using Internal.DataAccess;
+using Internal.DataAccess.Entity;
+using Microsoft.AspNetCore.Http;
+using Service.Authentication.Interfaces;
+using Service.Authentication.Models;
 
+namespace Service.Authentication
+{
     /// <summary>
     /// Session log service.
     /// </summary>
     public class SessionLogService : ISessionLogService
     {
+        /// <summary>
+        /// Http context.
+        /// </summary>
         private readonly IHttpContextAccessor _accessor;
+
+        /// <summary>
+        /// Data context.
+        /// </summary>
         private readonly IInternalUnitOfWork _context;
+
+        /// <summary>
+        /// Log service.
+        /// </summary>
         private readonly ILoggerService _logger;
 
         /// <summary>
@@ -48,7 +58,7 @@
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
@@ -92,7 +102,7 @@
             {
                 if (model == null)
                 {
-                    throw new Exception(CommonMessage.PARAMS_INVALID);
+                    throw new Exception(CommonMessage.ParameterInvalid);
                 }
 
                 string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
@@ -118,6 +128,54 @@
             catch (Exception ex)
             {
                 _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, model, ex);
+                response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// Add new session log.
+        /// </summary>
+        /// <param name="tokenModel">token model.</param>
+        /// <param name="loginModel">Login model.</param>
+        /// <returns>ResponseModel object.</returns>
+        public async Task<ResponseModel> Add(JwtTokenModel tokenModel, LoginModel loginModel)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                if (tokenModel == null || loginModel == null)
+                {
+                    throw new Exception(CommonMessage.ParameterInvalid);
+                }
+
+                string clientIp = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+
+                SessionLog md = new SessionLog
+                {
+                    Id = Guid.NewGuid(),
+                    IsActive = true,
+                    IsOnline = true,
+                    LoginTime = DateTime.Now,
+                    Token = tokenModel.AccessToken,
+                    ExpirationTime = new DateTime(tokenModel.Expiration),
+                    IPAddress = clientIp,
+                    Browser = loginModel.Browser,
+                    OSName = loginModel.OSName,
+                    Platform = loginModel.Platform,
+                    CreateBy = tokenModel.UserInfo.Id.ToString(),
+                    CreateDate = DateTime.Now,
+                    UpdateBy = tokenModel.UserInfo.Id.ToString(),
+                    UpdateDate = DateTime.Now,
+                };
+
+                await _context.SessionLogRepository.AddAsync(md).ConfigureAwait(false);
+                await _context.SaveChangesAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                _logger.AddErrorLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, loginModel, ex);
                 response.ResponseStatus = Core.Common.Enums.ResponseStatus.Error;
             }
 
